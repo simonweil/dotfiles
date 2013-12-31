@@ -14,3 +14,5 @@
 	ribbon = tag --force _ribbon origin/master
 	catchup = log --patch --reverse --topo-order _ribbon..origin/master
 
+[core]
+	editor = /usr/bin/vim
