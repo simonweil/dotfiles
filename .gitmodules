@@ -1,0 +1,6 @@
+[submodule "janus/auto-pairs"]
+	path = janus/auto-pairs
+	url = https://github.com/jiangmiao/auto-pairs
+[submodule "janus/vim-airline"]
+	path = janus/vim-airline
+	url = https://github.com/bling/vim-airline
