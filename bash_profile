@@ -88,7 +88,7 @@ export CLICOLOR=""
 export PATH="$HOME/bin:/usr/local/share/npm/bin:$PATH"
 
 # Add all private configuration
-source ~/dotfiles/bash_profile.private
+source ~/.dotfiles/bash_profile.private
 
 if [ -f $(brew --prefix)/bin/liquidprompt ]; then
 	. $(brew --prefix)/bin/liquidprompt

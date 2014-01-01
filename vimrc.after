@@ -1,0 +1,11 @@
+" Allow moving the mouse on the whole screen
+set virtualedit=all
+
+" Allow tabbed menu for completion in command mode (:)
+set wildmenu
+
+" Use a special color scheme for MacVim GUI
+if has("gui_macvim")
+  colorscheme Tomorrow-Night-Bright
+endif
+
