@@ -4,6 +4,9 @@ set virtualedit=all
 " Allow tabbed menu for completion in command mode (:)
 set wildmenu
 
+" Make y, p and d work with the clipboard
+set clipboard=unnamed
+
 " Use a special color scheme for MacVim GUI
 if has("gui_macvim")
   colorscheme Tomorrow-Night-Bright
