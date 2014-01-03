@@ -4,3 +4,9 @@
 [submodule "janus/vim-airline"]
 	path = janus/vim-airline
 	url = https://github.com/bling/vim-airline
+[submodule "janus/vim-move"]
+	path = janus/vim-move
+	url = https://github.com/matze/vim-move.git
+[submodule "janus/vim-textmanip"]
+	path = janus/vim-textmanip
+	url = https://github.com/t9md/vim-textmanip.git

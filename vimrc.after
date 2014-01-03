@@ -12,3 +12,24 @@ if has("gui_macvim")
   colorscheme Tomorrow-Night-Bright
 endif
 
+" -------------------------
+" textmanip plugin mappings
+" -------------------------
+"" simple duplicate
+nmap <D-D> <Plug>(textmanip-duplicate-up)
+nmap <D-d> <Plug>(textmanip-duplicate-down)
+xmap <D-D> <Plug>(textmanip-duplicate-up)
+xmap <D-d> <Plug>(textmanip-duplicate-down)
+
+" move with jkhl
+xmap <C-k> <Plug>(textmanip-move-up)
+xmap <C-j> <Plug>(textmanip-move-down)
+xmap <C-h> <Plug>(textmanip-move-left)
+xmap <C-l> <Plug>(textmanip-move-right)
+
+" duplicate with COMMAND-SHIFT-jkhl
+xmap <D-K> <Plug>(textmanip-duplicate-up)
+xmap <D-J> <Plug>(textmanip-duplicate-down)
+xmap <D-H> <Plug>(textmanip-duplicate-left)
+xmap <D-L> <Plug>(textmanip-duplicate-right)
+

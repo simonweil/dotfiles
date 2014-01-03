@@ -1,9 +1,10 @@
 #!/usr/local/bin/bash
 
 ###
-# very interesting
+# vim related
 #
 set -o vi # go into vi mode on the shell!!!
+alias v="mvim --remote-silent "
 ###
 
 # useful shortcuts
@@ -19,13 +20,14 @@ alias dev_sites="cd ~/Dev/www/top10sites"
 alias dev_tracker="cd ~/Dev/www/tracker"
 alias dev_lwcms="cd ~/Dev/www/lightweight-cms"
 
+alias grep="grep --color=always "
 
 # dev
 alias apache_start="sudo apachectl  -k start"
 alias apache_restart="sudo apachectl  -k restart"
 alias apache_stop="sudo apachectl  -k stop"
-alias apache_conf="cd /etc/apache2/" 
-alias apache_log="cd /var/log/apache2/" 
+alias apache_conf="cd /etc/apache2/"
+alias apache_log="cd /var/log/apache2/"
 
 # home brew
 alias brew_update="brew update && brew outdated"
@@ -69,6 +71,8 @@ alias git_grep='git log --grep "(NISITES-51" --pretty=oneline'
 alias git_bad_files='find . -name ".DS_Store" -or -name "Thumbs.db"'
 alias git_log="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%Creset' --abbrev-commit --date=relative --all"
 alias gp="git pull"
+alias gs="git status"
+
 
 # rake
 alias rake_bower_install="rake bower:dsl:install"
