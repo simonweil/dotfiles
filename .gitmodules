@@ -7,3 +7,9 @@
 [submodule "janus/vim-textmanip"]
 	path = janus/vim-textmanip
 	url = https://github.com/t9md/vim-textmanip.git
+[submodule "janus/vim-emblem"]
+	path = janus/vim-emblem
+	url = https://github.com/heartsentwined/vim-emblem.git
+[submodule "janus/vim-project"]
+	path = janus/vim-project
+	url = https://github.com/amiorin/vim-project.git

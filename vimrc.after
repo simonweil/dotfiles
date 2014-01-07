@@ -1,3 +1,9 @@
+" TODO's
+" ------
+"  1. sessions made easier: https://github.com/tpope/vim-obsession
+"  2. code completion: https://github.com/Valloric/YouCompleteMe
+
+
 " Allow moving the mouse on the whole screen
 set virtualedit=all
 
@@ -11,6 +17,12 @@ set clipboard=unnamed
 if has("gui_macvim")
   colorscheme Tomorrow-Night-Bright
 endif
+
+
+" ----------------------------------------------------------
+" setup the projects: https://github.com/amiorin/vim-project
+" ----------------------------------------------------------
+
 
 " -------------------------
 " textmanip plugin mappings
