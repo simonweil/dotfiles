@@ -1,7 +1,11 @@
 " TODO's
 " ------
-"  1. sessions made easier: https://github.com/tpope/vim-obsession
-"  2. code completion: https://github.com/Valloric/YouCompleteMe
+"  1. setup my projects
+"  2. sessions made easier: https://github.com/xolox/vim-session or https://github.com/tpope/vim-obsession
+"  3. code completion: https://github.com/Valloric/YouCompleteMe
+"  4. snippet engine: https://github.com/SirVer/ultisnips
+"                     https://github.com/drmingdrmer/xptemplate
+"  5. learn more plugnis: https://github.com/carlhuda/janus
 
 
 " Allow moving the mouse on the whole screen
@@ -22,26 +26,16 @@ endif
 " ----------------------------------------------------------
 " setup the projects: https://github.com/amiorin/vim-project
 " ----------------------------------------------------------
+" Enable Nerd treee
+let g:project_use_nerdtree = 1
 
+" Set my starting path
+call project#rc("~/Dev/www")
 
-" -------------------------
-" textmanip plugin mappings
-" -------------------------
-"" simple duplicate
-nmap <D-D> <Plug>(textmanip-duplicate-up)
-nmap <D-d> <Plug>(textmanip-duplicate-down)
-xmap <D-D> <Plug>(textmanip-duplicate-up)
-xmap <D-d> <Plug>(textmanip-duplicate-down)
+" My projects
+Project 'Community'
+Project 'adminbot'        , 'Admin'
+Project '~/.dotfiles'     , 'My DotFiles :)'
+Project 'top10sites'
 
-" move with jkhl
-xmap <C-k> <Plug>(textmanip-move-up)
-xmap <C-j> <Plug>(textmanip-move-down)
-xmap <C-h> <Plug>(textmanip-move-left)
-xmap <C-l> <Plug>(textmanip-move-right)
-
-" duplicate with COMMAND-SHIFT-jkhl
-xmap <D-K> <Plug>(textmanip-duplicate-up)
-xmap <D-J> <Plug>(textmanip-duplicate-down)
-xmap <D-H> <Plug>(textmanip-duplicate-left)
-xmap <D-L> <Plug>(textmanip-duplicate-right)
 

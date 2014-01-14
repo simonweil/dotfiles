@@ -4,12 +4,15 @@
 [submodule "janus/vim-airline"]
 	path = janus/vim-airline
 	url = https://github.com/bling/vim-airline
-[submodule "janus/vim-textmanip"]
-	path = janus/vim-textmanip
-	url = https://github.com/t9md/vim-textmanip.git
 [submodule "janus/vim-emblem"]
 	path = janus/vim-emblem
 	url = https://github.com/heartsentwined/vim-emblem.git
 [submodule "janus/vim-project"]
 	path = janus/vim-project
 	url = https://github.com/amiorin/vim-project.git
+[submodule "janus/vim-bundler"]
+	path = janus/vim-bundler
+	url = https://github.com/tpope/vim-bundler.git
+[submodule "janus/vim-bufferline"]
+	path = janus/vim-bufferline
+	url = https://github.com/bling/vim-bufferline.git

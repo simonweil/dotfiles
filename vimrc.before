@@ -1,0 +1,4 @@
+
+" remove the buffer list from the command line
+let g:bufferline_echo = 0
+
