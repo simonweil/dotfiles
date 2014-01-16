@@ -4,9 +4,21 @@
 "  2. sessions made easier: https://github.com/xolox/vim-session or https://github.com/tpope/vim-obsession
 "  3. code completion: https://github.com/Valloric/YouCompleteMe
 "  4. better yanking: https://github.com/maxbrunsfeld/vim-yankstack
-"  5. snippet engine: https://github.com/SirVer/ultisnips
+"  5. interesting search: https://github.com/rking/ag.vim
+"  6. snippet engine: https://github.com/SirVer/ultisnips
 "                     https://github.com/drmingdrmer/xptemplate
-"  6. learn more plugnis: https://github.com/carlhuda/janus
+"  7. learn more plugnis: https://github.com/carlhuda/janus
+"  8. unite: https://github.com/Shougo/unite.vim (http://bling.github.io/blog/2013/06/02/unite-dot-vim-the-plugin-you-didnt-know-you-need/)
+"  9. rvm: https://github.com/tpope/vim-rvm
+"  10. get rid of whitespaces: https://github.com/bronson/vim-trailing-whitespace
+"  11. more: http://www.youtube.com/user/MinuteVimTricks
+"
+" Rails
+" -----
+"  1. https://github.com/astashov/vim-ruby-debugger
+"  2. https://github.com/tpope/gem-ctags
+"  3. https://github.com/tpope/gem-browse
+"  4. https://github.com/tpope/pry-editline
 
 
 " Allow moving the mouse on the whole screen
