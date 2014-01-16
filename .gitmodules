@@ -16,3 +16,18 @@
 [submodule "janus/vim-bufferline"]
 	path = janus/vim-bufferline
 	url = https://github.com/bling/vim-bufferline.git
+[submodule "janus/vim-characterize"]
+	path = janus/vim-characterize
+	url = https://github.com/tpope/vim-characterize.git
+[submodule "janus/vim-indent-guides"]
+	path = janus/vim-indent-guides
+	url = https://github.com/nathanaelkane/vim-indent-guides.git
+[submodule "janus/emmet-vim"]
+	path = janus/emmet-vim
+	url = https://github.com/mattn/emmet-vim.git
+[submodule "janus/vim-speeddating"]
+	path = janus/vim-speeddating
+	url = https://github.com/tpope/vim-speeddating.git
+[submodule "janus/vim-sleuth"]
+	path = janus/vim-sleuth
+	url = https://github.com/tpope/vim-sleuth.git

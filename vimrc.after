@@ -3,9 +3,10 @@
 "  1. setup my projects
 "  2. sessions made easier: https://github.com/xolox/vim-session or https://github.com/tpope/vim-obsession
 "  3. code completion: https://github.com/Valloric/YouCompleteMe
-"  4. snippet engine: https://github.com/SirVer/ultisnips
+"  4. better yanking: https://github.com/maxbrunsfeld/vim-yankstack
+"  5. snippet engine: https://github.com/SirVer/ultisnips
 "                     https://github.com/drmingdrmer/xptemplate
-"  5. learn more plugnis: https://github.com/carlhuda/janus
+"  6. learn more plugnis: https://github.com/carlhuda/janus
 
 
 " Allow moving the mouse on the whole screen
