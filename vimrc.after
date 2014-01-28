@@ -9,9 +9,10 @@
 "                     https://github.com/drmingdrmer/xptemplate
 "  7. learn more plugnis: https://github.com/carlhuda/janus
 "  8. unite: https://github.com/Shougo/unite.vim (http://bling.github.io/blog/2013/06/02/unite-dot-vim-the-plugin-you-didnt-know-you-need/)
-"  9. rvm: https://github.com/tpope/vim-rvm
-"  10. get rid of whitespaces: https://github.com/bronson/vim-trailing-whitespace
-"  11. more: http://www.youtube.com/user/MinuteVimTricks
+"  9. get rid of whitespaces: https://github.com/bronson/vim-trailing-whitespace
+"  10. JS: https://github.com/marijnh/tern_for_vim
+"  11. regex: https://github.com/othree/eregex.vim
+"  12. more: http://www.youtube.com/user/MinuteVimTricks
 "
 " Rails
 " -----
@@ -19,6 +20,19 @@
 "  2. https://github.com/tpope/gem-ctags
 "  3. https://github.com/tpope/gem-browse
 "  4. https://github.com/tpope/pry-editline
+"  5. better ruby tags: https://github.com/lzap/gem-ripper-tags
+"  6. rvm: https://github.com/tpope/vim-rvm
+"
+" Online documentation
+" --------------------
+"  1. https://github.com/stephenmckinney/vim-dochub
+"  2. https://github.com/lucapette/vim-ruby-doc
+"  3. https://github.com/danchoi/ri.vim
+"  4. https://github.com/rizzatti/dash.vim
+"
+" Plugins to learn:
+"  * h buffergator
+"  *
 
 
 " Allow moving the mouse on the whole screen
