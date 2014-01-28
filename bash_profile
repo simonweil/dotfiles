@@ -47,7 +47,7 @@ alias pip_update="pip install --upgrade distribute && pip install --upgrade pip"
 # RVM, Ruby, Rails
 alias rvm_update="rvm get latest && rvm requirements"
 alias rvm_cheatsheat="start http://cheat.errtheblog.com/s/rvm"
-source /Users/simonweil/.rvm/scripts/rvm
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # RVM bash completion
 [[ -r "$HOME/.rvm/scripts/completion" ]] && source "$HOME/.rvm/scripts/completion"
@@ -62,7 +62,7 @@ alias wine-ie8="wine ~/.wine/drive_c/Program\ Files/Internet\ Explorer/iexplore.
 # run as 32 bit for dotnet35sp1: export WINEPREFIX="$HOME/.wine32"; export WINEARCH='win32'; winecfg
 # install dotnet35sp1: winetricks -q msxml6 mfc42 gdiplus corefonts # not this dotnet35sp1
 # export WINEDLLOVERRIDES=ngen.exe,mscorsvw.exe=b
-# wine ~/Downloads/dotnetfx35setup.exe 
+# wine ~/Downloads/dotnetfx35setup.exe
 # wineboot --update
 # wine /Users/simonweil/Downloads/Quest_Toad-for-MySQL-Freeware_63.exe
 
