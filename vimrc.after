@@ -57,12 +57,12 @@ endif
 let g:project_use_nerdtree = 1
 
 " Set my starting path
-call project#rc("~/Dev/www")
+call project#rc("~/work/")
 
 " My projects
-Project 'Community'
-Project 'adminbot'        , 'Admin'
-Project '~/.dotfiles'     , 'My DotFiles :)'
-Project 'top10sites'
+Project '~/mine/dev/Community' , 'Community'
+Project 'adminbot'             , 'Admin'
+Project '~/.dotfiles'          , 'My DotFiles :)'
+Project 'top-10-sites'         , 'Top 10 Sites'
 
 
