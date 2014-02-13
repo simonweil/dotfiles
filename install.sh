@@ -8,6 +8,7 @@ ln -s $PWD/bash_profile ~/.bash_profile
 ln -s $PWD/pryrc ~/.pryrc
 mkdir ~/bin
 ln -s $PWD/bin/git-meld  ~/bin/git-meld
+ln -s $PWD/bin/find_stories.py  ~/bin/find_stories.py
 
 # For updating the submodules of janus
 git submodule init
