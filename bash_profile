@@ -20,16 +20,16 @@ alias dev_sites="cd ~/Dev/www/top10sites"
 alias dev_tracker="cd ~/Dev/www/tracker"
 alias dev_lwcms="cd ~/Dev/www/lightweight-cms"
 
-alias grep="grep --color=always "
+alias grep="grep --color=always -i "
 
 # dev
-alias apache_start="sudo apachectl  -k start"
-alias apache_restart="sudo apachectl  -k restart"
-alias apache_stop="sudo apachectl  -k stop"
+alias apache_start="sudo apachectl -k start"
+alias apache_restart="sudo apachectl -k restart"
+alias apache_stop="sudo apachectl -k stop"
 alias apache_conf="cd /etc/apache2/"
 alias apache_log="cd /var/log/apache2/"
 
-# home brew
+# homebrew
 alias brew_update="brew update && brew outdated"
 alias brew_wine_upgrade='brew upgrade wine --devel --use-gcc'
 alias brew_desc="brew desc"
@@ -44,20 +44,30 @@ fi
 # python
 alias pip_update="pip install --upgrade distribute && pip install --upgrade pip"
 
-# RVM, Ruby, Rails
+####################
+# RVM, Ruby, Rails #
+####################
 alias rvm_update="rvm get latest && rvm requirements"
 alias rvm_cheatsheat="start http://cheat.errtheblog.com/s/rvm"
+alias rc="rails console --sandbox"
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # RVM bash completion
 [[ -r "$HOME/.rvm/scripts/completion" ]] && source "$HOME/.rvm/scripts/completion"
 
-# win apps
-alias wine-heidisql="wine  ~/.wine/drive_c/Program\ Files/HeidiSQL/heidisql.exe &"
+
+############
+# win apps #
+############
+alias wine-heidisql="WINEPREFIX='$HOME/.wineheidi' wine ~/.wine/drive_c/Program\ Files/HeidiSQL/heidisql.exe &"
 alias wine-BC="wine start /UNIX ~/.wine/drive_c/Program\ Files/Beyond\ Compare\ 3/BCompare.exe &"
 alias wine-ie8="wine ~/.wine/drive_c/Program\ Files/Internet\ Explorer/iexplore.exe &"
+alias wine-toad="WINEPREFIX='$HOME/.wine32' WINEARCH='win32' wine ~/.wine32/drive_c/Program\ Files/Quest\ Software/Toad\ for\ MySQL\ Freeware\ 7.0/toad.exe"
+alias wine-npp="wine ~/.wine/drive_c/noinstall/npp.6.5.5.bin/notepad++.exe"
 
 
+# Old:
 # optional wine dependencies: brew install libntlm mpg123 samba
 # run as 32 bit for dotnet35sp1: export WINEPREFIX="$HOME/.wine32"; export WINEARCH='win32'; winecfg
 # install dotnet35sp1: winetricks -q msxml6 mfc42 gdiplus corefonts # not this dotnet35sp1
@@ -65,6 +75,11 @@ alias wine-ie8="wine ~/.wine/drive_c/Program\ Files/Internet\ Explorer/iexplore.
 # wine ~/Downloads/dotnetfx35setup.exe
 # wineboot --update
 # wine /Users/simonweil/Downloads/Quest_Toad-for-MySQL-Freeware_63.exe
+
+# New:
+# run as 32 bit for dotnet35sp1: export WINEPREFIX="$HOME/.wine32"; export WINEARCH='win32'; winecfg
+# winetricks dotnet40
+# wine /Users/simonweil/Downloads/Quest_Toad-for-MySQL-Freeware_70.exe
 
 # git
 alias git_grep='git log --grep "(NISITES-51" --pretty=oneline'
@@ -77,12 +92,16 @@ alias gs="git status"
 # rake
 alias rake_bower_install="rake bower:dsl:install"
 
+# autojump
+[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+
 #
 # general settings
 #
 
 alias update_all="npm -g outdated; brew_update"
 alias update_project="npm outdated && rake bower:list && bundle outdated"
+alias node_list='npm -g list | grep "^[└|├]" | cut -d " " -f2 | cut -d"@" -f1'
 
 # http://www.kirsle.net/wizards/ps1.html
 # https://wiki.archlinux.org/index.php/Color_Bash_Prompt
