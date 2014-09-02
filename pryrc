@@ -46,10 +46,21 @@ if defined? Hirb
 end
 =end
 
-puts "Loaded ~/.pryrc"
-puts
-puts "Helpful shortcuts:"
-puts "h  : hist -T 20       Last 20 commands"
-puts "hg : hist -T 20 -G    Up to 20 commands matching expression"
-puts "hG : hist -G          Commands matching expression ever used"
-puts "hr : hist -r          hist -r <command number> to run a command"
+puts "Loaded ~/.pryrc
+
+Helpful shortcuts:
+h  : hist -T 20       Last 20 commands
+hg : hist -T 20 -G    Up to 20 commands matching expression
+hG : hist -G          Commands matching expression ever used
+hr : hist -r          hist -r <command number> to run a command
+
+Reminders:
+? <command> - view command documentation
+$ <command> - view command source
+_           - the value of the last expression
+`<command>` - run command in a shell. ex: `pwd`.chomp
+cd          - change context to a class or instance
+ls          - in a class list it's methods
+help        - for more
+
+"
