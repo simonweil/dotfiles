@@ -1,0 +1,46 @@
+tap homebrew/dupes
+
+install telemachus/homebrew-desc/brew-desc
+
+# meld
+install python --universal --with-brewed-openssl --with-brewed-tk
+install pygtk --universal
+install meld hicolor-icon-theme
+
+# wine
+install wine --devel
+install winetricks
+
+# Other apps
+install mysql node macvim
+
+# Shells
+install zsh zsh-completions
+install bash
+install homebrew/versions/bash-completion2
+
+tap homebrew/completions
+install rails-completion rake-completion bundler-completion gem-completion pip-completion ruby-completion vagrant-completion
+
+# git
+install git git-flow-avh
+
+# Tools
+install wget coreutils md5sha1sum ack rename tree cheat
+install findutils homebrew/dupes/grep --default-names
+
+# Command line enhancement
+install liquidprompt autojump
+
+########
+# apps #
+########
+
+# Graphviz - tool for graphs
+install graphviz
+
+# Tool for backing up mac
+install mackup
+
+# Download subtitles for movies
+install submarine

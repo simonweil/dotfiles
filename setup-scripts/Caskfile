@@ -1,0 +1,22 @@
+install caskroom/cask/brew-cask
+
+cask install XQuartz
+cask install cheatsheet
+cask install SizeUp
+cask install Alfred
+cask install iTerm2
+cask install google-chrome
+cask install google-drive
+cask install skype
+cask install firefox
+cask install adium
+cask install flash
+cask install fluid
+cask install vagrant
+cask install Karabiner
+cask install virtualbox
+cask install tunnelblick
+cask install picasa
+cask install utorrent
+cask install xbmc
+cask install gimp

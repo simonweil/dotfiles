@@ -1,15 +1,17 @@
 begin
   require 'awesome_print' 
-  Pry.config.print = proc { |output, value| Pry::Helpers::BaseHelpers.stagger_output("=> #{value.ai}", output) }
+  # Pry.config.print = proc { |output, value| Pry::Helpers::BaseHelpers.stagger_output("=> #{value.ai}", output) }
+  # AwesomePrint.pry!
 rescue LoadError => err
   puts "no awesome_print :("
 end
 
-
+=begin
 begin
   require 'hirb'
 rescue LoadError
   # Missing goodies, bummer
+  puts "no hirb :("
 end
 
 if defined? Hirb
@@ -31,4 +33,4 @@ if defined? Hirb
 
   Hirb.enable
 end
-
+=end

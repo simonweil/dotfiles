@@ -13,6 +13,10 @@
 [alias]
 	ribbon = tag --force _ribbon origin/master
 	catchup = log --patch --reverse --topo-order _ribbon..origin/master
+	catchup-short = log _ribbon.. --oneline
+	catchup-summary = log _ribbon.. --summary
 
 [core]
 	editor = /usr/bin/vim
+[heroku]
+	account = ni

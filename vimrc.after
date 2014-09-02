@@ -8,11 +8,22 @@ set wildmenu
 " Make y, p and d work with the clipboard
 set clipboard=unnamed
 
+" Pressing kj to avoid esc for quiting insert mode
+imap kj <Esc>l
+
 " Use a special color scheme for MacVim GUI
-if has("gui_macvim")
+if has("gui_running")
   colorscheme Tomorrow-Night-Bright
 endif
 
+" search google with the word under the cursor
+nmap <leader>g :call Google()<CR>
+fun! Google()
+  let keyword = expand("<cword>")
+  let url = "http://www.google.com/search?q=" . keyword
+  let path = ""
+  exec 'silent !"' . path . 'open" ' . url
+endfun
 
 " ----------------------------------------------------------
 " setup the projects: https://github.com/amiorin/vim-project
@@ -29,5 +40,8 @@ Project 'adminbot'             , 'Admin'
 Project '~/.dotfiles'          , 'My DotFiles :)'
 Project 'top-10-sites'         , 'Top 10 Sites'
 Project 'tracker'              , 'Tracker'
+Project '~/mine/dev/antigen/antigen'              , 'Antigen'
+Project '~/mine/dev/countries' , 'Countries'
+Project '~/work/boxes/ateam-sites/shared/ateam-sites' , 'Laravel'
 
 

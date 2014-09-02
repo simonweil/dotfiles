@@ -5520,14 +5520,8 @@
 	<true/>
 	<key>MaxVertically</key>
 	<false/>
-	<key>NSColorPanelMode</key>
-	<string>1</string>
-	<key>NSColorPickerSlidersDefaults</key>
-	<string>1</string>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/Desktop</string>
-	<key>NSNavPanelExpandedSizeForOpenMode</key>
-	<string>{891, 448}</string>
+	<string>~/Pictures</string>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
 	<key>NSRepeatCountBinding</key>
@@ -5551,14 +5545,14 @@
 	<array/>
 	<key>NSTableView Sort Ordering KeyBingingTable</key>
 	<array/>
-	<key>NSWindow Frame NSColorPanel</key>
-	<string>906 270 214 309 0 0 1440 878 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>401 288 924 485 0 0 1440 878 </string>
+	<string>204 300 924 485 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 26 1440 852 0 0 1440 878 </string>
+	<string>0 494 650 376 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>183 427 570 451 0 0 1440 878 </string>
+	<string>490 203 885 502 0 0 1440 878 </string>
+	<key>NSWindow Frame iTerm Window 2</key>
+	<string>704 268 570 451 0 0 1440 878 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -6342,7 +6336,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/simonweil/Desktop/iterm.settings/</string>
+	<string>/Users/simonweil/.dotfiles/config/iterm.settings/</string>
 	<key>PromptOnClose</key>
 	<true/>
 	<key>PromptOnQuit</key>
@@ -6364,7 +6358,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2014-01-31T13:04:06Z</date>
+	<date>2014-08-04T18:57:41Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -9553,6 +9547,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>1.0.0.20140112</string>
+	<string>1.0.0.20140629</string>
 </dict>
 </plist>

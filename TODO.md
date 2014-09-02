@@ -9,8 +9,11 @@ Shell improvment
 * enhance dotfiles:
 ** https://github.com/jweslley/dotfiles
 ** https://github.com/glebm/dotfiles/
-* zsh: oh-my-zsh
+** https://github.com/webpro/awesome-dotfiles
+* zsh: oh-my-zsh, https://github.com/zsh-users/antigen
+** create my own OMZ theme based on liquidprompt
 * bash: https://github.com/dolmen/angel-PS1
+* More tools: https://github.com/jondot/awesome-devenv, https://github.com/cjbarber/ToolsOfTheTrade
 
 irb/pry
 =======
