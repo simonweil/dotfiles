@@ -6,7 +6,7 @@ set virtualedit=all
 set wildmenu
 
 " Make y, p and d work with the clipboard
-set clipboard=unnamed
+"set clipboard=unnamed
 
 " Pressing kj to avoid esc for quiting insert mode
 imap kj <Esc>l
@@ -25,6 +25,25 @@ fun! Google()
   exec 'silent !"' . path . 'open" ' . url
 endfun
 
+"
+" mappings for the incsearch plugin
+"
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+
+" Turn off high lighting automaticly
+set hlsearch
+let g:incsearch#auto_nohlsearch = 1
+map n  <Plug>(incsearch-nohl-n)
+map N  <Plug>(incsearch-nohl-N)
+map *  <Plug>(incsearch-nohl-*)
+map #  <Plug>(incsearch-nohl-#)
+map g* <Plug>(incsearch-nohl-g*)
+map g# <Plug>(incsearch-nohl-g#)
+
+
 " ----------------------------------------------------------
 " setup the projects: https://github.com/amiorin/vim-project
 " ----------------------------------------------------------
@@ -42,6 +61,5 @@ Project 'top-10-sites'         , 'Top 10 Sites'
 Project 'tracker'              , 'Tracker'
 Project '~/mine/dev/antigen/antigen'              , 'Antigen'
 Project '~/mine/dev/countries' , 'Countries'
+Project '~/mine/dev/countries-rails' , 'Countries Rails'
 Project '~/work/boxes/ateam-sites/shared/ateam-sites' , 'Laravel'
-
-

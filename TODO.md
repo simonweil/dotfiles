@@ -11,6 +11,7 @@ Shell improvment
 ** https://github.com/glebm/dotfiles/
 ** https://github.com/webpro/awesome-dotfiles
 * zsh: oh-my-zsh, https://github.com/zsh-users/antigen
+** better prezto: http://github.com/sorin-ionescu/prezto
 ** create my own OMZ theme based on liquidprompt
 * bash: https://github.com/dolmen/angel-PS1
 * More tools: https://github.com/jondot/awesome-devenv, https://github.com/cjbarber/ToolsOfTheTrade
@@ -27,6 +28,7 @@ MAC apps
 VIM
 ===
 1. setup my projects
+1. make search better with: https://github.com/haya14busa/incsearch.vim
 2. sessions made easier: https://github.com/xolox/vim-session or https://github.com/tpope/vim-obsession
 3. code completion: https://github.com/Valloric/YouCompleteMe
 4. better yanking: https://github.com/maxbrunsfeld/vim-yankstack

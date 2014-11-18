@@ -138,4 +138,8 @@ LP_ENABLE_SSH_COLORS=0
 # will be disabled
 LP_DISABLED_VCS_PATH=""
 
+# Display the enabled software collections, if any
+# Recommended value is 1
+LP_ENABLE_SCLS=1
+
 # vim: set et sts=4 sw=4 tw=120 ft=sh:
