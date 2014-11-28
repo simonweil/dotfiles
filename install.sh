@@ -1,8 +1,16 @@
 #!/usr/bin/env bash
 
-brew bundle setup-scripts/Brewfile
-brew bundle setup-scripts/Caskfile
-brew bundle setup-scripts/Brew-Gemfile
+# install HomeBrew
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+# install all required homebrew formulas (Cask is first as it has dependencies for brew)
+source setup-scripts/Caskfile
+source setup-scripts/Brewfile
+source setup-scripts/Brew-Gemfile
+
+# Setup bash from brew
+sudo sh -c 'echo "/usr/local/bin/bash" >> /etc/shells'
+chsh -s /usr/local/bin/bash
 
 # RVM
 curl -sSL https://get.rvm.io | bash -s stable --ruby --autolibs=brew
@@ -34,8 +42,8 @@ wget https://raw.github.com/trapd00r/LS_COLORS/master/LS_COLORS -O $HOME/.dircol
 
 # For updating the submodules of janus and more
 git submodule init
-git submodule update
-git submodule foreach git pull origin master
+#git submodule update
+#git submodule foreach git pull origin master
 git submodule update --remote --merge
 
 # OSX settings

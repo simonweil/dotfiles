@@ -1,47 +1,54 @@
-tap homebrew/dupes
+brew tap homebrew/dupes
 
-install telemachus/homebrew-desc/brew-desc
+brew tap telemachus/homebrew-desc && brew install brew-desc
 
 # meld
-install python --universal --with-brewed-openssl --with-brewed-tk
-install pygtk --universal
-install meld hicolor-icon-theme
+brew install python --universal --with-brewed-openssl --with-brewed-tk
+brew install pygtk --universal
+brew install meld hicolor-icon-theme
 
 # wine
-install wine --devel
-install winetricks
+#brew install wine --devel
+#brew install winetricks
 
 # Other apps
-install mysql node macvim
+brew install mysql node macvim
 
 # Shells
-install zsh zsh-completions
-install bash
-install homebrew/versions/bash-completion2
+brew install zsh zsh-completions
+brew install bash
+brew install homebrew/versions/bash-completion2
 
 # Completions
-tap homebrew/completions
-install rails-completion rake-completion bundler-completion gem-completion pip-completion ruby-completion vagrant-completion tmuxinator-completion
+brew tap homebrew/completions
+brew install rails-completion rake-completion bundler-completion gem-completion pip-completion ruby-completion vagrant-completion tmuxinator-completion
 
 # git
-install git git-flow-avh
+brew install git git-flow-avh
 
 # Tools
-install wget coreutils md5sha1sum ack rename tree cheat
-install findutils homebrew/dupes/grep --default-names
+brew install wget coreutils md5sha1sum ack rename tree cheat
+brew install findutils homebrew/dupes/grep --with-default-names
 
 # Command line enhancement
-install liquidprompt autojump tmux
+brew install liquidprompt autojump tmux
 
 ########
 # apps #
 ########
 
 # Graphviz - tool for graphs
-install graphviz
+brew install graphviz
 
 # Tool for backing up mac
-install mackup
+brew install mackup
 
 # Download subtitles for movies
-install submarine
+#brew install submarine
+
+############
+# Finalize #
+############
+
+# link to apps folder
+brew linkapps

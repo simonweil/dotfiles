@@ -1,23 +1,23 @@
 install caskroom/cask/brew-cask
 
-cask install XQuartz
-cask install cheatsheet
-cask install SizeUp
-cask install Alfred
-cask install iTerm2
-cask install google-chrome
-cask install google-drive
-cask install skype
-cask install firefox
-cask install adium
-cask install flash
-cask install fluid
-cask install vagrant
-cask install Karabiner
-cask install virtualbox
-cask install tunnelblick
-cask install picasa
-cask install utorrent
-cask install xbmc
-cask install gimp
-cask install sourcetree
+brew cask install xquartz
+brew cask install cheatsheet
+brew cask install sizeup
+#brew cask install alfred
+brew cask install iterm2
+brew cask install google-chrome
+brew cask install google-drive
+#brew cask install skype
+brew cask install firefox
+brew cask install adium
+brew cask install flash
+brew cask install fluid
+brew cask install vagrant
+brew cask install karabiner
+brew cask install virtualbox
+#brew cask install tunnelblick
+#brew cask install picasa
+#brew cask install utorrent
+#brew cask install xbmc
+#brew cask install gimp
+brew cask install sourcetree
