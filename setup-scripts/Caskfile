@@ -20,3 +20,4 @@ cask install picasa
 cask install utorrent
 cask install xbmc
 cask install gimp
+cask install sourcetree
