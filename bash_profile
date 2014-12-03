@@ -53,7 +53,11 @@ alias git_grep='git log --grep "(NISITES-51" --pretty=oneline'
 alias git_bad_files='find . -name ".DS_Store" -or -name "Thumbs.db"'
 alias git_log="git log --graph --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr)%Creset by %C(bold blue)%an%C(yellow)%d%Creset' --abbrev-commit --date=relative" # add --all to see all branches and not only the checkedout branch
 alias gp="git pull"
+alias gf="git fetch"
 alias gs="git status"
+alias gd="git diff --ignore-space-at-eol -b -w --ignore-blank-lines"
+alias git_commit_files="git diff-tree --no-commit-id --name-status -r"
+alias git_bad_commit_messages="git log --oneline --since='last week' --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr)%Creset by %C(bold blue)%an%C(yellow)%d%Creset' --abbrev-commit --date=relative | grep -vE 'Merge (remote-tracking )?branch' | grep -vE 'NISITES-|AT-|KNSS-'"
 
 # rake
 alias rake_bower_install="rake bower:dsl:install"
@@ -68,8 +72,8 @@ alias submarine="submarine --language=he "
 export CHEATCOLORS=true # add colores to cheat
 
 # coreutils
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+export MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
 
 # node
 alias node_list='npm -g list | grep "^[└|├]" | cut -d " " -f2 | cut -d"@" -f1'
@@ -115,9 +119,25 @@ alias wine-npp="wine ~/.wine/drive_c/noinstall/npp.6.5.5.bin/notepad++.exe"
 # WINEPREFIX="$HOME/.wine32" WINEARCH='win32' wine ~/Downloads/Quest_Toad-for-MySQL-Freeware_70.exe
 
 
-#
-# general settings
-#
+###########
+# History #
+###########
+
+# Larger bash history (allow 32³ entries; default is 500)
+export HISTSIZE=32768
+export HISTFILESIZE=$HISTSIZE
+export HISTCONTROL=ignoredups
+
+# timestamps for bash history. www.debian-administration.org/users/rossen/weblog/1
+# saved for later analysis
+export HISTTIMEFORMAT='%F %T '
+
+# Make some commands not show up in history
+export HISTIGNORE="ls:ls *:cd:cd -:pwd;exit:man *:less *:history:date:* --help"
+
+####################
+# general settings #
+####################
 
 alias update_all="npm -global -quiet outdated; brew_update"
 alias update_project="npm -quiet outdated && rake bower:list && bundle outdated"
@@ -130,7 +150,7 @@ export CLICOLOR=""
 # Add all private configuration
 source ~/.dotfiles/bash_profile.private
 
-if [ -f $(brew --prefix)/share/liquidprompt  ]; then
+if [ -f $(brew --prefix)/share/liquidprompt ]; then
   . $(brew --prefix)/share/liquidprompt
 fi
 
@@ -142,10 +162,14 @@ eval $(dircolors -b $HOME/.dircolors)
 #export LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90'
 #export LS_COLORS='no=00:fi=00:di=00;34:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:ex=00;32:*.cmd=00;32:*.exe=00;32:*.com=00;32:*.btm=00;32:*.bat=00;32:*.sh=00;32:*.csh=00;32:*.tar=00;31:*.tgz=00;31:*.arj=00;31:*.taz=00;31:*.lzh=00;31:*.zip=00;31:*.z=00;31:*.Z=00;31:*.gz=00;31:*.bz2=00;31:*.bz=00;31:*.tz=00;31:*.rpm=00;31:*.cpio=00;31:*.jpg=00;35:*.gif=00;35:*.bmp=00;35:*.xbm=00;35:*.xpm=00;35:*.png=00;35:*.tif=00;35:'
 
+
 ##########################
 # Other general settings #
 ##########################
 export DISABLE_AUTO_TITLE=true # for tmux titles
 alias tmux_attach="tmux -CC attach"
+
+alias sites_up='nameservers=$(scutil --dns | grep nameserver | grep -v "127.0.0.1" | sort -u | cut -d":" -f2 | sed "s/ //g" | sort -u | tr "\n" "," | awk -F, "{ printf $1; for (i=2; i < NF; i++) printf \",\"$i   }"); sudo networksetup -setdnsservers Wi-Fi 127.0.0.1 && sudo networksetup -setdnsservers "Thunderbolt Ethernet" 127.0.0.1 && sudo ~/bin/dnschef.py --fakeipv6 ::1  --fakeip 10.25.1.10 --fakedomains *.local.*,*.local.*.*,*.local.*.*.*,*.local.*.*.*.*,*.*.local.*,*.*.local.*.*,*.*.local.*.*.*,*.*.local.*.*.*.* --nameserver $nameservers'
+alias sites_down='sudo networksetup -setdnsservers "Wi-Fi" empty && sudo networksetup -setdnsservers "Thunderbolt Ethernet" empty'
 
 [ -r "$HOME/.smartcd_config" ] && ( [ -n $BASH_VERSION ] || [ -n $ZSH_VERSION ] ) && source ~/.smartcd_config
