@@ -4,7 +4,7 @@
 [credential]
 	helper = osxkeychain
 [push]
-	default = matching
+	default = simple
 [merge]
 	tool = meld
 [diff]

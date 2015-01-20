@@ -5,6 +5,7 @@
 #
 set -o vi # go into vi mode on the shell!!!
 alias v="mvim --remote-silent "
+alias update_neovim='brew reinstall --HEAD neovim'
 export EDITOR='vim'
 ###
 
@@ -173,3 +174,5 @@ alias sites_up='nameservers=$(scutil --dns | grep nameserver | grep -v "127.0.0.
 alias sites_down='sudo networksetup -setdnsservers "Wi-Fi" empty && sudo networksetup -setdnsservers "Thunderbolt Ethernet" empty'
 
 [ -r "$HOME/.smartcd_config" ] && ( [ -n $BASH_VERSION ] || [ -n $ZSH_VERSION ] ) && source ~/.smartcd_config
+
+export PATH=".:$PATH"

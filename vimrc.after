@@ -6,7 +6,9 @@ set virtualedit=all
 set wildmenu
 
 " Make y, p and d work with the clipboard
-"set clipboard=unnamed
+set clipboard=unnamed
+nnoremap <leader>y :call system('nc localhost 8377', @0)<CR>
+
 
 " Pressing kj to avoid esc for quiting insert mode
 imap kj <Esc>l

@@ -27,11 +27,13 @@ install rails-completion rake-completion bundler-completion gem-completion pip-c
 install git git-flow-avh
 
 # Tools
-install wget coreutils md5sha1sum ack rename tree cheat
+install wget coreutils md5sha1sum ack rename tree cheat awk the_platinum_searcher
 install findutils homebrew/dupes/grep --default-names
+brew install task
 
 # Command line enhancement
-install liquidprompt autojump tmux
+install liquidprompt autojump stormssh osquery
+brew install tmux clipper
 
 ########
 # apps #
@@ -44,4 +46,4 @@ install graphviz
 install mackup
 
 # Download subtitles for movies
-install submarine
+install submarine subliminal
