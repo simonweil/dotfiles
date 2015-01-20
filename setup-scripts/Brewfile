@@ -28,12 +28,13 @@ brew install git git-flow-avh
 
 # Tools
 brew install wget coreutils md5sha1sum ack rename tree cheat awk the_platinum_searcher
-brew install findutils homebrew/dupes/grep --default-names
+brew install findutils homebrew/dupes/grep --with-default-names
 brew install task
 
 # Command line enhancement
 brew install liquidprompt autojump stormssh osquery
 brew install tmux clipper
+launchctl load ~/Library/LaunchAgents/homebrew.mxcl.clipper.plist
 
 ########
 # apps #
