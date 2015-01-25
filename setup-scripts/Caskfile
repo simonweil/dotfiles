@@ -21,3 +21,4 @@ brew cask install virtualbox
 #brew cask install xbmc
 #brew cask install gimp
 brew cask install sourcetree
+brew cask install menumeters
