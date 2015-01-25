@@ -5,7 +5,7 @@
 	<key>AdjustWindowForFontSizeChange</key>
 	<true/>
 	<key>AllowClipboardAccess</key>
-	<false/>
+	<true/>
 	<key>AnimateDimming</key>
 	<true/>
 	<key>AppleAntiAliasingThreshold</key>
@@ -5479,7 +5479,7 @@
 	<key>EnableRendezvous</key>
 	<false/>
 	<key>FocusFollowsMouse</key>
-	<false/>
+	<true/>
 	<key>FsTabDelay</key>
 	<real>1</real>
 	<key>GlobalKeyMap</key>
@@ -5671,7 +5671,7 @@
 	<key>MaxVertically</key>
 	<false/>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/Pictures</string>
+	<string>~/Downloads</string>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
 	<key>NSRepeatCountBinding</key>
@@ -5696,11 +5696,11 @@
 	<key>NSTableView Sort Ordering KeyBingingTable</key>
 	<array/>
 	<key>NSWindow Frame Preferences</key>
-	<string>106 393 924 485 0 0 1440 878 </string>
+	<string>205 393 924 485 0 0 1440 878 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 4 1920 1054 0 0 1920 1058 </string>
+	<string>552 576 665 376 0 0 1920 1058 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>560 231 800 600 0 0 1920 1058 </string>
+	<string>0 60 1897 992 0 0 1920 1058 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
 	<string>704 268 570 451 0 0 1440 878 </string>
 	<key>New Bookmarks</key>
@@ -7240,7 +7240,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2014-11-07T08:48:48Z</date>
+	<date>2015-01-21T09:08:58Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
