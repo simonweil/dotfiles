@@ -13,3 +13,7 @@ Steps
 git clone git@github.com:simonweil/dotfiles.git ~/.dotfiles
 ```
 - Follow the instruction in: `install.sh`
+
+Misc
+====
+- [Setup multiple ssh keys](https://gist.github.com/jexchan/2351996)
