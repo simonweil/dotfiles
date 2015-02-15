@@ -1,18 +1,19 @@
 brew tap homebrew/dupes
 
-brew install telemachus/homebrew-desc/brew-desc
+# desc external command
+brew tap telemachus/homebrew-desc
 
 # meld
 brew install python --universal --with-brewed-openssl --with-brewed-tk
 brew install pygtk --universal
-brew install meld hicolor-icon-theme
+brew install homebrew/x11/meld hicolor-icon-theme
 
 # wine
-#brew install wine --devel
-#brew install winetricks
+brew install wine --devel
+brew install winetricks
 
 # Other apps
-brew install mysql node macvim
+brew install mysql node macvim postgresql
 
 # Shells
 brew install zsh zsh-completions
@@ -27,14 +28,13 @@ brew install rails-completion rake-completion bundler-completion gem-completion 
 brew install git git-flow-avh
 
 # Tools
-brew install wget coreutils md5sha1sum ack rename tree cheat awk the_platinum_searcher
+brew install wget coreutils md5sha1sum rename tree cheat the_platinum_searcher
 brew install findutils homebrew/dupes/grep --with-default-names
 brew install task
 
 # Command line enhancement
 brew install liquidprompt autojump stormssh osquery
-brew install tmux clipper
-launchctl load ~/Library/LaunchAgents/homebrew.mxcl.clipper.plist
+brew install tmux
 
 ########
 # apps #
@@ -55,3 +55,9 @@ brew install submarine subliminal
 
 # link to apps folder
 brew linkapps
+
+
+#
+# PowToon
+#
+brew install geoip

@@ -4,15 +4,15 @@ Shell improvment
 * scm_breeze: https://github.com/ndbroadbent/scm_breeze
 * smartcd: https://github.com/cxreg/smartcd
 * bash options:
-** https://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html#The-Shopt-Builtin
-** https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html#The-Set-Builtin
+  * https://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html#The-Shopt-Builtin
+  * https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html#The-Set-Builtin
 * enhance dotfiles:
-** https://github.com/jweslley/dotfiles
-** https://github.com/glebm/dotfiles/
-** https://github.com/webpro/awesome-dotfiles
-* zsh: oh-my-zsh, https://github.com/zsh-users/antigen
-** better prezto: http://github.com/sorin-ionescu/prezto
-** create my own OMZ theme based on liquidprompt
+  * https://github.com/jweslley/dotfiles
+  * https://github.com/glebm/dotfiles/
+  * https://github.com/webpro/awesome-dotfiles
+*zsh: oh-my-zsh, https://github.com/zsh-users/antigen
+  * better prezto: http://github.com/sorin-ionescu/prezto
+  * create my own OMZ theme based on liquidprompt
 * bash: https://github.com/dolmen/angel-PS1
 * More tools: https://github.com/jondot/awesome-devenv, https://github.com/cjbarber/ToolsOfTheTrade
 

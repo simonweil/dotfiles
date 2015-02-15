@@ -1,13 +1,15 @@
-install caskroom/cask/brew-cask
+brew install caskroom/cask/brew-cask
+brew tap caskroom/versions
 
 brew cask install xquartz
+brew cask install java
 brew cask install cheatsheet
 brew cask install sizeup
 #brew cask install alfred
 brew cask install iterm2
 brew cask install google-chrome
 brew cask install google-drive
-#brew cask install skype
+brew cask install skype
 brew cask install firefox
 brew cask install adium
 brew cask install flash

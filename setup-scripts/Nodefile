@@ -1,0 +1,4 @@
+npm install -g bower
+npm install -g evtools-terminal
+npm install -g ember-cli
+npm install -g vmd

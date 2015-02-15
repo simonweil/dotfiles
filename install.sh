@@ -7,6 +7,7 @@ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/
 source setup-scripts/Caskfile
 source setup-scripts/Brewfile
 source setup-scripts/Brew-Gemfile
+source setup-scripts/Nodefile
 
 # Setup bash from brew
 sudo sh -c 'echo "/usr/local/bin/bash" >> /etc/shells'
@@ -34,6 +35,7 @@ ln -s $PWD/editorconfig         ~/.editorconfig # for the js beutifier vim plugi
 mkdir ~/bin
 ln -s $PWD/bin/git-meld         ~/bin/git-meld
 ln -s $PWD/bin/find_stories.py  ~/bin/find_stories.py
+ln -s $PWD/non-packaged-repos/git-open/git-open ~/bin/
 ln -s $PWD/mackup.cfg           ~/.mackup.cfg
 ln -s $PWD/tmux.conf            ~/.tmux.conf
 
@@ -53,4 +55,4 @@ setup-scripts/osx-setup.sh
 setup-scripts/karabiner-import.sh
 
 # Mackup setup all apps prefs (I use mackup to save apps settings stored in google drive to keep my private data)
-mackup restore
+#mackup restore

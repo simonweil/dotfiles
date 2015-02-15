@@ -6,7 +6,9 @@
 set -o vi # go into vi mode on the shell!!!
 alias v="mvim --remote-silent "
 alias update_neovim='brew reinstall --HEAD neovim'
-export EDITOR='vim'
+alias vim='nvim'
+alias vi='nvim'
+export EDITOR='nvim'
 ###
 
 # useful shortcuts
@@ -98,9 +100,9 @@ alias gem_docs="yard server -g"
 ############
 # win apps #
 ############
-alias wine-heidisql="WINEPREFIX='$HOME/.wineheidi' wine ~/.wine/drive_c/Program\ Files/HeidiSQL/heidisql.exe &"
+alias wine-heidisql="wine 'C:\Program Files\HeidiSQL\heidisql.exe' &"
 alias wine-BC="wine start /UNIX ~/.wine/drive_c/Program\ Files/Beyond\ Compare\ 3/BCompare.exe &"
-alias wine-ie8="wine ~/.wine/drive_c/Program\ Files/Internet\ Explorer/iexplore.exe &"
+alias wine-ie8="wine 'C:\Program Files\Internet Explorer\iexplore' &"
 alias wine-toad="WINEPREFIX='$HOME/.wine32' WINEARCH='win32' wine ~/.wine32/drive_c/Program\ Files/Quest\ Software/Toad\ for\ MySQL\ Freeware\ 7.0/toad.exe"
 alias wine-npp="wine ~/.wine/drive_c/noinstall/npp.6.5.5.bin/notepad++.exe"
 
@@ -134,7 +136,7 @@ export HISTCONTROL=ignoredups
 export HISTTIMEFORMAT='%F %T '
 
 # Make some commands not show up in history
-export HISTIGNORE="ls:ls *:cd:cd -:pwd;exit:man *:less *:history:date:* --help"
+export HISTIGNORE="ls:cd:cd -:pwd;exit:man *:history:date:* --help"
 
 ####################
 # general settings #

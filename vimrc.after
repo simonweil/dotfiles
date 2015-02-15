@@ -7,8 +7,6 @@ set wildmenu
 
 " Make y, p and d work with the clipboard
 set clipboard=unnamed
-nnoremap <leader>y :call system('nc localhost 8377', @0)<CR>
-
 
 " Pressing kj to avoid esc for quiting insert mode
 imap kj <Esc>l
@@ -45,6 +43,9 @@ map #  <Plug>(incsearch-nohl-#)
 map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
+
+" Mapping to open Markdown preview (vim-livedown)
+map gm :call LivedownPreview()<CR>
 
 " ----------------------------------------------------------
 " setup the projects: https://github.com/amiorin/vim-project
