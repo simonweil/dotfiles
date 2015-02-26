@@ -1,5 +1,8 @@
 brew tap homebrew/dupes
 
+# services external command
+brew tap gapple/services
+
 # desc external command
 brew tap telemachus/homebrew-desc
 
@@ -22,19 +25,26 @@ brew install homebrew/versions/bash-completion2
 
 # Completions
 brew tap homebrew/completions
-brew install rails-completion rake-completion bundler-completion gem-completion pip-completion ruby-completion vagrant-completion tmuxinator-completion
+brew install rails-completion rake-completion bundler-completion gem-completion pip-completion \
+             ruby-completion vagrant-completion tmuxinator-completion grunt-completion django-completion \
+             docker-completion packer-completion spring-completion
 
 # git
-brew install git git-flow-avh
+brew install git git-flow-avh hub
 
 # Tools
 brew install wget coreutils md5sha1sum rename tree cheat the_platinum_searcher
-brew install findutils homebrew/dupes/grep --with-default-names
+brew install findutils homebrew/dupes/grep gnu-sed --with-default-names
 brew install task
 
 # Command line enhancement
 brew install liquidprompt autojump stormssh osquery
 brew install tmux
+
+# todo - TRIAL
+brew install todo-txt
+brew install googlecl
+
 
 ########
 # apps #
@@ -49,6 +59,12 @@ brew install mackup
 # Download subtitles for movies
 brew install submarine subliminal
 
+
+#
+# PowToon
+#
+brew install geoip
+
 ############
 # Finalize #
 ############
@@ -56,8 +72,3 @@ brew install submarine subliminal
 # link to apps folder
 brew linkapps
 
-
-#
-# PowToon
-#
-brew install geoip

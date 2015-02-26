@@ -1,5 +1,7 @@
 #!/usr/local/bin/bash
 
+# TODO: standard - update_* upgrade_*
+
 ###
 # vim related
 #
@@ -37,7 +39,7 @@ alias apache_log="cd /var/log/apache2/"
 
 # homebrew
 alias brew_update="brew update && brew outdated"
-alias brew_wine_upgrade='brew upgrade wine --devel --use-gcc'
+alias brew_wine_upgrade='brew upgrade wine --devel'
 alias brew_desc="brew desc"
 alias brew_cask="brew cask"
 alias brew_formulas_that_depend_on="brew uses --recursive "
@@ -49,7 +51,8 @@ if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
 fi
 
 # python
-alias pip_update="pip install --upgrade setuptools && pip install --upgrade pip"
+alias pip_upgrade="pip install --upgrade setuptools && pip install --upgrade pip"
+alias pip_update="pip list --outdated"
 
 # git
 alias git_grep='git log --grep "(NISITES-51" --pretty=oneline'
@@ -82,6 +85,12 @@ export MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
 alias node_list='npm -g list | grep "^[└|├]" | cut -d " " -f2 | cut -d"@" -f1'
 export PATH="$HOME/bin:/usr/local/share/npm/bin:$PATH"
 
+# todo.txt
+alias t="todo.sh"
+complete -F _todo t
+export TODOTXT_DEFAULT_ACTION=ls
+
+
 ####################
 # RVM, Ruby, Rails #
 ####################
@@ -104,7 +113,7 @@ alias wine-heidisql="wine 'C:\Program Files\HeidiSQL\heidisql.exe' &"
 alias wine-BC="wine start /UNIX ~/.wine/drive_c/Program\ Files/Beyond\ Compare\ 3/BCompare.exe &"
 alias wine-ie8="wine 'C:\Program Files\Internet Explorer\iexplore' &"
 alias wine-toad="WINEPREFIX='$HOME/.wine32' WINEARCH='win32' wine ~/.wine32/drive_c/Program\ Files/Quest\ Software/Toad\ for\ MySQL\ Freeware\ 7.0/toad.exe"
-alias wine-npp="wine ~/.wine/drive_c/noinstall/npp.6.5.5.bin/notepad++.exe"
+alias wine-npp="wine 'C:\Program Files\Notepad++\notepad++.exe' &"
 
 
 # Old:
@@ -142,8 +151,8 @@ export HISTIGNORE="ls:cd:cd -:pwd;exit:man *:history:date:* --help"
 # general settings #
 ####################
 
-alias update_all="npm -global -quiet outdated; brew_update"
-alias update_project="npm -quiet outdated && rake bower:list && bundle outdated"
+alias update_all="npm outdated --quiet --depth=0 --global && pip_update && brew_update"
+alias update_project="npm --quiet --depth=0 outdated && rake bower:list && bundle outdated"
 
 # http://www.kirsle.net/wizards/ps1.html
 # https://wiki.archlinux.org/index.php/Color_Bash_Prompt

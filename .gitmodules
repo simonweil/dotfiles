@@ -52,3 +52,6 @@
 [submodule "non-packaged-repos/git-open"]
 	path = non-packaged-repos/git-open
 	url = git@github.com:paulirish/git-open.git
+[submodule "janus/dash.vim"]
+	path = janus/dash.vim
+	url = git@github.com:rizzatti/dash.vim.git

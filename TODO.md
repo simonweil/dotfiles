@@ -1,6 +1,13 @@
 
 Shell improvment
 ================
+* todo.txt:
+  * Addon dir: https://github.com/ginatrapani/todo.txt-cli/wiki/Todo.sh-Add-on-Directory
+    * try: https://github.com/mivok/todotxt-tmsa
+    * docs backup: https://github.com/amaury-d/todo.txt-cli/tree/addons/.todo.actions.d
+  * brew install todo-txt
+  * brew cask install todotxt
+  * vim: https://github.com/freitass/todo.txt-vim
 * scm_breeze: https://github.com/ndbroadbent/scm_breeze
 * smartcd: https://github.com/cxreg/smartcd
 * bash options:
@@ -10,6 +17,7 @@ Shell improvment
   * https://github.com/jweslley/dotfiles
   * https://github.com/glebm/dotfiles/
   * https://github.com/webpro/awesome-dotfiles
+  * set OSX defaults: https://github.com/myfreeweb/dotfiles/blob/master/osx/defaults.sh
 *zsh: oh-my-zsh, https://github.com/zsh-users/antigen
   * better prezto: http://github.com/sorin-ionescu/prezto
   * create my own OMZ theme based on liquidprompt

@@ -45,7 +45,11 @@ map g# <Plug>(incsearch-nohl-g#)
 
 
 " Mapping to open Markdown preview (vim-livedown)
-map gm :call LivedownPreview()<CR>
+map gm LivedownPreview()<CR>
+
+
+" Mappings for the Dash.app
+nmap <silent> <leader>d <Plug>DashSearch
 
 " ----------------------------------------------------------
 " setup the projects: https://github.com/amiorin/vim-project

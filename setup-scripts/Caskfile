@@ -1,26 +1,56 @@
 brew install caskroom/cask/brew-cask
 brew tap caskroom/versions
 
+# General purpose
 brew cask install xquartz
 brew cask install java
+brew cask install flash
+brew cask install karabiner
+brew cask install menumeters
+
+# Productivity
 brew cask install cheatsheet
 brew cask install sizeup
-#brew cask install alfred
-brew cask install iterm2
-brew cask install google-chrome
-brew cask install google-drive
-brew cask install skype
-brew cask install firefox
 brew cask install adium
-brew cask install flash
 brew cask install fluid
+#brew cask install alfred
+
+# Development
+brew cask install iterm2
+brew cask install sourcetree
+brew cask install dash
 brew cask install vagrant
-brew cask install karabiner
 brew cask install virtualbox
+
+# Browsers
+brew cask install google-chrome
+brew cask install firefox
+
+# File sharing
+brew cask install dropbox
+brew cask install google-drive
+
+# Editors
+brew cask install sublime-text
+
+# Other
+#brew cask install teamviewer
 #brew cask install tunnelblick
 #brew cask install picasa
 #brew cask install utorrent
 #brew cask install xbmc
 #brew cask install gimp
-brew cask install sourcetree
-brew cask install menumeters
+
+# Powtoon
+brew cask install adobe-creative-cloud
+brew cask install bittorrent-sync
+brew cask install flash-player-debugger
+brew cask install jing
+brew cask install skype
+
+# In trial
+brew cask install todotxt
+
+# DB browsers
+#brew cask install sqlitebrowser
+#brew cask install robomongo
