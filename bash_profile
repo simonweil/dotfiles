@@ -1,15 +1,16 @@
 #!/usr/local/bin/bash
 
-# TODO: standard - update_* upgrade_*
-
 ###
 # vim related
 #
 set -o vi # go into vi mode on the shell!!!
 alias v="mvim --remote-silent "
-alias update_neovim='brew reinstall --HEAD neovim'
+alias upgrade_neovim='brew reinstall --HEAD neovim'
+alias upgrade_submodules='(cd ~/.dotfiles && git submodule update --merge)'
+alias upgrade_janus='(cd ~/.vim && rake)'
 alias vim='nvim'
 alias vi='nvim'
+alias git_neo_log='git_log --first-parent $(nvim --version | grep commit | cut -d" " -f2)..'
 export EDITOR='nvim'
 ###
 
@@ -24,9 +25,6 @@ alias ls="ls --color"
 
 alias bin="cd ~/bin"
 alias dev="cd ~/Dev"
-alias dev_sites="cd ~/Dev/www/top10sites"
-alias dev_tracker="cd ~/Dev/www/tracker"
-alias dev_lwcms="cd ~/Dev/www/lightweight-cms"
 
 alias grep="grep --color=always -i "
 
@@ -38,8 +36,9 @@ alias apache_conf="cd /etc/apache2/"
 alias apache_log="cd /var/log/apache2/"
 
 # homebrew
-alias brew_update="brew update && brew outdated"
-alias brew_wine_upgrade='brew upgrade wine --devel'
+alias update_brew="brew update && brew outdated"
+alias upgrade_brew="brew upgrade && brew outdated"
+alias upgrade_brew_wine='brew upgrade wine --devel'
 alias brew_desc="brew desc"
 alias brew_cask="brew cask"
 alias brew_formulas_that_depend_on="brew uses --recursive "
@@ -51,17 +50,19 @@ if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
 fi
 
 # python
-alias pip_upgrade="pip install --upgrade setuptools && pip install --upgrade pip"
-alias pip_update="pip list --outdated"
+alias upgrade_pip="pip install --upgrade setuptools && pip install --upgrade pip"
+alias update_pip="pip list --outdated"
 
 # git
 alias git_grep='git log --grep "(NISITES-51" --pretty=oneline'
 alias git_bad_files='find . -name ".DS_Store" -or -name "Thumbs.db"'
 alias git_log="git log --graph --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr)%Creset by %C(bold blue)%an%C(yellow)%d%Creset' --abbrev-commit --date=relative" # add --all to see all branches and not only the checkedout branch
+alias git_log_all="git_log --branches --remotes --tags --decorate"
 alias gp="git pull"
 alias gf="git fetch"
 alias gs="git status"
 alias gd="git diff --ignore-space-at-eol -b -w --ignore-blank-lines"
+alias git_cherrypick='git cherry-pick --signoff '
 alias git_commit_files="git diff-tree --no-commit-id --name-status -r"
 alias git_bad_commit_messages="git log --oneline --since='last week' --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr)%Creset by %C(bold blue)%an%C(yellow)%d%Creset' --abbrev-commit --date=relative | grep -vE 'Merge (remote-tracking )?branch' | grep -vE 'NISITES-|AT-|KNSS-'"
 
@@ -82,8 +83,12 @@ export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 export MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
 
 # node
-alias node_list='npm -g list | grep "^[└|├]" | cut -d " " -f2 | cut -d"@" -f1'
+alias node_list='npm -g list --depth=0'
 export PATH="$HOME/bin:/usr/local/share/npm/bin:$PATH"
+alias update_project_node="npm outdated --quiet --depth=0"
+alias update_node="update_project_node --global"
+alias upgrade_project_node="npm update"
+alias upgrade_node="upgrade_project_node --global"
 
 # todo.txt
 alias t="todo.sh"
@@ -94,7 +99,7 @@ export TODOTXT_DEFAULT_ACTION=ls
 ####################
 # RVM, Ruby, Rails #
 ####################
-alias rvm_update="rvm get stable && rvm requirements && rvm reload"
+alias upgrade_rvm="rvm get stable && rvm requirements && rvm reload"
 alias rvm_cheatsheat="start http://cheat.errtheblog.com/s/rvm"
 alias rvm_known_rubys="rvm list known"
 alias rc="rails console --sandbox"
@@ -150,9 +155,20 @@ export HISTIGNORE="ls:cd:cd -:pwd;exit:man *:history:date:* --help"
 ####################
 # general settings #
 ####################
+function upgrade_say {
+  echo -e "\nUpgrade $1:"
+}
 
-alias update_all="npm outdated --quiet --depth=0 --global && pip_update && brew_update"
-alias update_project="npm --quiet --depth=0 outdated && rake bower:list && bundle outdated"
+alias update_all="update_node && update_pip && update_brew && echo -e \"\$(date)\\n\""
+alias upgrade_all="   upgrade_say 'node'   && upgrade_node \
+                   && upgrade_say 'Brew'   && upgrade_brew \
+                   && upgrade_say 'pip'    && upgrade_pip \
+                   && upgrade_say 'neovim' && upgrade_neovim \
+                   && upgrade_say 'Janus'  && upgrade_janus \
+                   && upgrade_say 'RVM'    && upgrade_rvm \
+                   && upgrade_say 'Wine'   && upgrade_brew_wine \
+                   && upgrade_say 'Dotfiles (all submodules)' && upgrade_submodules"
+alias update_project="update_node_project && rake bower:list && bundle outdated"
 
 # http://www.kirsle.net/wizards/ps1.html
 # https://wiki.archlinux.org/index.php/Color_Bash_Prompt
@@ -168,11 +184,9 @@ fi
 
 # Set ls colors (update from https://github.com/trapd00r/LS_COLORS)
 # Another theme is: https://github.com/seebi/dircolors-solarized
-eval $(dircolors -b $HOME/.dircolors)
+eval $(dircolors -b $HOME/.dotfiles/non-packaged-repos/LS_COLORS/LS_COLORS)
 # Another option:
 # http://linux-sxs.org/housekeeping/lscolors.html
-#export LS_COLORS='di=1:fi=0:ln=31:pi=5:so=5:bd=5:cd=5:or=31:mi=0:ex=35:*.rpm=90'
-#export LS_COLORS='no=00:fi=00:di=00;34:ln=00;36:pi=40;33:so=00;35:bd=40;33;01:cd=40;33;01:or=01;05;37;41:mi=01;05;37;41:ex=00;32:*.cmd=00;32:*.exe=00;32:*.com=00;32:*.btm=00;32:*.bat=00;32:*.sh=00;32:*.csh=00;32:*.tar=00;31:*.tgz=00;31:*.arj=00;31:*.taz=00;31:*.lzh=00;31:*.zip=00;31:*.z=00;31:*.Z=00;31:*.gz=00;31:*.bz2=00;31:*.bz=00;31:*.tz=00;31:*.rpm=00;31:*.cpio=00;31:*.jpg=00;35:*.gif=00;35:*.bmp=00;35:*.xbm=00;35:*.xpm=00;35:*.png=00;35:*.tif=00;35:'
 
 
 ##########################

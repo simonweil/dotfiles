@@ -50,6 +50,9 @@ VIM
 11. regex: https://github.com/othree/eregex.vim
 12. more: http://www.youtube.com/user/MinuteVimTricks
 13. Nice increment script: http://www.vim.org/scripts/script.php?script_id=670 (http://vimeo.com/4457161)
+14. http://statico.github.io/vim2.html
+15. https://github.com/vim-scripts/gitignore
+16. https://github.com/kopischke/vim-fetch
 
 Rails
 -----

@@ -7,6 +7,7 @@ brew cask install java
 brew cask install flash
 brew cask install karabiner
 brew cask install menumeters
+brew cask install recordit
 
 # Productivity
 brew cask install cheatsheet
@@ -40,6 +41,7 @@ brew cask install sublime-text
 #brew cask install utorrent
 #brew cask install xbmc
 #brew cask install gimp
+#brew cask install remote-desktop-connection
 
 # Powtoon
 brew cask install adobe-creative-cloud

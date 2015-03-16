@@ -55,3 +55,9 @@
 [submodule "janus/dash.vim"]
 	path = janus/dash.vim
 	url = git@github.com:rizzatti/dash.vim.git
+[submodule "non-packaged-repos/LS_COLORS"]
+	path = non-packaged-repos/LS_COLORS
+	url = git@github.com:trapd00r/LS_COLORS.git
+[submodule "janus/file-line"]
+	path = janus/file-line
+	url = git@github.com:bogado/file-line.git
