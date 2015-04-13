@@ -39,7 +39,11 @@ brew install task
 
 # Command line enhancement
 brew install liquidprompt autojump stormssh osquery
-brew install tmux
+#brew install tmux
+brew install fzf # consider peco https://github.com/peco/peco
+
+# Install shell extensions - this should be done whenever fzf is updated
+$(brew info fzf | grep /install)
 
 # todo - TRIAL
 brew install todo-txt

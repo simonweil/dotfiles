@@ -18,11 +18,12 @@ Shell improvment
   * https://github.com/glebm/dotfiles/
   * https://github.com/webpro/awesome-dotfiles
   * set OSX defaults: https://github.com/myfreeweb/dotfiles/blob/master/osx/defaults.sh
-*zsh: oh-my-zsh, https://github.com/zsh-users/antigen
+* zsh: oh-my-zsh, https://github.com/zsh-users/antigen
   * better prezto: http://github.com/sorin-ionescu/prezto
   * create my own OMZ theme based on liquidprompt
 * bash: https://github.com/dolmen/angel-PS1
 * More tools: https://github.com/jondot/awesome-devenv, https://github.com/cjbarber/ToolsOfTheTrade
+* git: https://github.com/arc90/git-sweep
 
 irb/pry
 =======
@@ -38,7 +39,7 @@ VIM
 1. setup my projects
 1. make search better with: https://github.com/haya14busa/incsearch.vim
 2. sessions made easier: https://github.com/xolox/vim-session or https://github.com/tpope/vim-obsession
-3. code completion: https://github.com/Valloric/YouCompleteMe
+3. code completion: https://github.com/Valloric/YouCompleteMe, https://github.com/Shougo/neocomplete.vim
 4. better yanking: https://github.com/maxbrunsfeld/vim-yankstack
 5. interesting search: https://github.com/rking/ag.vim
 6. snippet engine: https://github.com/SirVer/ultisnips
@@ -53,6 +54,7 @@ VIM
 14. http://statico.github.io/vim2.html
 15. https://github.com/vim-scripts/gitignore
 16. https://github.com/kopischke/vim-fetch
+17. https://github.com/kshenoy/vim-signature - marks
 
 Rails
 -----

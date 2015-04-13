@@ -61,3 +61,9 @@
 [submodule "janus/file-line"]
 	path = janus/file-line
 	url = git@github.com:bogado/file-line.git
+[submodule "janus/vim-sneak"]
+	path = janus/vim-sneak
+	url = git@github.com:justinmk/vim-sneak.git
+[submodule "janus/gruvbox"]
+	path = janus/gruvbox
+	url = git@github.com:morhetz/gruvbox.git
