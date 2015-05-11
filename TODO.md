@@ -47,7 +47,7 @@ VIM
 7. learn more plugnis: https://github.com/carlhuda/janus
 8. unite: https://github.com/Shougo/unite.vim (http://bling.github.io/blog/2013/06/02/unite-dot-vim-the-plugin-you-didnt-know-you-need/)
 9. get rid of whitespaces: https://github.com/bronson/vim-trailing-whitespace
-10. JS: https://github.com/marijnh/tern_for_vim
+10. JS: https://github.com/marijnh/tern_for_vim, https://github.com/othree/yajs.vim
 11. regex: https://github.com/othree/eregex.vim
 12. more: http://www.youtube.com/user/MinuteVimTricks
 13. Nice increment script: http://www.vim.org/scripts/script.php?script_id=670 (http://vimeo.com/4457161)
@@ -55,6 +55,7 @@ VIM
 15. https://github.com/vim-scripts/gitignore
 16. https://github.com/kopischke/vim-fetch
 17. https://github.com/kshenoy/vim-signature - marks
+18. https://github.com/janko-m/vim-test
 
 Rails
 -----

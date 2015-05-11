@@ -10,3 +10,8 @@ let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 
 " don't load EasyMotion, I rather use vim-sneak
 let g:EasyMotion_loaded = 1
+
+" Airline plugin
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline_theme='luna'

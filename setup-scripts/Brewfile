@@ -1,7 +1,7 @@
 brew tap homebrew/dupes
 
 # services external command
-brew tap gapple/services
+brew tap homebrew/services
 
 # desc external command
 brew tap telemachus/homebrew-desc
@@ -35,7 +35,6 @@ brew install git git-flow-avh hub
 # Tools
 brew install wget coreutils md5sha1sum rename tree cheat the_platinum_searcher
 brew install findutils homebrew/dupes/grep gnu-sed --with-default-names
-brew install task
 
 # Command line enhancement
 brew install liquidprompt autojump stormssh osquery

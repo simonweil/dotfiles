@@ -1,4 +1,7 @@
 
+" Highlight the screen line of the cursor
+set cursorline
+
 " Allow moving the mouse on the whole screen
 set virtualedit=all
 
@@ -19,16 +22,18 @@ else
   set background=dark
 endif
 
+" Have thin cursor shap in insert mode
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
 " terminal settings:
 if exists(':terminal')
   " allow terminal buffer size to be very large
   let g:terminal_scrollback_buffer_size = 100000
 
   " map esc to exit to normal mode in terminal too
-  tnoremap <Esc> <C-\><C-n>
+  tnoremap <Esc><Esc> <C-\><C-n>
 
   " go into insert mode when entering the terminal - not sure we need this
-  "au WinEnter *pid:* call feedkeys('i')
   au WinEnter term://* startinsert
 endif
 
@@ -70,22 +75,27 @@ nmap <silent> <leader>d <Plug>DashSearch
 " Set alt as a shortcut to jump between windows in all modes
 "
 if has('nvim')
-  "tnoremap <A-h> <C-\><C-n><C-w>h
-  "tnoremap <A-j> <C-\><C-n><C-w>j
-  "tnoremap <A-k> <C-\><C-n><C-w>k
-  "tnoremap <A-l> <C-\><C-n><C-w>l
+  tnoremap <A-h> <C-\><C-n><C-w>h
+  tnoremap <A-j> <C-\><C-n><C-w>j
+  tnoremap <A-k> <C-\><C-n><C-w>k
+  tnoremap <A-l> <C-\><C-n><C-w>l
+  tnoremap <A-c> <C-\><C-n><C-w>c
   nnoremap <A-h> <C-w>h
   nnoremap <A-j> <C-w>j
   nnoremap <A-k> <C-w>k
   nnoremap <A-l> <C-w>l
   nnoremap <A-c> <C-w>c
-  nnoremap <A-d> <ESC>:vsp<CR>
-  nnoremap <A-s-d> <ESC>:sp<CR>
-  "au WinEnter *pid:* call feedkeys('i')
-  "au WinEnter term://* startinsert
+  tnoremap <A-d>t   <C-\><C-n>:vsp \| term://bash -l<CR>
+  tnoremap <A-d>    <C-\><C-n>:vsp<CR>
+  tnoremap <A-s-d>t <C-\><C-n>:sp \| term://bash -l<CR>
+  tnoremap <A-s-d>  <C-\><C-n>:sp<CR>
+  nnoremap <A-d>t   <ESC>:vsp \| term bash -l<CR>
+  nnoremap <A-d>    <ESC>:vsp<CR>
+  nnoremap <A-s-d>t <ESC>:sp \| term bash -l<CR>
+  nnoremap <A-s-d>  <ESC>:sp<CR>
 
   " enable true color support
-  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  "let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
 
 

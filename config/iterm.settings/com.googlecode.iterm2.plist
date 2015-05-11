@@ -5670,8 +5670,14 @@
 	<true/>
 	<key>MaxVertically</key>
 	<false/>
+	<key>NSFontPanelAttributes</key>
+	<string>1, 2</string>
+	<key>NSFontPanelPreviewHeight</key>
+	<real>100</real>
 	<key>NSNavLastRootDirectory</key>
 	<string>~</string>
+	<key>NSNavPanelExpandedSizeForOpenMode</key>
+	<string>{712, 448}</string>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
 	<key>NSRepeatCountBinding</key>
@@ -5695,10 +5701,12 @@
 	<array/>
 	<key>NSTableView Sort Ordering KeyBingingTable</key>
 	<array/>
+	<key>NSWindow Frame NSFontPanel</key>
+	<string>444 501 737 347 0 0 1920 1177 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>107 219 924 485 0 0 1280 777 </string>
+	<string>247 578 924 485 0 0 1920 1177 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>3 388 650 376 0 0 1280 777 </string>
+	<string>1 22 1919 1152 0 0 1920 1177 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>231 294 1277 587 0 0 1920 1177 </string>
 	<key>New Bookmarks</key>
@@ -6257,11 +6265,11 @@
 			<key>Name</key>
 			<string>Default</string>
 			<key>Non Ascii Font</key>
-			<string>Monaco 12</string>
+			<string>DejaVuSansMonoForPowerline 12</string>
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>Courier 13</string>
+			<string>DejaVuSansMonoForPowerline 12</string>
 			<key>Option Key Sends</key>
 			<integer>2</integer>
 			<key>Prompt Before Closing 2</key>
@@ -6425,7 +6433,7 @@
 			<key>Use Canonical Parser</key>
 			<false/>
 			<key>Use Italic Font</key>
-			<false/>
+			<true/>
 			<key>Vertical Spacing</key>
 			<real>1.0395375490188599</real>
 			<key>Visual Bell</key>
@@ -7238,7 +7246,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-03-26T08:19:06Z</date>
+	<date>2015-04-28T08:08:21Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>

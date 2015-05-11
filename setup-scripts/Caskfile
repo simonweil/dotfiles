@@ -56,3 +56,8 @@ brew cask install todotxt
 # DB browsers
 #brew cask install sqlitebrowser
 #brew cask install robomongo
+
+# Powerline fonts
+brew cask install caskroom/fonts/font-dejavu-sans-mono-for-powerline
+# install all fonts: brew cask install $(brew cask search /powerline/ | tail -n +2)
+# nice input: brew cask install font-input

@@ -29,3 +29,6 @@
 	trustExitCode = true
 [format]
 	signoff = true
+[pull]
+	default = simple
+	rebase = preserve

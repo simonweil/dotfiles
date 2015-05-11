@@ -63,7 +63,7 @@ alias gf="git fetch"
 alias gs="git status"
 alias gd="git diff --ignore-space-at-eol -b -w --ignore-blank-lines"
 alias gc='git checkout $(git branch -a | fzf | sed -e "s#^\s*remotes/[^/]*/##")'
-alias git_cherrypick='git cherry-pick --signoff '
+alias git_cherrypick='git cherry-pick --signoff -x'
 alias git_commit_files="git diff-tree --no-commit-id --name-status -r"
 alias git_bad_commit_messages="git log --oneline --since='last week' --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr)%Creset by %C(bold blue)%an%C(yellow)%d%Creset' --abbrev-commit --date=relative | grep -vE 'Merge (remote-tracking )?branch' | grep -vE 'NISITES-|AT-|KNSS-'"
 
@@ -75,7 +75,7 @@ alias rake_bower_install="rake bower:dsl:install"
 
 # fzf #
 export FZF_COMPLETION_TRIGGER=',,'
-export FZF_COMPLETION_OPTS='-m'
+export FZF_COMPLETION_OPTS='-m --ansi'
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # submarine - automatic subtitles download
@@ -207,3 +207,6 @@ alias sites_down='sudo networksetup -setdnsservers "Wi-Fi" empty && sudo network
 [ -r "$HOME/.smartcd_config" ] && ( [ -n $BASH_VERSION ] || [ -n $ZSH_VERSION ] ) && source ~/.smartcd_config
 
 export PATH=".:$PATH"
+
+# Check if terminal supports true colors
+alias true_color='printf "\x1b[38;2;255;100;0mIs this colorfull?\x1b[0m\n"'
