@@ -5,8 +5,8 @@
 #
 set -o vi # go into vi mode on the shell!!!
 alias v="mvim --remote-silent "
-alias upgrade_neovim='brew reinstall --HEAD neovim'
-alias upgrade_submodules='(cd ~/.dotfiles && git submodule update --merge)'
+alias upgrade_neovim='pip install --upgrade neovim && brew reinstall --HEAD neovim'
+alias upgrade_submodules='(cd ~/.dotfiles && git submodule update --merge --remote)'
 alias upgrade_janus='(cd ~/.vim && rake)'
 alias vim='nvim'
 alias vi='nvim'
@@ -37,7 +37,7 @@ alias apache_log="cd /var/log/apache2/"
 
 # homebrew
 alias update_brew="brew update && brew outdated"
-alias upgrade_brew="brew upgrade && brew outdated"
+alias upgrade_brew="brew upgrade --all && brew outdated"
 alias upgrade_brew_wine='brew upgrade wine --devel'
 alias brew_desc="brew desc"
 alias brew_cask="brew cask"
@@ -50,7 +50,9 @@ if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
 fi
 
 # python
-alias upgrade_pip="pip install --upgrade setuptools && pip install --upgrade pip"
+alias upgrade_pip="pip install --upgrade setuptools \
+                    && pip install --upgrade pip \
+                    && pip install --upgrade virtualenv virtualenvwrapper"
 alias update_pip="pip list --outdated"
 
 # git
@@ -163,7 +165,7 @@ export HISTIGNORE="ls:cd:cd -:pwd;exit:man *:history:date:* --help"
 # general settings #
 ####################
 function upgrade_say {
-  echo -e "\nUpgrade $1:"
+  echo -e "\n-----------\nUpgrade $1:\n-----------"
 }
 
 alias update_all="update_node && update_pip && update_brew && echo -e \"\$(date)\\n\""
