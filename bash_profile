@@ -63,6 +63,7 @@ alias gf="git fetch"
 alias gs="git status"
 alias gd="git diff --ignore-space-at-eol -b -w --ignore-blank-lines"
 alias gc='git checkout $(git branch -a | fzf | sed -e "s#^\s*remotes/[^/]*/##")'
+alias gc-='git checkout -'
 alias git_cherrypick='git cherry-pick --signoff -x'
 alias git_commit_files="git diff-tree --no-commit-id --name-status -r"
 alias git_bad_commit_messages="git log --oneline --since='last week' --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr)%Creset by %C(bold blue)%an%C(yellow)%d%Creset' --abbrev-commit --date=relative | grep -vE 'Merge (remote-tracking )?branch' | grep -vE 'NISITES-|AT-|KNSS-'"
