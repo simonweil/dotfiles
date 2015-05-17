@@ -126,7 +126,7 @@ alias gem_docs="yard server -g"
 alias wine-heidisql="wine 'C:\Program Files\HeidiSQL\heidisql.exe' &"
 alias wine-BC="wine start /UNIX ~/.wine/drive_c/Program\ Files/Beyond\ Compare\ 3/BCompare.exe &"
 alias wine-ie8="wine 'C:\Program Files\Internet Explorer\iexplore' &"
-alias wine-toad="WINEPREFIX='$HOME/.wine32' WINEARCH='win32' wine ~/.wine32/drive_c/Program\ Files/Quest\ Software/Toad\ for\ MySQL\ Freeware\ 7.0/toad.exe"
+alias wine-toad="WINEPREFIX='$HOME/.wine32' WINEARCH='win32' wine 'C:\\Program Files\Quest Software\Toad for MySQL Freeware 7.3\toad.exe'"
 alias wine-npp="wine 'C:\Program Files\Notepad++\notepad++.exe' &"
 
 
@@ -142,7 +142,7 @@ alias wine-npp="wine 'C:\Program Files\Notepad++\notepad++.exe' &"
 # New:
 # run as 32 bit for dotnet35sp1: WINEPREFIX="$HOME/.wine32" WINEARCH='win32' winecfg
 # WINEPREFIX="$HOME/.wine32" WINEARCH='win32' winetricks dotnet40
-# WINEPREFIX="$HOME/.wine32" WINEARCH='win32' wine ~/Downloads/Quest_Toad-for-MySQL-Freeware_70.exe
+# WINEPREFIX="$HOME/.wine32" WINEARCH='win32' wine ~/Downloads/ToadforMySQL_Freeware_7.3.1.3290.exe
 
 
 ###########
