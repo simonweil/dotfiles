@@ -11,6 +11,7 @@ source setup-scripts/Nodefile
 
 # Setup bash from brew
 sudo sh -c 'echo "/usr/local/bin/bash" >> /etc/shells'
+sudo sh -c 'echo "/usr/local/bin/zsh"  >> /etc/shells'
 chsh -s /usr/local/bin/bash
 
 # RVM
@@ -28,6 +29,7 @@ ln -s $PWD/vimrc.after          ~/.vimrc.after
 ln -s $PWD/liquidpromptrc       ~/.liquidpromptrc
 ln -s $PWD/janus                ~/.janus
 ln -s $PWD/gitconfig            ~/.gitconfig
+ln -s $PWD/zshrc                ~/.zshrc
 ln -s $PWD/bashrc               ~/.bashrc
 ln -s $PWD/bash_profile         ~/.bash_profile
 ln -s $PWD/pryrc                ~/.pryrc
@@ -44,8 +46,6 @@ wget https://raw.github.com/trapd00r/LS_COLORS/master/LS_COLORS -O $HOME/.dircol
 
 # For updating the submodules of janus and more
 git submodule init
-#git submodule update
-#git submodule foreach git pull origin master
 git submodule update --remote --merge
 
 # OSX settings

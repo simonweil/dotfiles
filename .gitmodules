@@ -31,9 +31,6 @@
 [submodule "janus/vim-sleuth"]
 	path = janus/vim-sleuth
 	url = https://github.com/tpope/vim-sleuth.git
-[submodule "antigen/antigen"]
-	path = antigen/antigen
-	url = https://github.com/zsh-users/antigen.git
 [submodule "janus/vim-blade"]
 	path = janus/vim-blade
 	url = git@github.com:xsbeats/vim-blade.git

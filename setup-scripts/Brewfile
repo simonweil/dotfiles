@@ -35,8 +35,10 @@ brew install git git-flow-avh hub
 # Tools
 brew install wget coreutils md5sha1sum rename tree cheat the_platinum_searcher
 brew install findutils homebrew/dupes/grep gnu-sed --with-default-names
+brew install shellcheck # for vim shell static check
 
 # Command line enhancement
+brew install antigen
 brew install liquidprompt autojump stormssh osquery
 #brew install tmux
 brew install fzf # consider peco https://github.com/peco/peco

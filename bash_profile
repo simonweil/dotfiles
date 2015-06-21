@@ -61,11 +61,13 @@ alias git_bad_files='find . -name ".DS_Store" -or -name "Thumbs.db"'
 alias git_log="git log --graph --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr)%Creset by %C(bold blue)%an%C(yellow)%d%Creset' --abbrev-commit --date=relative" # add --all to see all branches and not only the checkedout branch
 alias git_log_all="git_log --branches --remotes --tags --decorate"
 alias gp="git pull"
-alias gf="git fetch"
+alias gf="git fetch && git fetch --tags"
 alias gs="git status"
 alias gd="git diff --ignore-space-at-eol -b -w --ignore-blank-lines"
 alias gc='git checkout $(git branch -a | fzf | sed -e "s#^\s*remotes/[^/]*/##")'
 alias gc-='git checkout -'
+alias gcd='git checkout develop'
+alias gcm='git checkout master'
 alias git_cherrypick='git cherry-pick --signoff -x'
 alias git_commit_files="git diff-tree --no-commit-id --name-status -r"
 alias git_bad_commit_messages="git log --oneline --since='last week' --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr)%Creset by %C(bold blue)%an%C(yellow)%d%Creset' --abbrev-commit --date=relative | grep -vE 'Merge (remote-tracking )?branch' | grep -vE 'NISITES-|AT-|KNSS-'"
@@ -74,7 +76,7 @@ alias git_bad_commit_messages="git log --oneline --since='last week' --pretty=fo
 alias rake_bower_install="rake bower:dsl:install"
 
 # autojump
-[[ -s `brew --prefix`/etc/autojump.sh ]] && . `brew --prefix`/etc/autojump.sh
+[[ -s $(brew --prefix)/etc/autojump.sh ]] && . $(brew --prefix)/etc/autojump.sh
 
 # fzf #
 export FZF_COMPLETION_TRIGGER=',,'

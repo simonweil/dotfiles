@@ -5675,9 +5675,13 @@
 	<key>NSFontPanelPreviewHeight</key>
 	<real>100</real>
 	<key>NSNavLastRootDirectory</key>
-	<string>~</string>
+	<string>~/misc/logs</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
 	<string>{712, 448}</string>
+	<key>NSNavPanelExpandedSizeForSaveMode</key>
+	<string>{712, 565}</string>
+	<key>NSNavPanelExpandedStateForSaveMode</key>
+	<true/>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
 	<key>NSRepeatCountBinding</key>
@@ -5706,7 +5710,7 @@
 	<key>NSWindow Frame Preferences</key>
 	<string>247 578 924 485 0 0 1920 1177 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>1 22 1919 1152 0 0 1920 1177 </string>
+	<string>3 26 1914 1151 0 0 1920 1177 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>231 294 1277 587 0 0 1920 1177 </string>
 	<key>New Bookmarks</key>
@@ -7246,7 +7250,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-04-28T08:08:21Z</date>
+	<date>2015-06-02T09:15:06Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -7289,7 +7293,7 @@
 	<key>WebKitDefaultFontSize</key>
 	<integer>11</integer>
 	<key>WebKitStandardFont</key>
-	<string>.Lucida Grande UI</string>
+	<string>.Helvetica Neue DeskInterface</string>
 	<key>Window Arrangements</key>
 	<dict>
 		<key>Normal</key>
