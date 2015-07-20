@@ -52,12 +52,15 @@
 [submodule "non-packaged-repos/LS_COLORS"]
 	path = non-packaged-repos/LS_COLORS
 	url = git@github.com:trapd00r/LS_COLORS.git
-[submodule "janus/file-line"]
-	path = janus/file-line
-	url = git@github.com:bogado/file-line.git
 [submodule "janus/vim-sneak"]
 	path = janus/vim-sneak
 	url = git@github.com:justinmk/vim-sneak.git
 [submodule "janus/gruvbox"]
 	path = janus/gruvbox
 	url = git@github.com:morhetz/gruvbox.git
+[submodule "janus/vim-fetch"]
+	path = janus/vim-fetch
+	url = git@github.com:kopischke/vim-fetch.git
+[submodule "janus/vim-peekaboo"]
+	path = janus/vim-peekaboo
+	url = git@github.com:junegunn/vim-peekaboo.git

@@ -22,6 +22,10 @@ else
   set background=dark
 endif
 
+" Show a 80 column width indicator
+set colorcolumn=80
+highlight ColorColumn ctermbg=red
+
 " Have thin cursor shap in insert mode
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 

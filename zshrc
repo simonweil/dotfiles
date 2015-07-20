@@ -26,6 +26,7 @@ antigen bundles <<EOBUNDLES
   pip
   python
   vagrant
+  akoenig/npm-run.plugin.zsh # npm run completion
 
   bundler     # completion + aliases + wrapper for gems - see readme for more info
   colored-man # color for man
