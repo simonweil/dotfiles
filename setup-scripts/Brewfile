@@ -8,6 +8,7 @@ brew tap telemachus/homebrew-desc
 
 # meld
 brew install python --universal --with-brewed-openssl --with-brewed-tk
+brew install python3 --universal --with-quicktest
 brew install pygtk --universal
 brew install homebrew/x11/meld hicolor-icon-theme
 
@@ -49,7 +50,7 @@ $(brew info fzf | grep /install)
 # todo - TRIAL
 brew install todo-txt
 brew install googlecl
-
+brew install terminal-notifier
 
 ########
 # apps #

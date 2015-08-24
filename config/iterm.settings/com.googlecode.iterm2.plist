@@ -5708,7 +5708,7 @@
 	<key>NSWindow Frame NSFontPanel</key>
 	<string>444 501 737 347 0 0 1920 1177 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>247 578 924 485 0 0 1920 1177 </string>
+	<string>31 272 924 485 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>3 26 1914 1151 0 0 1920 1177 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
@@ -5941,7 +5941,7 @@
 			<key>Disable Smcup Rmcup</key>
 			<false/>
 			<key>Disable Window Resizing</key>
-			<true/>
+			<false/>
 			<key>Flashing Bell</key>
 			<false/>
 			<key>Foreground Color</key>
@@ -7250,7 +7250,9 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-06-02T09:15:06Z</date>
+	<date>2015-07-25T19:26:33Z</date>
+	<key>SUSkippedVersion</key>
+	<string>2.1.1</string>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>

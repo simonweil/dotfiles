@@ -12,7 +12,7 @@ set wildmenu
 set clipboard=unnamed
 
 " Pressing kj to avoid esc for quiting insert mode
-imap kj <Esc>l
+inoremap kj <Esc>l
 
 " Use a special color scheme for MacVim GUI
 if has("gui_running")
@@ -25,6 +25,7 @@ endif
 " Show a 80 column width indicator
 set colorcolumn=80
 highlight ColorColumn ctermbg=red
+au FileType help,qf,netrw,location setlocal colorcolumn=
 
 " Have thin cursor shap in insert mode
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
@@ -69,10 +70,10 @@ map g* <Plug>(incsearch-nohl-g*)
 map g# <Plug>(incsearch-nohl-g#)
 
 " Mapping to open Markdown preview (vim-livedown)
-map gm LivedownPreview()<CR>
+noremap gm LivedownPreview()<CR>
 
 " Mappings for the Dash.app
-nmap <silent> <leader>d <Plug>DashSearch
+nnoremap <silent> <leader>d <Plug>DashSearch
 
 "
 " Set alt as a shortcut to jump between windows in all modes
@@ -88,22 +89,27 @@ if has('nvim')
   nnoremap <A-k> <C-w>k
   nnoremap <A-l> <C-w>l
   nnoremap <A-c> <C-w>c
-  tnoremap <A-d>t   <C-\><C-n>:vsp \| term://bash -l<CR>
+  tnoremap <A-d>t   <C-\><C-n>:vsp \| enew \| term bash -l<CR>
   tnoremap <A-d>    <C-\><C-n>:vsp<CR>
-  tnoremap <A-s-d>t <C-\><C-n>:sp \| term://bash -l<CR>
+  tnoremap <A-s-d>t <C-\><C-n>:sp \| enew \| term bash -l<CR>
   tnoremap <A-s-d>  <C-\><C-n>:sp<CR>
-  nnoremap <A-d>t   <ESC>:vsp \| term bash -l<CR>
+  nnoremap <A-d>t   <ESC>:vsp \| enew \| term bash -l<CR>
   nnoremap <A-d>    <ESC>:vsp<CR>
-  nnoremap <A-s-d>t <ESC>:sp \| term bash -l<CR>
+  nnoremap <A-s-d>t <ESC>:sp \| enew \| term bash -l<CR>
   nnoremap <A-s-d>  <ESC>:sp<CR>
 
   " enable true color support
   "let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
 
+" vimrc helpers
+"nnoremap <leader>sv :source ~/.vimrc.after<cr>
+nnoremap <leader>eva :vsplit ~/.vimrc.after<cr>
+nnoremap <leader>evb :vsplit ~/.vimrc.before<cr>
 
 " ---------
 " Syntastic
+" maybe relace with: https://github.com/benekastah/neomake
 " ---------
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -114,9 +120,11 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_aggregate_errors = 1 " Run all checkers
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_warning_symbol = '⚠'
 
 " https://github.com/scrooloose/syntastic/wiki/Syntax-Checkers
-let g:syntastic_python_checkers = ['pep8', 'python']
+let g:syntastic_python_checkers = ['pylama']
 
 " ----------------------------------------------------------
 " setup the projects: https://github.com/amiorin/vim-project
@@ -129,11 +137,4 @@ call project#rc("~/work/")
 
 " My projects
 Project '~/mine/dev/Community' , 'Community'
-Project 'adminbot'             , 'Admin'
 Project '~/.dotfiles'          , 'My DotFiles :)'
-Project 'top-10-sites'         , 'Top 10 Sites'
-Project 'tracker'              , 'Tracker'
-Project '~/mine/dev/antigen/antigen'              , 'Antigen'
-Project '~/mine/dev/countries' , 'Countries'
-Project '~/mine/dev/countries-rails' , 'Countries Rails'
-Project '~/work/boxes/ateam-sites/shared/ateam-sites' , 'Laravel'

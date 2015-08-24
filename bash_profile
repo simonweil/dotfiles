@@ -52,8 +52,15 @@ fi
 # python
 alias upgrade_pip="pip install --upgrade setuptools \
                     && pip install --upgrade pip \
-                    && pip install --upgrade virtualenv virtualenvwrapper"
+                    && pip install --upgrade virtualenv virtualenvwrapper \
+                    && pip list --outdated 2> /dev/null | awk '{ print \$1 }' | xargs pip install -U"
 alias update_pip="pip list --outdated"
+
+alias upgrade_pip3="pip3 install --upgrade setuptools \
+                    && pip3 install --upgrade pip3 \
+                    && pip3 install --upgrade virtualenv virtualenvwrapper \
+                    && pip3 list --outdated 2> /dev/null | awk '{ print \$1 }' | xargs pip3 install -U"
+alias update_pip3="pip3 list --outdated"
 
 # git
 alias git_grep='git log --grep "(NISITES-51" --pretty=oneline'
@@ -170,10 +177,11 @@ function upgrade_say {
   echo -e "\n-----------\nUpgrade $1:\n-----------"
 }
 
-alias update_all="update_node && update_pip && update_brew && echo -e \"\$(date)\\n\""
+alias update_all="update_node && update_pip && update_pip3 && update_brew && echo -e \"\$(date)\\n\""
 alias upgrade_all="   upgrade_say 'node'   && upgrade_node \
                    && upgrade_say 'Brew'   && upgrade_brew \
                    && upgrade_say 'pip'    && upgrade_pip \
+                   && upgrade_say 'pip3'    && upgrade_pip3 \
                    && upgrade_say 'neovim' && upgrade_neovim \
                    && upgrade_say 'Janus'  && upgrade_janus \
                    && upgrade_say 'RVM'    && upgrade_rvm \

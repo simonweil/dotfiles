@@ -8,6 +8,7 @@ brew cask install flash
 brew cask install karabiner
 brew cask install menumeters
 brew cask install recordit
+brew cask install keepingyouawake
 
 # Productivity
 brew cask install cheatsheet
@@ -44,11 +45,9 @@ brew cask install sublime-text
 #brew cask install remote-desktop-connection
 
 # Powtoon
-brew cask install adobe-creative-cloud
-brew cask install bittorrent-sync
-brew cask install flash-player-debugger
-brew cask install jing
-brew cask install skype
+#brew cask install flash-player-debugger
+#brew cask install jing
+#brew cask install skype
 
 # In trial
 brew cask install todotxt

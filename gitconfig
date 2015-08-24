@@ -3,32 +3,43 @@
 	email = simon@powtoon.com
 [credential]
 	helper = osxkeychain
+[core]
+	editor = /usr/bin/vim
+	excludesFile = /Users/simonweil/.gitignore_global
+[format]
+	signoff = true
+
+[pull]
+	default = simple
+	rebase = preserve
 [push]
 	default = simple
+
 [merge]
 	tool = meld
+#  tool = vimdiff
 [diff]
 	tool = meld
 	external = git-meld
-[alias]
-	ribbon = tag --force _ribbon origin/master
-	catchup = log --patch --reverse --topo-order _ribbon..origin/master
-	catchup-short = log _ribbon.. --oneline
-	catchup-summary = log _ribbon.. --summary
 
-[core]
-	editor = /usr/bin/vim
-	excludesfile = /Users/simonweil/.gitignore_global
-[heroku]
-	account = ni
+[mergetool]
+  prompt = true
+
+[mergetool "vimdiff"]
+  cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
 [mergetool "sourcetree"]
 	cmd = /opt/homebrew-cask/Caskroom/sourcetree/2.0.4/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
-[format]
-	signoff = true
-[pull]
-	default = simple
-	rebase = preserve
+
+[alias]
+	ribbon = tag --force _ribbon origin/master
+	catchup = log --patch --reverse --topo-order _ribbon..origin/master
+	catchup-short = log _ribbon.. --oneline
+	catchup-summary = log _ribbon.. --summary
+
+[heroku]
+	account = ni

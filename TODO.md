@@ -36,26 +36,23 @@ MAC apps
 
 VIM
 ===
-1. setup my projects
-1. make search better with: https://github.com/haya14busa/incsearch.vim
 2. sessions made easier: https://github.com/xolox/vim-session or https://github.com/tpope/vim-obsession
-3. code completion: https://github.com/Valloric/YouCompleteMe, https://github.com/Shougo/neocomplete.vim
+3. code completion: https://github.com/Valloric/YouCompleteMe, https://github.com/Shougo/deoplate.vim
 4. better yanking: https://github.com/maxbrunsfeld/vim-yankstack
 5. interesting search: https://github.com/rking/ag.vim
 6. snippet engine: https://github.com/SirVer/ultisnips
                    https://github.com/drmingdrmer/xptemplate
 7. learn more plugnis: https://github.com/carlhuda/janus
 8. unite: https://github.com/Shougo/unite.vim (http://bling.github.io/blog/2013/06/02/unite-dot-vim-the-plugin-you-didnt-know-you-need/)
-9. get rid of whitespaces: https://github.com/bronson/vim-trailing-whitespace
 10. JS: https://github.com/marijnh/tern_for_vim, https://github.com/othree/yajs.vim
 11. regex: https://github.com/othree/eregex.vim
 12. more: http://www.youtube.com/user/MinuteVimTricks
 13. Nice increment script: http://www.vim.org/scripts/script.php?script_id=670 (http://vimeo.com/4457161)
 14. http://statico.github.io/vim2.html
 15. https://github.com/vim-scripts/gitignore
-16. https://github.com/kopischke/vim-fetch
 17. https://github.com/kshenoy/vim-signature - marks
 18. https://github.com/janko-m/vim-test
+19. better md live view? https://github.com/euclio/vim-markdown-composer
 
 Rails
 -----

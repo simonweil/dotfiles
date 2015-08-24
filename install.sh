@@ -8,6 +8,7 @@ source setup-scripts/Caskfile
 source setup-scripts/Brewfile
 source setup-scripts/Brew-Gemfile
 source setup-scripts/Nodefile
+source setup-scripts/Pipfile
 
 # Setup bash from brew
 sudo sh -c 'echo "/usr/local/bin/bash" >> /etc/shells'
@@ -34,15 +35,16 @@ ln -s $PWD/bashrc               ~/.bashrc
 ln -s $PWD/bash_profile         ~/.bash_profile
 ln -s $PWD/pryrc                ~/.pryrc
 ln -s $PWD/editorconfig         ~/.editorconfig # for the js beutifier vim plugin
-mkdir ~/bin
-ln -s $PWD/bin/git-meld         ~/bin/git-meld
-ln -s $PWD/bin/find_stories.py  ~/bin/find_stories.py
-ln -s $PWD/non-packaged-repos/git-open/git-open ~/bin/
 ln -s $PWD/mackup.cfg           ~/.mackup.cfg
 ln -s $PWD/tmux.conf            ~/.tmux.conf
+mkdir ~/bin
+ln -s $PWD/bin/git-meld         ~/bin/
+ln -s $PWD/bin/find_stories.py  ~/bin/
+ln -s $PWD/non-packaged-repos/emojify/emojify ~/bin/
 
 # Set up ls colors
 wget https://raw.github.com/trapd00r/LS_COLORS/master/LS_COLORS -O $HOME/.dircolors
+
 
 # For updating the submodules of janus and more
 git submodule init

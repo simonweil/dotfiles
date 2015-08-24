@@ -53,7 +53,7 @@
 	path = non-packaged-repos/LS_COLORS
 	url = git@github.com:trapd00r/LS_COLORS.git
 [submodule "janus/vim-sneak"]
-	path = janus/vim-sneak
+	path = janus/0-vim-sneak
 	url = git@github.com:justinmk/vim-sneak.git
 [submodule "janus/gruvbox"]
 	path = janus/gruvbox
