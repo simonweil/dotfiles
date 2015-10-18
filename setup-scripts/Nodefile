@@ -1,5 +1,6 @@
 npm install -g bower
 npm install -g devtools-terminal
 npm install -g ember-cli
+npm install -g grunt-cli
 npm install -g livedown
 npm install -g git-open

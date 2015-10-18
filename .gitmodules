@@ -64,3 +64,6 @@
 [submodule "janus/vim-peekaboo"]
 	path = janus/vim-peekaboo
 	url = git@github.com:junegunn/vim-peekaboo.git
+[submodule "non-packaged-repos/vim-plug"]
+	path = non-packaged-repos/vim-plug
+	url = git@github.com:junegunn/vim-plug.git

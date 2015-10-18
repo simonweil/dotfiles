@@ -58,5 +58,6 @@ brew cask install todotxt
 
 # Powerline fonts
 brew cask install caskroom/fonts/font-dejavu-sans-mono-for-powerline
+# I'm now using awesome fonts: awesome-terminal-fonts with branch: patching-strategy
 # install all fonts: brew cask install $(brew cask search /powerline/ | tail -n +2)
 # nice input: brew cask install font-input

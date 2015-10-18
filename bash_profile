@@ -1,11 +1,15 @@
 #!/usr/local/bin/bash
 
+echo " -----------------------------------------------------------"
+
 ###
 # vim related
 #
 set -o vi # go into vi mode on the shell!!!
 alias v="mvim --remote-silent "
-alias upgrade_neovim='pip install --upgrade neovim && brew reinstall --HEAD neovim'
+alias upgrade_neovim="   pip install --upgrade neovim \
+                      && pip3 install --upgrade neovim \
+                      && brew reinstall --HEAD neovim"
 alias upgrade_submodules='(cd ~/.dotfiles && git submodule update --merge --remote)'
 alias upgrade_janus='(cd ~/.vim && rake)'
 alias vim='nvim'
@@ -18,6 +22,7 @@ export EDITOR='nvim'
 alias ..="cd .."
 alias ...="cd ../.."
 alias ..3="cd ../../.."
+alias ..4="cd ../../../.."
 
 alias ld="ls --color -lh | grep '^d'"
 alias ll="ls --color -lh"
@@ -50,14 +55,14 @@ if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
 fi
 
 # python
-alias upgrade_pip="pip install --upgrade setuptools \
-                    && pip install --upgrade pip \
+alias upgrade_pip="    pip install --upgrade setuptools \
+                    && pip install --upgrade pip        \
                     && pip install --upgrade virtualenv virtualenvwrapper \
                     && pip list --outdated 2> /dev/null | awk '{ print \$1 }' | xargs pip install -U"
 alias update_pip="pip list --outdated"
 
-alias upgrade_pip3="pip3 install --upgrade setuptools \
-                    && pip3 install --upgrade pip3 \
+alias upgrade_pip3="   pip3 install --upgrade setuptools \
+                    && pip3 install --upgrade pip3       \
                     && pip3 install --upgrade virtualenv virtualenvwrapper \
                     && pip3 list --outdated 2> /dev/null | awk '{ print \$1 }' | xargs pip3 install -U"
 alias update_pip3="pip3 list --outdated"
@@ -78,6 +83,30 @@ alias gcm='git checkout master'
 alias git_cherrypick='git cherry-pick --signoff -x'
 alias git_commit_files="git diff-tree --no-commit-id --name-status -r"
 alias git_bad_commit_messages="git log --oneline --since='last week' --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr)%Creset by %C(bold blue)%an%C(yellow)%d%Creset' --abbrev-commit --date=relative | grep -vE 'Merge (remote-tracking )?branch' | grep -vE 'NISITES-|AT-|KNSS-'"
+
+# gl - git commit browser (enter for show, ctrl-d for diff, ` toggles sort)
+# TODO: Add options to seatch all branchs and exact seatch
+gl() {
+  local out shas sha q k
+  while out=$(
+      git log --graph \
+              --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr)%Creset by %C(bold blue)%an%C(yellow)%d%Creset' \
+              --abbrev-commit --date=relative "$@" |
+      fzf --ansi --multi --no-sort --reverse --query="$q" \
+          --print-query --expect=ctrl-d --toggle-sort=\`); do
+    q=$(head -1 <<< "$out")
+    k=$(head -2 <<< "$out" | tail -1)
+    shas=$(sed '1,2d;s/^[^a-z0-9]*//;/^$/d' <<< "$out" | awk '{print $1}')
+    [ -z "$shas" ] && continue
+    if [ "$k" = ctrl-d ]; then
+      git diff --no-ext-diff --color=always --ignore-space-at-eol -b -w --ignore-blank-lines "$shas" | less -R
+    else
+      for sha in $shas; do
+        git show --color=always "$sha" | less -R
+      done
+    fi
+  done
+}
 
 # rake
 alias rake_bower_install="rake bower:dsl:install"
@@ -178,13 +207,13 @@ function upgrade_say {
 }
 
 alias update_all="update_node && update_pip && update_pip3 && update_brew && echo -e \"\$(date)\\n\""
-alias upgrade_all="   upgrade_say 'node'   && upgrade_node \
-                   && upgrade_say 'Brew'   && upgrade_brew \
-                   && upgrade_say 'pip'    && upgrade_pip \
-                   && upgrade_say 'pip3'    && upgrade_pip3 \
-                   && upgrade_say 'neovim' && upgrade_neovim \
-                   && upgrade_say 'Janus'  && upgrade_janus \
-                   && upgrade_say 'RVM'    && upgrade_rvm \
+alias upgrade_all="   upgrade_say 'node'   && upgrade_node      \
+                   && upgrade_say 'Brew'   && upgrade_brew      \
+                   && upgrade_say 'neovim' && upgrade_neovim    \
+                   && upgrade_say 'pip'    && upgrade_pip       \
+                   && upgrade_say 'pip3'   && upgrade_pip3      \
+                   && upgrade_say 'Janus'  && upgrade_janus     \
+                   && upgrade_say 'RVM'    && upgrade_rvm       \
                    && upgrade_say 'Wine'   && upgrade_brew_wine \
                    && upgrade_say 'Dotfiles (all submodules)' && upgrade_submodules"
 alias update_project="update_node_project && rake bower:list && bundle outdated"
@@ -207,6 +236,10 @@ eval $(dircolors -b $HOME/.dotfiles/non-packaged-repos/LS_COLORS/LS_COLORS)
 # Another option:
 # http://linux-sxs.org/housekeeping/lscolors.html
 
+# Marker - for command line bookmarks
+# https://github.com/pindexis/marker - clone the repo when iTerm 2.9 is released
+#[[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
+echo " - Enable marker when iTerm 2.9 is released (current: $(grep -A1 CFBundleVersion ~/Applications/iTerm.app/Contents/Info.plist | tail -1 | cut -d">" -f 2 | cut -d"<" -f 1))"
 
 ##########################
 # Other general settings #
@@ -222,4 +255,7 @@ alias sites_down='sudo networksetup -setdnsservers "Wi-Fi" empty && sudo network
 export PATH=".:$PATH"
 
 # Check if terminal supports true colors
-alias true_color='printf "\x1b[38;2;255;100;0mIs this colorfull?\x1b[0m\n"'
+alias true_color='printf " - \x1b[38;2;255;100;0mIs this colorfull? if so, enable true color in neovim.\x1b[0m\n"'
+true_color
+
+echo " -----------------------------------------------------------"
