@@ -66,14 +66,12 @@ EOBUNDLES
 
 export DEFAULT_USER=simonweil
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status rbenv virtualenv history time)
-#POWERLEVEL9K_MODE='awesome-patched'
-#POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-#antigen theme bhilburn/powerlevel9k powerlevel9k
-#antigen theme dritter/powerlevel9k powerlevel9k --branch=dritter/prezto
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status node_version rbenv virtualenv history time)
+POWERLEVEL9K_MODE='awesome-patched'
+antigen theme bhilburn/powerlevel9k powerlevel9k
 
 #antigen theme agnoster
-antigen bundle nojhan/liquidprompt
+#antigen bundle nojhan/liquidprompt
 
 # Vim like bindings plugin. Need to run after theme, so mode indicator
 # can be set, if the theme didn't already set it.
@@ -85,3 +83,4 @@ antigen apply
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH=".:$PATH"

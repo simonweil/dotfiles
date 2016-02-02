@@ -2,3 +2,7 @@ pip install neovim
 pip3 install neovim
 pip install pylama
 pip install pylama_pylint
+
+# super charged AWS cli (https://github.com/donnemartin/saws)
+pip install saws
+

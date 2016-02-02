@@ -19,6 +19,8 @@ brew install winetricks
 # Other apps
 brew install mysql node macvim
 brew install postgresql pgcli
+brew install ctags
+brew install tidy-html5
 
 # Shells
 brew install zsh zsh-completions
@@ -29,7 +31,7 @@ brew install homebrew/versions/bash-completion2
 brew tap homebrew/completions
 brew install rails-completion rake-completion bundler-completion gem-completion pip-completion \
              ruby-completion vagrant-completion tmuxinator-completion grunt-completion django-completion \
-             docker-completion packer-completion spring-completion brew-cask-completion
+             docker-completion packer-completion spring-completion brew-cask-completion open-completion
 
 # git
 brew install git git-flow-avh hub

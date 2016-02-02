@@ -5,6 +5,7 @@ brew tap caskroom/versions
 brew cask install xquartz
 brew cask install java
 brew cask install flash
+#brew cask install flash-player-debugger
 brew cask install karabiner
 brew cask install menumeters
 brew cask install recordit
@@ -36,18 +37,18 @@ brew cask install google-drive
 brew cask install sublime-text
 
 # Other
-#brew cask install teamviewer
-#brew cask install tunnelblick
+brew cask install teamviewer
+brew cask install tunnelblick
 #brew cask install picasa
 #brew cask install utorrent
 #brew cask install xbmc
 #brew cask install gimp
 #brew cask install remote-desktop-connection
-
-# Powtoon
-#brew cask install flash-player-debugger
 #brew cask install jing
+
+# Communications
 #brew cask install skype
+brew cask install slack
 
 # In trial
 brew cask install todotxt
@@ -61,3 +62,6 @@ brew cask install caskroom/fonts/font-dejavu-sans-mono-for-powerline
 # I'm now using awesome fonts: awesome-terminal-fonts with branch: patching-strategy
 # install all fonts: brew cask install $(brew cask search /powerline/ | tail -n +2)
 # nice input: brew cask install font-input
+
+# Screen Saver
+brew cask install aerial

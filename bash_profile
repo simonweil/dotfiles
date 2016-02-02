@@ -62,7 +62,7 @@ alias upgrade_pip="    pip install --upgrade setuptools \
 alias update_pip="pip list --outdated"
 
 alias upgrade_pip3="   pip3 install --upgrade setuptools \
-                    && pip3 install --upgrade pip3       \
+                    && pip3 install --upgrade pip        \
                     && pip3 install --upgrade virtualenv virtualenvwrapper \
                     && pip3 list --outdated 2> /dev/null | awk '{ print \$1 }' | xargs pip3 install -U"
 alias update_pip3="pip3 list --outdated"
@@ -72,7 +72,7 @@ alias git_grep='git log --grep "(NISITES-51" --pretty=oneline'
 alias git_bad_files='find . -name ".DS_Store" -or -name "Thumbs.db"'
 alias git_log="git log --graph --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr)%Creset by %C(bold blue)%an%C(yellow)%d%Creset' --abbrev-commit --date=relative" # add --all to see all branches and not only the checkedout branch
 alias git_log_all="git_log --branches --remotes --tags --decorate"
-alias gp="git pull"
+alias gp="git pull --rebase"
 alias gf="git fetch && git fetch --tags"
 alias gs="git status"
 alias gd="git diff --ignore-space-at-eol -b -w --ignore-blank-lines"
@@ -136,6 +136,8 @@ alias update_project_node="npm outdated --quiet --depth=0"
 alias update_node="update_project_node --global"
 alias upgrade_project_node="npm update"
 alias upgrade_node="upgrade_project_node --global"
+# add gulp completion
+eval "$(gulp --completion=bash)"
 
 # todo.txt
 alias t="todo.sh"
@@ -202,6 +204,9 @@ export HISTIGNORE="ls:cd:cd -:pwd;exit:man *:history:date:* --help"
 ####################
 # general settings #
 ####################
+export LC_ALL='en_US.UTF-8'
+export LANG='en_US.UTF-8'
+
 function upgrade_say {
   echo -e "\n-----------\nUpgrade $1:\n-----------"
 }

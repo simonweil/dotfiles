@@ -51,8 +51,10 @@ VIM
 14. http://statico.github.io/vim2.html
 15. https://github.com/vim-scripts/gitignore
 17. https://github.com/kshenoy/vim-signature - marks
-18. https://github.com/janko-m/vim-test
 19. better md live view? https://github.com/euclio/vim-markdown-composer
+20. Python REPL: https://github.com/bfredl/nvim-ipy
+21. even better grep? https://github.com/mhinz/vim-grepper
+22. Run Tests from vim: https://github.com/janko-m/vim-test
 
 Rails
 -----
