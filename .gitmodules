@@ -1,69 +1,6 @@
-[submodule "janus/auto-pairs"]
-	path = janus/auto-pairs
-	url = https://github.com/jiangmiao/auto-pairs.git
-[submodule "janus/vim-airline"]
-	path = janus/vim-airline
-	url = https://github.com/bling/vim-airline
-[submodule "janus/vim-emblem"]
-	path = janus/vim-emblem
-	url = https://github.com/heartsentwined/vim-emblem.git
-[submodule "janus/vim-project"]
-	path = janus/vim-project
-	url = https://github.com/amiorin/vim-project.git
-[submodule "janus/vim-bundler"]
-	path = janus/vim-bundler
-	url = https://github.com/tpope/vim-bundler.git
-[submodule "janus/vim-bufferline"]
-	path = janus/vim-bufferline
-	url = https://github.com/bling/vim-bufferline.git
-[submodule "janus/vim-characterize"]
-	path = janus/vim-characterize
-	url = https://github.com/tpope/vim-characterize.git
-[submodule "janus/vim-indent-guides"]
-	path = janus/vim-indent-guides
-	url = https://github.com/nathanaelkane/vim-indent-guides.git
-[submodule "janus/emmet-vim"]
-	path = janus/emmet-vim
-	url = https://github.com/mattn/emmet-vim.git
-[submodule "janus/vim-speeddating"]
-	path = janus/vim-speeddating
-	url = https://github.com/tpope/vim-speeddating.git
-[submodule "janus/vim-sleuth"]
-	path = janus/vim-sleuth
-	url = https://github.com/tpope/vim-sleuth.git
-[submodule "janus/vim-blade"]
-	path = janus/vim-blade
-	url = git@github.com:xsbeats/vim-blade.git
-[submodule "janus/vim-tmux"]
-	path = janus/vim-tmux
-	url = git@github.com:tejr/vim-tmux.git
-[submodule "janus/incsearch.vim"]
-	path = janus/incsearch.vim
-	url = https://github.com/haya14busa/incsearch.vim
-[submodule "janus/vim-jsbeautify"]
-	path = janus/vim-jsbeautify
-	url = https://github.com/maksimr/vim-jsbeautify.git
-[submodule "janus/vim-livedown"]
-	path = janus/vim-livedown
-	url = git://github.com/shime/vim-livedown.git
-[submodule "janus/dash.vim"]
-	path = janus/dash.vim
-	url = git@github.com:rizzatti/dash.vim.git
 [submodule "non-packaged-repos/LS_COLORS"]
 	path = non-packaged-repos/LS_COLORS
 	url = git@github.com:trapd00r/LS_COLORS.git
-[submodule "janus/vim-sneak"]
-	path = janus/0-vim-sneak
-	url = git@github.com:justinmk/vim-sneak.git
-[submodule "janus/gruvbox"]
-	path = janus/gruvbox
-	url = git@github.com:morhetz/gruvbox.git
-[submodule "janus/vim-fetch"]
-	path = janus/vim-fetch
-	url = git@github.com:kopischke/vim-fetch.git
-[submodule "janus/vim-peekaboo"]
-	path = janus/vim-peekaboo
-	url = git@github.com:junegunn/vim-peekaboo.git
 [submodule "non-packaged-repos/vim-plug"]
 	path = non-packaged-repos/vim-plug
 	url = git@github.com:junegunn/vim-plug.git
