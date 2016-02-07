@@ -11,7 +11,6 @@ alias upgrade_neovim="   pip install --upgrade neovim \
                       && pip3 install --upgrade neovim \
                       && brew reinstall --HEAD neovim"
 alias upgrade_submodules='(cd ~/.dotfiles && git submodule update --merge --remote)'
-alias upgrade_janus='(cd ~/.vim && rake)'
 alias vim='nvim'
 alias vi='nvim'
 alias git_neo_log='git_log --first-parent $(nvim --version | grep commit | cut -d" " -f2)..'
@@ -217,7 +216,6 @@ alias upgrade_all="   upgrade_say 'node'   && upgrade_node      \
                    && upgrade_say 'neovim' && upgrade_neovim    \
                    && upgrade_say 'pip'    && upgrade_pip       \
                    && upgrade_say 'pip3'   && upgrade_pip3      \
-                   && upgrade_say 'Janus'  && upgrade_janus     \
                    && upgrade_say 'RVM'    && upgrade_rvm       \
                    && upgrade_say 'Wine'   && upgrade_brew_wine \
                    && upgrade_say 'Dotfiles (all submodules)' && upgrade_submodules"

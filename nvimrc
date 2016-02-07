@@ -1,5 +1,4 @@
 
-
 call plug#begin('~/.vim/plugged')
 
 " Better Settings
@@ -60,6 +59,23 @@ Plug 'https://github.com/rizzatti/dash.vim'
 Plug 'https://github.com/tpope/vim-git.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'      " Git integration
 Plug 'https://github.com/airblade/vim-gitgutter.git'
+Plug 'https://github.com/rhysd/committia.vim.git'     " Better commiting messageing
+let g:committia_open_only_vim_starting = 1
+let g:committia_hooks = {}
+function! g:committia_hooks.edit_open(info)
+    " Additional settings
+    setlocal spell
+
+    " If no commit message, start with insert mode
+    if a:info.vcs ==# 'git' && getline(1) ==# ''
+        startinsert
+    end
+
+    " Scroll the diff window from insert mode
+    " Map <C-n> and <C-p>
+    imap <buffer><C-n> <Plug>(committia-scroll-diff-down-half)
+    imap <buffer><C-p> <Plug>(committia-scroll-diff-up-half)
+endfunction
 
 " General improvements
 Plug 'https://github.com/tpope/vim-repeat.git'        " Better . (dot)
@@ -411,45 +427,45 @@ let g:bufferline_echo = 0
 nmap <F8> :TagbarToggle<CR>
 
 " UltiSnip
-let g:ycm_key_list_select_completion = ['<C-TAB>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-Tab>'
+"let g:ycm_key_list_select_completion = ['<C-TAB>', '<Down>']
+"let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>']
+"let g:SuperTabDefaultCompletionType = '<C-Tab>'
 
-let g:UltiSnipsExpandTrigger       = "<c-tab>"
-let g:UltiSnipsJumpForwardTrigger  = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+"let g:UltiSnipsExpandTrigger       = "<c-tab>"
+"let g:UltiSnipsJumpForwardTrigger  = "<tab>"
+"let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 " Enable tabbing through list of results
-function! g:UltiSnips_Complete()
-	call UltiSnips#ExpandSnippet()
-	if g:ulti_expand_res == 0
-		if pumvisible()
-			return "\<C-n>"
-		else
-			call UltiSnips#JumpForwards()
-			if g:ulti_jump_forwards_res == 0
-				return "\<TAB>"
-			endif
-		endif
-	endif
-	return ""
-endfunction
+"function! g:UltiSnips_Complete()
+"	call UltiSnips#ExpandSnippet()
+"	if g:ulti_expand_res == 0
+"		if pumvisible()
+"			return "\<C-n>"
+"		else
+"			call UltiSnips#JumpForwards()
+"			if g:ulti_jump_forwards_res == 0
+"				return "\<TAB>"
+"			endif
+"		endif
+"	endif
+"	return ""
+"endfunction
 
-au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+"au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
 
 " Expand snippet or return
-let g:ulti_expand_res = 0
-function! Ulti_ExpandOrEnter()
-	call UltiSnips#ExpandSnippet()
-	if g:ulti_expand_res
-		return ''
-	else
-		return "\<return>"
-	endif
-endfunction
+"let g:ulti_expand_res = 0
+"function! Ulti_ExpandOrEnter()
+"	call UltiSnips#ExpandSnippet()
+"	if g:ulti_expand_res
+"		return ''
+"	else
+"		return "\<return>"
+"	endif
+"endfunction
 
 " Set <space> as primary trigger
-inoremap <return> <C-R>=Ulti_ExpandOrEnter()<CR>
+"inoremap <return> <C-R>=Ulti_ExpandOrEnter()<CR>
 
 
 " = Syntastic = {{{

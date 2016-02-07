@@ -62,6 +62,9 @@ brew install terminal-notifier
 # Graphviz - tool for graphs
 brew install graphviz
 
+# asciinema - record the terminal
+brew install asciinema
+
 # Tool for backing up mac
 brew install mackup
 

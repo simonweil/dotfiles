@@ -4,7 +4,7 @@
 [credential]
 	helper = osxkeychain
 [core]
-	editor = /usr/bin/vim
+	editor = /usr/local/bin/nvim
 	excludesFile = /Users/simonweil/.gitignore_global
 [format]
 	signoff = true
