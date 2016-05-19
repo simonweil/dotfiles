@@ -74,8 +74,9 @@ alias git_log_all="git_log --branches --remotes --tags --decorate"
 alias gp="git pull --rebase"
 alias gf="git fetch && git fetch --tags"
 alias gs="git status"
-alias gd="git diff --ignore-space-at-eol -b -w --ignore-blank-lines"
-alias gc='git checkout $(git branch -a | fzf | sed -e "s#^\s*remotes/[^/]*/##")'
+alias gde="git diff --ignore-space-at-eol -b -w --ignore-blank-lines"
+alias gd="gde --no-ext-diff"
+alias gc='git checkout $(git branch -a | fzf --ansi | sed -e "s#^\s*remotes/[^/]*/##")'
 alias gc-='git checkout -'
 alias gcd='git checkout develop'
 alias gcm='git checkout master'
@@ -98,10 +99,12 @@ gl() {
     shas=$(sed '1,2d;s/^[^a-z0-9]*//;/^$/d' <<< "$out" | awk '{print $1}')
     [ -z "$shas" ] && continue
     if [ "$k" = ctrl-d ]; then
-      git diff --no-ext-diff --color=always --ignore-space-at-eol -b -w --ignore-blank-lines "$shas" | less -R
+      git diff --no-ext-diff --color=always --ignore-space-at-eol -b -w --ignore-blank-lines "$shas" |
+        diff-so-fancy |
+        less --tabs=1,5 -R
     else
       for sha in $shas; do
-        git show --color=always "$sha" | less -R
+        git show --color=always "$sha" | diff-so-fancy | less --tabs=1,5 -R
       done
     fi
   done

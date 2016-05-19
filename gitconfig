@@ -1,46 +1,67 @@
 [user]
-	name = Simon Weil
-	email = simon@powtoon.com
+        name = Simon Weil
+        email = simon@powtoon.com
 [credential]
-	helper = osxkeychain
+        helper = osxkeychain
 [core]
-	editor = /usr/local/bin/nvim
-	excludesFile = /Users/simonweil/.gitignore_global
+        editor = /usr/local/bin/nvim
+        excludesFile = /Users/simonweil/.gitignore_global
 [format]
-	signoff = true
+        signoff = true
 
 [pull]
-	default = simple
-#	rebase = preserve
+        default = simple
 [push]
-	default = simple
+        default = current
 
 [merge]
-	tool = meld
-#  tool = vimdiff
+        tool = meld
+
 [diff]
-	tool = meld
-	external = git-meld
+        tool = meld
+        external = git-meld
+        algorithm = patience
 
 [mergetool]
-  prompt = true
-
+        prompt = true
 [mergetool "vimdiff"]
-  cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+        cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
 
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
+[difftool "vimdiff"]
+        cmd = nvim -d "$LOCAL" "$REMOTE"
 
 [mergetool "sourcetree"]
 	cmd = /opt/homebrew-cask/Caskroom/sourcetree/2.0.4/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 
 [alias]
-	ribbon = tag --force _ribbon origin/master
-	catchup = log --patch --reverse --topo-order _ribbon..origin/master
-	catchup-short = log _ribbon.. --oneline
-	catchup-summary = log _ribbon.. --summary
+        ribbon = tag --force _ribbon origin/master
+        catchup = log --patch --reverse --topo-order _ribbon..origin/master
+        catchup-short = log _ribbon.. --oneline
+        catchup-summary = log _ribbon.. --summary
 
-[heroku]
-	account = ni
+[pager]
+        diff = diff-so-fancy | less --tabs=1,5 -RFX --pattern='^(added|deleted|modified): '
+        show = diff-so-fancy | less --tabs=1,5 -RFX --pattern='^(added|deleted|modified): '
+
+# so much color
+[color]
+        ui = always
+[color "diff"]
+        meta = yellow bold
+        commit = green bold
+        frag = magenta bold
+        old = red bold
+        new = green bold
+        whitespace = red reverse
+[color "branch"]
+        current = yellow reverse
+        local = yellow
+        remote = green
+[color "status"]
+        added = yellow
+        changed = green
+        untracked = cyan

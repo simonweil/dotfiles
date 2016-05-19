@@ -7,7 +7,7 @@ brew cask install java
 brew cask install flash
 #brew cask install flash-player-debugger
 brew cask install karabiner
-brew cask install menumeters
+brew cask install yujitach-menumeters #menumeters
 brew cask install recordit
 brew cask install keepingyouawake
 

@@ -10,17 +10,18 @@ brew tap telemachus/homebrew-desc
 brew install python --universal --with-brewed-openssl --with-brewed-tk
 brew install python3 --universal --with-quicktest
 brew install pygtk --universal
-brew install homebrew/x11/meld hicolor-icon-theme
+brew install homebrew/gui/meld hicolor-icon-theme
 
 # wine
 brew install wine --devel
 brew install winetricks
 
-# Other apps
+# Devekopment
 brew install mysql node macvim
 brew install postgresql pgcli
 brew install ctags
 brew install tidy-html5
+brew install shellcheck # for vim shell static check
 
 # Shells
 brew install zsh zsh-completions
@@ -34,16 +35,17 @@ brew install rails-completion rake-completion bundler-completion gem-completion 
              docker-completion packer-completion spring-completion brew-cask-completion open-completion
 
 # git
-brew install git git-flow-avh hub
+brew install git git-flow-avh hub diff-so-fancy
 
 # Tools
-brew install wget coreutils md5sha1sum rename tree cheat the_platinum_searcher
+brew install wget coreutils md5sha1sum rename tree cheat stormssh osquery
 brew install findutils homebrew/dupes/grep gnu-sed --with-default-names
-brew install shellcheck # for vim shell static check
+brew install htop --with-ncurses
+brew install archey # small command line utility to show the OSX spec
 
 # Command line enhancement
 brew install antigen
-brew install liquidprompt autojump stormssh osquery
+brew install liquidprompt autojump the_platinum_searcher
 #brew install tmux
 brew install fzf # consider peco https://github.com/peco/peco
 
@@ -63,7 +65,7 @@ brew install terminal-notifier
 brew install graphviz
 
 # asciinema - record the terminal
-brew install asciinema
+brew install asciinema asciinema2gif
 
 # Tool for backing up mac
 brew install mackup
