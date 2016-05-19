@@ -36,6 +36,7 @@ MAC apps
 
 VIM
 ===
+1. http://blog.petrzemek.net/2016/04/06/things-about-vim-i-wish-i-knew-earlier/
 2. sessions made easier: https://github.com/xolox/vim-session or https://github.com/tpope/vim-obsession
 3. code completion: https://github.com/Valloric/YouCompleteMe, https://github.com/Shougo/deoplate.vim
 4. better yanking: https://github.com/maxbrunsfeld/vim-yankstack

@@ -144,6 +144,7 @@ endfunction
 Plug 'https://github.com/kana/vim-textobj-user.git'           " Needed to define custom text objects
 Plug 'https://github.com/michaeljsmith/vim-indent-object.git' " Indentation level text object (i & I)
 Plug 'https://github.com/Chiel92/vim-autoformat.git'          " Reformat files
+"Plug 'https://github.com/foosoft/vim-argwrap.git'
 
 " Help
 Plug 'https://github.com/rizzatti/dash.vim'
