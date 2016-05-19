@@ -6,16 +6,84 @@ Plug 'https://github.com/tpope/vim-sensible.git'
 Plug 'https://github.com/jeffkreeftmeijer/vim-numbertoggle.git' " smart setting of number and relative number
 
 " Completion
-Plug 'https://github.com/ervandew/supertab.git'
-Plug 'https://github.com/Valloric/YouCompleteMe.git', { 'do': './install.py' }
+"Plug 'https://github.com/Valloric/YouCompleteMe.git', { 'do': './install.py' }
 
-"Plug 'https://github.com/Shougo/deoplete.nvim.git'
-"Plug 'https://github.com/Shougo/deoplete-neoinclude.vim.git'
-"Plug 'https://github.com/Shougo/deoplete-neco-syntax.git'
-"Plug 'https://github.com/Shougo/deoplete-neco-vim.git'
+Plug 'https://github.com/Shougo/deoplete.nvim.git'
+"Plug 'https://github.com/Shougo/neco-vim.git'               " vim source for Vim script
+"Plug 'https://github.com/Shougo/neoinclude.vim.git'         " include and file/include sources
+"Plug 'https://github.com/Shougo/neco-syntax.git'            " syntax source
+Plug 'https://github.com/zchee/deoplete-jedi.git'           " jedi source
+let deoplete#sources#jedi#show_docstring = 1
+
+Plug 'https://github.com/ervandew/supertab.git'
+let g:SuperTabDefaultCompletionType = "<c-n>" " Make the tabing on completion menu go from top to bottom
+let g:SuperTabClosePreviewOnPopupClose = 1 " Close the preview when completion ends
+"Plug 'http://github.com/Shougo/echodoc.vim.git'
+" Deoplete
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
+"let g:echodoc_enable_at_startup = 1
+"set cmdheight=2
 
 " Snippets
 Plug 'https://github.com/sirver/ultisnips.git'
+" Don't map any tabs, I'll do it later
+let g:UltiSnipsExpandTrigger = '<NOP>'
+let g:UltiSnipsJumpForwardTrigger = '<NOP>'
+let g:UltiSnipsJumpBackwardTrigger = '<NOP>'
+let g:SuperTabMappingForward = '<NOP>'
+let g:SuperTabMappingBackward = '<NOP>'
+" Don't unmap my mappings
+let g:UltiSnipsMappingsToIgnore = [ "SmartTab", "SmartShiftTab" ]
+
+" Make <CR> smart
+let g:ulti_expand_res = 0
+function! Ulti_ExpandOrEnter()
+    " First try to expand a snippet
+    call UltiSnips#ExpandSnippet()
+    if g:ulti_expand_res
+        " if successful, just return
+        return ''
+    elseif pumvisible()
+        " if in completion menu - just close it and leave the cursor at the
+        " end of the completion
+        return deoplete#mappings#close_popup()
+    else
+        " otherwise, just do an "enter"
+        return "\<return>"
+    endif
+endfunction
+inoremap <return> <C-R>=Ulti_ExpandOrEnter()<CR>
+
+" Enable tabbing and shift-tabbing through list of results
+function! g:SmartTab()
+    if pumvisible()
+	return SuperTab("n")
+    else
+	call UltiSnips#JumpForwards()
+	if g:ulti_jump_forwards_res == 0
+	    return SuperTab("n")
+	endif
+        return ''
+    endif
+endfunction
+inoremap <silent> <tab> <C-R>=g:SmartTab()<cr>
+snoremap <silent> <tab> <Esc>:call g:SmartTab()<cr>
+
+function! g:SmartShiftTab()
+    if pumvisible()
+	return SuperTab("p")
+    else
+	call UltiSnips#JumpBackwards()
+	if g:ulti_jump_backwards_res == 0
+	    return SuperTab("p")
+	endif
+        return ''
+    endif
+endfunction
+inoremap <silent> <s-tab> <C-R>=g:SmartShiftTab()<cr>
+snoremap <silent> <s-tab> <Esc>:call g:SmartShiftTab()<cr>
+
 Plug 'https://github.com/honza/vim-snippets.git'
 " Alternative:
 "Plug 'https://github.com/garbas/vim-snipmate.git'
@@ -27,8 +95,9 @@ Plug 'https://github.com/scrooloose/syntastic.git'
 
 " Apperance
 Plug 'https://github.com/morhetz/gruvbox.git'
-Plug 'https://github.com/bling/vim-airline.git'
-Plug 'https://github.com/bling/vim-bufferline.git'
+Plug 'https://github.com/vim-airline/vim-airline.git'
+Plug 'https://github.com/vim-airline/vim-airline-themes.git'
+"Plug 'https://github.com/bling/vim-bufferline.git'
 Plug 'https://github.com/nathanaelkane/vim-indent-guides.git'
 
 " Movement & Search
@@ -39,7 +108,20 @@ Plug 'https://github.com/justinmk/vim-sneak.git'
 Plug 'https://github.com/tpope/vim-unimpaired.git' " pairs of handy bracket mappings
 Plug 'https://github.com/nazo/pt.vim.git'
 
-" Editing
+" Make some command toggle for more speed!
+Plug '~/mine/projects/vim-cycle-movements'
+nnoremap <silent> ^ :call CycleMovements('^', '$' ,'0')<CR>
+nnoremap <silent> 0 :call CycleMovements('0' ,'^', '$')<CR>
+nnoremap <silent> $ :call CycleMovements('$', '0', '^')<CR>
+nnoremap <silent> L :call CycleMovements('L', 'M', 'H')<CR>
+nnoremap <silent> M :call CycleMovements('M', 'H', 'L')<CR>
+nnoremap <silent> H :call CycleMovements('H', 'L', 'M')<CR>
+nnoremap <silent> G :call CycleMovements('G', 'gg')<CR>
+nnoremap <silent> gg :call CycleMovements('gg', 'G')<CR>
+
+"""""""""""
+" Editing "
+"""""""""""
 Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'https://github.com/jiangmiao/auto-pairs.git'
 Plug 'https://github.com/tpope/vim-speeddating.git' " use CTRL-A/CTRL-X to increment dates, times, and more
@@ -48,9 +130,20 @@ Plug 'https://github.com/tpope/vim-speeddating.git' " use CTRL-A/CTRL-X to incre
 "Plug 'https://github.com/mattn/emmet-vim.git'
 Plug 'https://github.com/tpope/vim-characterize.git'
 Plug 'https://github.com/bronson/vim-trailing-whitespace.git'
+let g:extra_whitespace_ignored_filetypes = ['git']
+
 Plug 'https://github.com/terryma/vim-multiple-cursors.git'
+" disable deoplate when using multiplae cursors (see: https://github.com/Shougo/deoplete.nvim/blob/master/doc/deoplete.txt#L1070)
+function g:Multiple_cursors_before()
+    let g:deoplete#disable_auto_complete = 1
+endfunction
+function g:Multiple_cursors_after()
+    let g:deoplete#disable_auto_complete = 0
+endfunction
+
+Plug 'https://github.com/kana/vim-textobj-user.git'           " Needed to define custom text objects
 Plug 'https://github.com/michaeljsmith/vim-indent-object.git' " Indentation level text object (i & I)
-Plug 'https://github.com/Chiel92/vim-autoformat.git' " Reformat files
+Plug 'https://github.com/Chiel92/vim-autoformat.git'          " Reformat files
 
 " Help
 Plug 'https://github.com/rizzatti/dash.vim'
@@ -114,6 +207,9 @@ Plug '~/mine/projects/cheatsheet.vim'
 " language pack, look here to find language plugins
 " https://github.com/sheerun/vim-polyglot
 
+" Set filetype in by context in of the file (e.g. javascript tag in an html file)
+"Plug 'https://github.com/Shougo/context_filetype.vim.git'
+
 " Ruby
 Plug 'https://github.com/vim-ruby/vim-ruby.git'
 Plug 'https://github.com/tpope/vim-endwise.git'
@@ -130,6 +226,7 @@ Plug 'https://github.com/depuracao/vim-rdoc.git'
 
 " Python
 Plug 'https://github.com/mitsuhiko/vim-python-combined.git'
+Plug 'https://github.com/mjbrownie/django-template-textobjects.git'
 
 " Ember
 Plug 'https://github.com/heartsentwined/vim-emblem.git'
@@ -241,7 +338,8 @@ call plug#end()
 " = Vimscript file settings = {{{
 augroup filetype_vim
   autocmd!
-  autocmd FileType vim setlocal foldmethod=marker
+  autocmd FileType vim setlocal foldmethod=marker keywordprg=:help
+  autocmd Filetype vim setlocal softtabstop=2 shiftwidth=2 smarttab
 augroup END
 " }}}
 
@@ -268,8 +366,8 @@ set number
 
 " Show a 120 column width indicator
 set colorcolumn=120
-highlight ColorColumn ctermbg=red
-au FileType help,qf,netrw,location setlocal colorcolumn=
+highlight ColorColumn ctermbg=12 guibg=Red
+au FileType help,qf,netrw,location,git setlocal colorcolumn=
 
 " highlight search results
 set hlsearch
@@ -279,6 +377,15 @@ set smarttab
 
 " always uses spaces instead of tab characters
 set expandtab
+
+" Spelling
+if !&readonly
+  augroup spellcheck
+    autocmd!
+    autocmd FileType markdown setlocal spell complete+=kspell
+  augroup END
+endif
+let &spellfile = $HOME . "/.dotfiles/vim/dictionary.en.add"
 " }}}
 
 
@@ -308,6 +415,33 @@ nmap <LocalLeader>ff [I:let nr = input("Which one: ")<Bar>exe "normal " . nr ."[
 
 " find git merge conflict markers
 nnoremap <LocalLeader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
+
+" Underline the current line with any char or a specific rule in specific filetypes
+function! UnderlineCurrentLine(...) abort
+  let line = getline('.')
+
+  " For markdown files, underline headers of tables specially
+  if &filetype ==? "markdown" && line[0] == '|' && line[len(line)-1] == '|'
+    execute "normal! :t.\<CR>:s/[^|]/-/g\<CR>"
+    return
+  endif
+
+  let _c = getchar()
+  let c = type(_c) == type(0) ? nr2char(_c) : _c
+  if c ==# "\<Esc>" || c == "\<C-c>"
+    return
+  endif
+
+  execute "normal! :t.\<CR>Vr" . c
+
+  " In insert mode end on the next line back in insert mode
+  if a:0 == 1 && a:1 ==? "i"
+    normal! o
+    startinsert
+  endif
+endfunction
+nmap <silent> <leader>ul :call UnderlineCurrentLine()<CR>
+imap <silent> <leader>ul <ESC>:call UnderlineCurrentLine("i")<CR>
 
 " }}}
 
@@ -402,7 +536,7 @@ nnoremap <localleader>evb :vsplit ~/.nvimrc<cr>
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_guide_size = 1
 let g:indent_guides_color_change_percent = 15
-let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'git', 'vim-plug', 'man']
 
 
 " Number Toggle
@@ -425,47 +559,6 @@ let g:bufferline_echo = 0
 
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
-
-" UltiSnip
-"let g:ycm_key_list_select_completion = ['<C-TAB>', '<Down>']
-"let g:ycm_key_list_previous_completion = ['<C-S-TAB>', '<Up>']
-"let g:SuperTabDefaultCompletionType = '<C-Tab>'
-
-"let g:UltiSnipsExpandTrigger       = "<c-tab>"
-"let g:UltiSnipsJumpForwardTrigger  = "<tab>"
-"let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-
-" Enable tabbing through list of results
-"function! g:UltiSnips_Complete()
-"	call UltiSnips#ExpandSnippet()
-"	if g:ulti_expand_res == 0
-"		if pumvisible()
-"			return "\<C-n>"
-"		else
-"			call UltiSnips#JumpForwards()
-"			if g:ulti_jump_forwards_res == 0
-"				return "\<TAB>"
-"			endif
-"		endif
-"	endif
-"	return ""
-"endfunction
-
-"au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-
-" Expand snippet or return
-"let g:ulti_expand_res = 0
-"function! Ulti_ExpandOrEnter()
-"	call UltiSnips#ExpandSnippet()
-"	if g:ulti_expand_res
-"		return ''
-"	else
-"		return "\<return>"
-"	endif
-"endfunction
-
-" Set <space> as primary trigger
-"inoremap <return> <C-R>=Ulti_ExpandOrEnter()<CR>
 
 
 " = Syntastic = {{{
@@ -543,18 +636,6 @@ nmap gm :LivedownToggle<CR>
 autocmd Filetype html setlocal tabstop=4 softtabstop=4 expandtab shiftwidth=4 smarttab
 
 if has('dontdoathis')
-" Deoplete
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
-inoremap <expr><Tab> deoplete#mappings#close_popup()
-inoremap <expr><BS>  deoplete#mappings#smart_close_popup()."\<C-h>"
-"deoplete#mappings#manual_complete()
-"set shortmess+=c
-"set completeopt+=noinsert
-
-
-
-
 
 " ----------------------------------------------------------
 " setup the projects: https://github.com/amiorin/vim-project
