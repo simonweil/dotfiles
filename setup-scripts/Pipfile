@@ -1,3 +1,5 @@
+brew install brew-pip
+
 pip install neovim
 pip3 install neovim
 pip install pylama

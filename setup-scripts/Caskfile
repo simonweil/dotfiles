@@ -26,6 +26,7 @@ brew cask install dash
 brew cask install vagrant
 brew cask install virtualbox
 brew cask install gitbook-editor
+brew cask install electron
 
 # Browsers
 brew cask install google-chrome
@@ -33,8 +34,9 @@ brew cask install firefox
 brew cask install firefoxdeveloperedition
 
 # File sharing
-brew cask install dropbox
+#brew cask install dropbox
 brew cask install google-drive
+brew cask install filezilla
 
 # Editors
 brew cask install sublime-text
@@ -52,7 +54,7 @@ brew cask install remote-desktop-connection
 #brew cask install jing
 
 # Communications
-#brew cask install skype
+brew cask install skype
 brew cask install slack
 
 # In trial

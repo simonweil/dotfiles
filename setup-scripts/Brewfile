@@ -16,12 +16,14 @@ brew install homebrew/gui/meld hicolor-icon-theme
 brew install wine --devel
 brew install winetricks
 
-# Devekopment
+# Development
+brew install vim neovim/neovim/neovim
 brew install mysql node macvim
 brew install postgresql pgcli
 brew install ctags
 brew install tidy-html5
 brew install shellcheck # for vim shell static check
+brew install ievms
 
 # Shells
 brew install zsh zsh-completions
@@ -33,20 +35,20 @@ brew tap homebrew/completions
 brew install rails-completion rake-completion bundler-completion gem-completion pip-completion \
              ruby-completion vagrant-completion tmuxinator-completion grunt-completion django-completion \
              docker-completion packer-completion spring-completion brew-cask-completion open-completion \
-             launchctl-completion
+             launchctl-completion fabric-completion
 
 # git
 brew install git git-flow-avh hub diff-so-fancy
 
 # Tools
-brew install wget coreutils md5sha1sum rename tree cheat stormssh osquery
+brew install wget coreutils md5sha1sum rename tree cheat stormssh osquery dos2unix prettyping
 brew install findutils homebrew/dupes/grep gnu-sed --with-default-names
 brew install htop --with-ncurses
 brew install archey # small command line utility to show the OSX spec
 
 # Command line enhancement
 brew install antigen
-brew install liquidprompt autojump the_platinum_searcher
+brew install liquidprompt autojump the_platinum_searcher the_silver_searcher
 #brew install tmux
 brew install fzf # consider peco https://github.com/peco/peco
 
@@ -54,8 +56,8 @@ brew install fzf # consider peco https://github.com/peco/peco
 $(brew info fzf | grep /install)
 
 # todo - TRIAL
-brew install todo-txt
-brew install googlecl
+#brew install todo-txt
+#brew install googlecl
 brew install terminal-notifier
 
 ########

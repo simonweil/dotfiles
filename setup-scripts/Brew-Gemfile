@@ -1,3 +1,3 @@
 brew install brew-gem
 
-brew gem install tmuxinator
+#brew gem install tmuxinator
