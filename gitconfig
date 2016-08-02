@@ -6,6 +6,7 @@
 [core]
         editor = /usr/local/bin/nvim
         excludesFile = /Users/simonweil/.gitignore_global
+	autocrlf = input
 [format]
         signoff = true
 

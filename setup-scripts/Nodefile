@@ -1,11 +1,19 @@
+# frameworks
+npm install -g ember-cli
+
+# builders and task runners
+npm install -g webpack
 npm install -g bower
 npm install -g grunt-cli
 npm install -g gulp
-npm install -g ember-cli
 
+# dev tools
+npm install -g js-beautify
+npm install -g babel
+npm install -g eslint
+
+# tools
 npm install -g devtools-terminal
 npm install -g livedown
 npm install -g git-open
-
 npm install -g nyaovim
-npm install -g js-beautify

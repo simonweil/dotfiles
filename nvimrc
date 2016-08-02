@@ -39,47 +39,47 @@ let g:UltiSnipsMappingsToIgnore = [ "SmartTab", "SmartShiftTab" ]
 " Make <CR> smart
 let g:ulti_expand_res = 0
 function! Ulti_ExpandOrEnter()
-    " First try to expand a snippet
-    call UltiSnips#ExpandSnippet()
-    if g:ulti_expand_res
-        " if successful, just return
-        return ''
-    elseif pumvisible()
-        " if in completion menu - just close it and leave the cursor at the
-        " end of the completion
-        return deoplete#mappings#close_popup()
-    else
-        " otherwise, just do an "enter"
-        return "\<return>"
-    endif
+  " First try to expand a snippet
+  call UltiSnips#ExpandSnippet()
+  if g:ulti_expand_res
+    " if successful, just return
+    return ''
+  elseif pumvisible()
+    " if in completion menu - just close it and leave the cursor at the
+    " end of the completion
+    return deoplete#mappings#close_popup()
+  else
+    " otherwise, just do an "enter"
+    return "\<return>"
+  endif
 endfunction
 inoremap <return> <C-R>=Ulti_ExpandOrEnter()<CR>
 
 " Enable tabbing and shift-tabbing through list of results
 function! g:SmartTab()
-    if pumvisible()
-	return SuperTab("n")
-    else
-	call UltiSnips#JumpForwards()
-	if g:ulti_jump_forwards_res == 0
-	    return SuperTab("n")
-	endif
-        return ''
+  if pumvisible()
+    return SuperTab("n")
+  else
+    call UltiSnips#JumpForwards()
+    if g:ulti_jump_forwards_res == 0
+      return SuperTab("n")
     endif
+    return ''
+  endif
 endfunction
 inoremap <silent> <tab> <C-R>=g:SmartTab()<cr>
 snoremap <silent> <tab> <Esc>:call g:SmartTab()<cr>
 
 function! g:SmartShiftTab()
-    if pumvisible()
-	return SuperTab("p")
-    else
-	call UltiSnips#JumpBackwards()
-	if g:ulti_jump_backwards_res == 0
-	    return SuperTab("p")
-	endif
-        return ''
+  if pumvisible()
+    return SuperTab("p")
+  else
+    call UltiSnips#JumpBackwards()
+    if g:ulti_jump_backwards_res == 0
+      return SuperTab("p")
     endif
+    return ''
+  endif
 endfunction
 inoremap <silent> <s-tab> <C-R>=g:SmartShiftTab()<cr>
 snoremap <silent> <s-tab> <Esc>:call g:SmartShiftTab()<cr>
@@ -135,16 +135,18 @@ let g:extra_whitespace_ignored_filetypes = ['git']
 Plug 'https://github.com/terryma/vim-multiple-cursors.git'
 " disable deoplate when using multiplae cursors (see: https://github.com/Shougo/deoplete.nvim/blob/master/doc/deoplete.txt#L1070)
 function g:Multiple_cursors_before()
-    let g:deoplete#disable_auto_complete = 1
+  let g:deoplete#disable_auto_complete = 1
 endfunction
 function g:Multiple_cursors_after()
-    let g:deoplete#disable_auto_complete = 0
+  let g:deoplete#disable_auto_complete = 0
 endfunction
 
 Plug 'https://github.com/kana/vim-textobj-user.git'           " Needed to define custom text objects
 Plug 'https://github.com/michaeljsmith/vim-indent-object.git' " Indentation level text object (i & I)
 Plug 'https://github.com/Chiel92/vim-autoformat.git'          " Reformat files
 "Plug 'https://github.com/foosoft/vim-argwrap.git'
+
+Plug 'https://github.com/dhruvasagar/vim-table-mode.git' " For working with tables, Lazy load when using TableModeToggle
 
 " Help
 Plug 'https://github.com/rizzatti/dash.vim'
@@ -157,18 +159,18 @@ Plug 'https://github.com/rhysd/committia.vim.git'     " Better commiting message
 let g:committia_open_only_vim_starting = 1
 let g:committia_hooks = {}
 function! g:committia_hooks.edit_open(info)
-    " Additional settings
-    setlocal spell
+  " Additional settings
+  setlocal spell
 
-    " If no commit message, start with insert mode
-    if a:info.vcs ==# 'git' && getline(1) ==# ''
-        startinsert
-    end
+  " If no commit message, start with insert mode
+  if a:info.vcs ==# 'git' && getline(1) ==# ''
+    startinsert
+  end
 
-    " Scroll the diff window from insert mode
-    " Map <C-n> and <C-p>
-    imap <buffer><C-n> <Plug>(committia-scroll-diff-down-half)
-    imap <buffer><C-p> <Plug>(committia-scroll-diff-up-half)
+  " Scroll the diff window from insert mode
+  " Map <C-n> and <C-p>
+  imap <buffer><C-n> <Plug>(committia-scroll-diff-down-half)
+  imap <buffer><C-p> <Plug>(committia-scroll-diff-up-half)
 endfunction
 
 " General improvements
@@ -188,6 +190,13 @@ Plug 'https://github.com/vim-jp/vital.vim.git'
 "https://github.com/mattn/webapi-vim
 "https://github.com/google/vim-maktaba
 "https://github.com/google/vim-glaive
+
+""""""""""""""""
+" Fuzzy Things "
+""""""""""""""""
+Plug '/usr/local/opt/fzf'
+Plug 'https://github.com/junegunn/fzf.vim.git'
+let g:fzf_commits_log_options = '--color=always --pretty=format:"%Cred%h%Creset - %s %Cgreen(%cr)%Creset by %C(bold blue)%an%C(yellow)%d%Creset" --abbrev-commit --date=relative'
 
 """""""""""
 " NyaoVim "

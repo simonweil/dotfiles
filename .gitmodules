@@ -4,3 +4,7 @@
 [submodule "non-packaged-repos/vim-plug"]
 	path = non-packaged-repos/vim-plug
 	url = git@github.com:junegunn/vim-plug.git
+[submodule "non-packaged-repos/awesome-terminal-fonts"]
+	path = non-packaged-repos/awesome-terminal-fonts
+	url = git@github.com:gabrielelana/awesome-terminal-fonts.git
+	branch = patching-strategy

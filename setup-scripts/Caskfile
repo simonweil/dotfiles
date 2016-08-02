@@ -10,11 +10,12 @@ brew cask install karabiner
 brew cask install yujitach-menumeters #menumeters
 brew cask install recordit
 brew cask install keepingyouawake
+brew cask install flux
 
 # Productivity
 brew cask install cheatsheet
 brew cask install sizeup
-brew cask install adium
+#brew cask install adium
 brew cask install fluid
 #brew cask install alfred
 
@@ -24,10 +25,12 @@ brew cask install sourcetree
 brew cask install dash
 brew cask install vagrant
 brew cask install virtualbox
+brew cask install gitbook-editor
 
 # Browsers
 brew cask install google-chrome
 brew cask install firefox
+brew cask install firefoxdeveloperedition
 
 # File sharing
 brew cask install dropbox
@@ -35,6 +38,8 @@ brew cask install google-drive
 
 # Editors
 brew cask install sublime-text
+brew cask install pycharm
+brew cask install atom
 
 # Other
 brew cask install teamviewer
@@ -43,7 +48,7 @@ brew cask install tunnelblick
 #brew cask install utorrent
 #brew cask install xbmc
 #brew cask install gimp
-#brew cask install remote-desktop-connection
+brew cask install remote-desktop-connection
 #brew cask install jing
 
 # Communications
@@ -51,7 +56,7 @@ brew cask install tunnelblick
 brew cask install slack
 
 # In trial
-brew cask install todotxt
+#brew cask install todotxt
 
 # DB browsers
 #brew cask install sqlitebrowser

@@ -5675,7 +5675,7 @@
 	<key>NSFontPanelPreviewHeight</key>
 	<real>100</real>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/misc/logs</string>
+	<string>~/Desktop</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
 	<string>{712, 448}</string>
 	<key>NSNavPanelExpandedSizeForSaveMode</key>
@@ -5706,11 +5706,15 @@
 	<key>NSTableView Sort Ordering KeyBingingTable</key>
 	<array/>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>415 239 737 213 0 0 1280 777 </string>
+	<string>904 361 737 112 0 0 1920 1177 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>265 232 924 485 0 0 1280 777 </string>
+	<string>36 292 924 485 0 0 1280 777 </string>
+	<key>NSWindow Frame SUStatusFrame</key>
+	<string>448 487 384 129 0 0 1280 777 </string>
+	<key>NSWindow Frame UKCrashReporter</key>
+	<string>80 193 592 584 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 31 1278 746 0 0 1280 777 </string>
+	<string>0 46 1274 731 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>231 294 1277 587 0 0 1920 1177 </string>
 	<key>New Bookmarks</key>
@@ -7180,6 +7184,12 @@
 			<string>/Users/simonweil</string>
 		</dict>
 	</array>
+	<key>NoSyncHaveShownPromoWithId_4</key>
+	<true/>
+	<key>NoSyncTimeOfLastPromo</key>
+	<real>477838999.53328598</real>
+	<key>NoSyncTimeOfLastPromoDownload</key>
+	<real>485195313.06718898</real>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
@@ -7246,11 +7256,11 @@
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedURL</key>
-	<string>http://iterm2.com/appcasts/final.xml</string>
+	<string>https://iterm2.com/appcasts/final.xml</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-09-06T16:43:44Z</date>
+	<date>2016-05-17T13:46:46Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -7282,6 +7292,8 @@
 	</array>
 	<key>TripleClickSelectsFullWrappedLines</key>
 	<false/>
+	<key>UKCrashReporterLastCrashReportDate</key>
+	<real>1453837056</real>
 	<key>URLHandlersByGuid</key>
 	<dict/>
 	<key>UseBorder</key>
@@ -10440,8 +10452,8 @@
 	<key>findIgnoreCase_iTerm</key>
 	<true/>
 	<key>findRegex_iTerm</key>
-	<false/>
+	<true/>
 	<key>iTerm Version</key>
-	<string>2.0.0.20141103</string>
+	<string>2.1.4</string>
 </dict>
 </plist>
