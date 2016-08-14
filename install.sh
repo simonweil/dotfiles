@@ -1,4 +1,6 @@
-#!/usr/bin/env bash -e
+#!/usr/bin/env bash
+
+set -o errexit
 
 # install HomeBrew
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -22,13 +24,18 @@ curl -sSL https://get.rvm.io | bash -s stable --ruby --autolibs=brew
 #rvm @global do gem install tmuxinator
 
 # janus
-curl -Lo- https://bit.ly/janus-bootstrap | bash
+#curl -Lo- https://bit.ly/janus-bootstrap | bash
+
+# For updating the submodules
+git submodule init
+git submodule update --remote --merge
 
 # Setup all symlinks
-ln -s $PWD/vimrc.before         ~/.vimrc.before
-ln -s $PWD/vimrc.after          ~/.vimrc.after
+ln -s $PWD/config/              ~/.config
+#ln -s $PWD/vimrc.before         ~/.vimrc.before
+#ln -s $PWD/vimrc.after          ~/.vimrc.after
 ln -s $PWD/liquidpromptrc       ~/.liquidpromptrc
-ln -s $PWD/janus                ~/.janus
+#ln -s $PWD/janus                ~/.janus
 ln -s $PWD/gitconfig            ~/.gitconfig
 ln -s $PWD/zshrc                ~/.zshrc
 ln -s $PWD/bashrc               ~/.bashrc
@@ -41,14 +48,10 @@ mkdir ~/bin
 ln -s $PWD/bin/git-meld         ~/bin/
 ln -s $PWD/bin/find_stories.py  ~/bin/
 ln -s $PWD/non-packaged-repos/emojify/emojify ~/bin/
-
-# Set up ls colors
-wget https://raw.github.com/trapd00r/LS_COLORS/master/LS_COLORS -O $HOME/.dircolors
-
-
-# For updating the submodules of janus and more
-git submodule init
-git submodule update --remote --merge
+ln -s $PWD/non-packaged-repos/LS_COLORS/LS_COLORS ~/.dircolors
+ln -s $PWD/nvimrc               ~/.vimrc
+ln -s $PWD/nvimrc               $PWD/config/nvim/init.vim
+ln -s $PWD/non-packaged-repos/vim-plug/plug.vim $PWD/config/nvim/autoload/plug.vim
 
 # OSX settings
 setup-scripts/osx-setup.sh

@@ -8,3 +8,6 @@
 	path = non-packaged-repos/awesome-terminal-fonts
 	url = git@github.com:gabrielelana/awesome-terminal-fonts.git
 	branch = patching-strategy
+[submodule "non-packaged-repos/emojify"]
+	path = non-packaged-repos/emojify
+	url = git@github.com:mrowa44/emojify.git
