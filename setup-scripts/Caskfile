@@ -1,4 +1,4 @@
-brew install caskroom/cask/brew-cask
+brew tap caskroom/cask
 brew tap caskroom/versions
 
 # General purpose
@@ -50,7 +50,7 @@ brew cask install tunnelblick
 #brew cask install utorrent
 #brew cask install xbmc
 #brew cask install gimp
-brew cask install remote-desktop-connection
+#brew cask install remote-desktop-connection - removed the cask as it's not maintained - a new one is in beta
 #brew cask install jing
 
 # Communications
@@ -72,3 +72,7 @@ brew cask install caskroom/fonts/font-dejavu-sans-mono-for-powerline
 
 # Screen Saver
 brew cask install aerial
+
+# quick look plugins
+brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv betterzipql qlimagesize \
+                  webpquicklook suspicious-package

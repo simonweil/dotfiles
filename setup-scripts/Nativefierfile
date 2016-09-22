@@ -2,7 +2,9 @@
 MY_APPS_DIR="~/myapps"
 mkdir $MY_APPS_DIR
 nativefier --name Gmail --show-menu-bar --icon ~/.dotfiles/resources/gmail.icns https://www.gmail.com "$MY_APPS_DIR"
-nativefier --name JIRA --show-menu-bar --icon ~/.dotfiles/resources/jira.icns https://powtoon.atlassian.net "$MY_APPS_DIR"
-nativefier --name Excel office.live.com/start/Excel.aspx "$MY_APPS_DIR"
-nativefier --name Word office.live.com/start/Word.aspx "$MY_APPS_DIR"
-nativefier --name Octava  https://docs.google.com/document/d/1L4lfQ7U-uFktfQAhoBTXU4ovCbnSjv2kQx9QraDFILY/edit "$MY_APPS_DIR"
+nativefier --name "Google Calendar" --show-menu-bar https://calendar.google.com/calendar/b/1/render?tab=mc#main_7 "$MY_APPS_DIR"
+nativefier --name TweetDeck https://tweetdeck.twitter.com "$MY_APPS_DIR"
+#nativefier --name JIRA --show-menu-bar --icon ~/.dotfiles/resources/jira.icns https://powtoon.atlassian.net "$MY_APPS_DIR"
+#nativefier --name Excel office.live.com/start/Excel.aspx "$MY_APPS_DIR"
+#nativefier --name Word office.live.com/start/Word.aspx "$MY_APPS_DIR"
+#nativefier --name Octava  https://docs.google.com/document/d/1L4lfQ7U-uFktfQAhoBTXU4ovCbnSjv2kQx9QraDFILY/edit "$MY_APPS_DIR"

@@ -109,7 +109,7 @@ Plug 'https://github.com/tpope/vim-unimpaired.git' " pairs of handy bracket mapp
 Plug 'https://github.com/nazo/pt.vim.git'
 
 " Make some command toggle for more speed!
-Plug '~/mine/projects/vim-cycle-movements'
+Plug '~/mine/my-repos/vim-cycle-movements'
 nnoremap <silent> ^ :call CycleMovements('^', '$' ,'0')<CR>
 nnoremap <silent> 0 :call CycleMovements('0' ,'^', '$')<CR>
 nnoremap <silent> $ :call CycleMovements('$', '0', '^')<CR>

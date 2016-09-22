@@ -5,7 +5,7 @@
         helper = osxkeychain
 [core]
         editor = /usr/local/bin/nvim
-	excludesfile = /Users/simonweil/.dotfiles/gitignore_global
+	excludesfile = ~/.dotfiles/gitignore_global
 	autocrlf = input
 [format]
         signoff = true
@@ -35,7 +35,7 @@
         cmd = nvim -d "$LOCAL" "$REMOTE"
 
 [mergetool "sourcetree"]
-	cmd = /opt/homebrew-cask/Caskroom/sourcetree/2.0.4/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 
 [alias]
@@ -45,8 +45,8 @@
         catchup-summary = log _ribbon.. --summary
 
 [pager]
-        diff = diff-so-fancy | less --tabs=1,5 -RFX --pattern='^(added|deleted|modified): '
-        show = diff-so-fancy | less --tabs=1,5 -RFX --pattern='^(added|deleted|modified): '
+        diff = diff-so-fancy | less --tabs=1,5 -RFX --pattern='^(Date|added|deleted|modified): '
+        show = diff-so-fancy | less --tabs=1,5 -RFX --pattern='^(Date|added|deleted|modified): '
 
 # so much color
 [color]

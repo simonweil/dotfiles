@@ -17,3 +17,4 @@ npm install -g devtools-terminal
 npm install -g livedown
 npm install -g git-open
 npm install -g nyaovim
+npm install -g nativefier

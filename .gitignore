@@ -1,2 +1,5 @@
 # bash profile with private data
 bash_profile.private
+config/nvim/autoload/plug.vim
+config/nvim/init.vim
+config/nvim/.init.vim-rplugin~

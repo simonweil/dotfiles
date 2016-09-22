@@ -23,14 +23,25 @@ alias ...="cd ../.."
 alias ..3="cd ../../.."
 alias ..4="cd ../../../.."
 
-alias ld="ls --color -lh | grep '^d'"
-alias ll="ls --color -lh"
+# cd into whatever is the forefront Finder window.
+cdf() {  # short for cdfinder
+  cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')"
+}
+
+alias ld="ls --color -lhA | grep '^d'"
+alias ll="ls --color -lhF"
+alias lla="ls --color -lhFA"
 alias ls="ls --color"
 
 alias bin="cd ~/bin"
 alias dev="cd ~/Dev"
 
 alias grep="grep --color=always -i "
+
+# IP addresses
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="ipconfig getifaddr en1"
+alias myip="ifconfig | grep 'inet ' | grep -v 127.0.0.1 | awk '{print \$2}'"
 
 # dev
 alias apache_start="sudo apachectl -k start"
@@ -50,28 +61,39 @@ export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 # enable bash compleation
 if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
-  . $(brew --prefix)/share/bash-completion/bash_completion
+  source $(brew --prefix)/share/bash-completion/bash_completion
 fi
 
+#
 # python
+#
 alias upgrade_pip="    pip install --upgrade setuptools \
                     && pip install --upgrade pip        \
                     && pip install --upgrade virtualenv virtualenvwrapper \
                     && pip list --outdated 2> /dev/null | awk '{ print \$1 }' | xargs pip install -U"
 alias update_pip="pip list --outdated"
 
-alias upgrade_pip3="   pip3 install --upgrade setuptools \
+alias upgrade_pip3="   pip3 install --upgrade setuptools wheel \
                     && pip3 install --upgrade pip        \
                     && pip3 install --upgrade virtualenv virtualenvwrapper \
                     && pip3 list --outdated 2> /dev/null | awk '{ print \$1 }' | xargs pip3 install -U"
 alias update_pip3="pip3 list --outdated"
 
+# Setup virtual env
+export WORKON_HOME=~/work/virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
+export LDFLAGS="$LDFLAGS -L/usr/local/opt/libxml2/lib -L/usr/local/Cellar/libmemcached/1.0.18_1/lib/"
+export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/libxml2/include/libxml2/ -I/usr/local/Cellar/libmemcached/1.0.18_1/include/"
+
+#
 # git
+#
 alias git_grep='git log --grep "(NISITES-51" --pretty=oneline'
 alias git_bad_files='find . -name ".DS_Store" -or -name "Thumbs.db"'
 alias git_log="git log --graph --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr)%Creset by %C(bold blue)%an%C(yellow)%d%Creset' --abbrev-commit --date=relative" # add --all to see all branches and not only the checkedout branch
 alias git_log_all="git_log --branches --remotes --tags --decorate"
 alias gp="git pull --rebase"
+alias gpd="git pull --rebase=preserve"
 alias gf="git fetch && git fetch --tags"
 alias gs="git status"
 alias gde="git diff --ignore-space-at-eol -b -w --ignore-blank-lines"
@@ -109,6 +131,7 @@ gl() {
     fi
   done
 }
+alias glo='gl origin/$(git rev-parse --abbrev-ref HEAD)'
 
 # rake
 alias rake_bower_install="rake bower:dsl:install"
@@ -203,6 +226,14 @@ export HISTTIMEFORMAT='%F %T '
 # Make some commands not show up in history
 export HISTIGNORE="ls:cd:cd -:pwd;exit:man *:history:date:* --help"
 
+#######
+# OSX #
+#######
+
+# Open any file in MacOS Quicklook Preview
+ql () { qlmanage -p "$*" >& /dev/null & }
+
+
 ####################
 # general settings #
 ####################
@@ -245,7 +276,7 @@ eval $(dircolors -b $HOME/.dotfiles/non-packaged-repos/LS_COLORS/LS_COLORS)
 # Marker - for command line bookmarks
 # https://github.com/pindexis/marker - clone the repo when iTerm 2.9 is released
 #[[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
-echo " - Enable marker when iTerm 2.9 is released (current: $(grep -A1 CFBundleVersion ~/Applications/iTerm.app/Contents/Info.plist | tail -1 | cut -d">" -f 2 | cut -d"<" -f 1))"
+echo " - Enable marker"
 
 ##########################
 # Other general settings #

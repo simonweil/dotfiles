@@ -7,7 +7,7 @@ brew tap homebrew/services
 brew tap telemachus/homebrew-desc
 
 # meld
-brew install python --universal --with-brewed-openssl --with-brewed-tk
+brew install python --universal --with-brewed-openssl --with-tcl-tk
 brew install python3 --universal --with-quicktest
 brew install pygtk --universal
 brew install homebrew/gui/meld hicolor-icon-theme
@@ -41,7 +41,7 @@ brew install rails-completion rake-completion bundler-completion gem-completion 
 brew install git git-flow-avh hub diff-so-fancy
 
 # Tools
-brew install wget coreutils md5sha1sum rename tree cheat stormssh osquery dos2unix prettyping
+brew install wget coreutils md5sha1sum rename tree cheat stormssh osquery dos2unix prettyping googler
 brew install findutils homebrew/dupes/grep gnu-sed --with-default-names
 brew install htop --with-ncurses
 brew install archey # small command line utility to show the OSX spec
@@ -80,7 +80,8 @@ brew install submarine subliminal
 #
 # PowToon
 #
-brew install geoip
+brew install geoip libmemcached
+brew install libxml2 --with-python
 
 ############
 # Finalize #
