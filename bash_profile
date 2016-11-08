@@ -92,13 +92,26 @@ alias git_grep='git log --grep "(NISITES-51" --pretty=oneline'
 alias git_bad_files='find . -name ".DS_Store" -or -name "Thumbs.db"'
 alias git_log="git log --graph --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr)%Creset by %C(bold blue)%an%C(yellow)%d%Creset' --abbrev-commit --date=relative" # add --all to see all branches and not only the checkedout branch
 alias git_log_all="git_log --branches --remotes --tags --decorate"
-alias gp="git pull --rebase"
-alias gpd="git pull --rebase=preserve"
+alias gp="git pull --rebase=preserve"
+alias gpush="git push --set-upstream origin HEAD" # Push current branch to origin with same branch name and set as tracking branch
 alias gf="git fetch && git fetch --tags"
 alias gs="git status"
 alias gde="git diff --ignore-space-at-eol -b -w --ignore-blank-lines"
 alias gd="gde --no-ext-diff"
-alias gc='git checkout $(git branch -a | fzf --ansi | sed -e "s#^\s*remotes/[^/]*/##")'
+gc() {
+  local BRANCH
+  # Interactivly choose a branch to checkout
+  BRANCH="$(git branch -a | fzf --ansi | sed -e "s#^\s*remotes/[^/]*/##")"
+  # Remove leading and trailing spaces
+  BRANCH="$(echo -e "${BRANCH}" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')"
+
+  git checkout "$BRANCH"
+
+  # Setup remote tracking if it isn't yet setup
+  if [[ ! $(git rev-parse --symbolic-full-name --abbrev-ref "@{u}" 2> /dev/null) ]]; then
+    git branch --set-upstream-to="origin/$BRANCH" "$BRANCH"
+  fi
+}
 alias gc-='git checkout -'
 alias gcd='git checkout develop'
 alias gcm='git checkout master'
