@@ -25,7 +25,7 @@ alias ..4="cd ../../../.."
 
 # cd into whatever is the forefront Finder window.
 cdf() {  # short for cdfinder
-  cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')"
+  cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')" || return
 }
 
 alias ld="ls --color -lhA | grep '^d'"
@@ -53,7 +53,7 @@ alias apache_log="cd /var/log/apache2/"
 # homebrew
 alias update_brew="brew update && brew outdated"
 alias upgrade_brew="brew upgrade --all && brew outdated"
-alias upgrade_brew_wine='brew upgrade wine --devel'
+alias upgrade_wine='if $(brew outdated | grep -q wine); then brew upgrade wine --devel; fi'
 alias brew_desc="brew desc"
 alias brew_cask="brew cask"
 alias brew_formulas_that_depend_on="brew uses --recursive "
@@ -92,6 +92,7 @@ alias git_grep='git log --grep "(NISITES-51" --pretty=oneline'
 alias git_bad_files='find . -name ".DS_Store" -or -name "Thumbs.db"'
 alias git_log="git log --graph --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr)%Creset by %C(bold blue)%an%C(yellow)%d%Creset' --abbrev-commit --date=relative" # add --all to see all branches and not only the checkedout branch
 alias git_log_all="git_log --branches --remotes --tags --decorate"
+alias git_lastest_branches="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
 alias gp="git pull --rebase=preserve"
 alias gpush="git push --set-upstream origin HEAD" # Push current branch to origin with same branch name and set as tracking branch
 alias gf="git fetch && git fetch --tags"
@@ -126,7 +127,7 @@ gl() {
   while out=$(
       git log --graph \
               --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr)%Creset by %C(bold blue)%an%C(yellow)%d%Creset' \
-              --abbrev-commit --date=relative "$@" |
+              --abbrev-commit --date=relative --color=always "$@" |
       fzf --ansi --multi --no-sort --reverse --query="$q" \
           --print-query --expect=ctrl-d --toggle-sort=\`); do
     q=$(head -1 <<< "$out")
@@ -150,7 +151,7 @@ alias glo='gl origin/$(git rev-parse --abbrev-ref HEAD)'
 alias rake_bower_install="rake bower:dsl:install"
 
 # autojump
-[[ -s $(brew --prefix)/etc/autojump.sh ]] && . $(brew --prefix)/etc/autojump.sh
+[ -f "$(brew --prefix)/etc/profile.d/autojump.sh" ] && . "$(brew --prefix)/etc/profile.d/autojump.sh"
 
 # fzf #
 export FZF_COMPLETION_TRIGGER=',,'
@@ -196,6 +197,11 @@ alias gem_docs="yard server -g"
 
 # RVM bash completion
 [[ -r "$HOME/.rvm/scripts/completion" ]] && source "$HOME/.rvm/scripts/completion"
+
+
+# Node
+export NVM_DIR="$HOME/.nvm"
+source "$(brew --prefix)/opt/nvm/nvm.sh"
 
 
 ############
@@ -257,14 +263,17 @@ function upgrade_say {
   echo -e "\n-----------\nUpgrade $1:\n-----------"
 }
 
-alias update_all="update_node && update_pip && update_pip3 && update_brew && echo -e \"\$(date)\\n\""
+alias update_macos="mas outdated"
+alias upgrage_macox="mas upgrade"
+
+alias update_all="update_node; update_pip && update_pip3 && update_macos && update_brew && echo -e \"\$(date)\\n\""
 alias upgrade_all="   upgrade_say 'node'   && upgrade_node      \
-                   && upgrade_say 'Brew'   && upgrade_brew      \
                    && upgrade_say 'neovim' && upgrade_neovim    \
+                   && upgrade_say 'Wine'   && upgrade_wine \
+                   && upgrade_say 'Brew'   && upgrade_brew      \
                    && upgrade_say 'pip'    && upgrade_pip       \
                    && upgrade_say 'pip3'   && upgrade_pip3      \
                    && upgrade_say 'RVM'    && upgrade_rvm       \
-                   && upgrade_say 'Wine'   && upgrade_brew_wine \
                    && upgrade_say 'Dotfiles (all submodules)' && upgrade_submodules"
 alias update_project="update_node_project && rake bower:list && bundle outdated"
 

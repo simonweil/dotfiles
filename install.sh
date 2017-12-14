@@ -24,6 +24,9 @@ chsh -s /usr/local/bin/bash
 # RVM
 curl -sSL https://get.rvm.io | bash -s stable --ruby --autolibs=brew
 
+# NVM
+mkdir ~/.nvm
+
 # Global gems
 #rvm @global do gem install tmuxinator
 
@@ -41,8 +44,8 @@ prompt_confirm() {
       [yY]) echo ; return 0 ;;
       [nN]) echo ; return 1 ;;
       *) printf " \033[31m %s \n\033[0m" "invalid input"
-    esac 
-  done  
+    esac
+  done
 }
 
 link_files () {

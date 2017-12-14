@@ -16,3 +16,6 @@ pip install saws
 
 # git enhancements
 pip install git-sweep # remove mereged branches
+
+# Really cool REPL
+pip install ptpython

@@ -1,6 +1,6 @@
 [user]
-        name = Simon Weil
-        email = simon@powtoon.com
+	name = Simon Weil
+	email = simon@powtoon.com
 [credential]
         helper = osxkeychain
 [core]
@@ -66,3 +66,8 @@
         added = yellow
         changed = green
         untracked = cyan
+[rerere]
+	autoupdate = true
+	enabled = true
+[commit]
+	template = /Users/simon/.stCommitMsg

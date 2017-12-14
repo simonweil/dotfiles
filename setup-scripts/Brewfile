@@ -24,11 +24,12 @@ brew install ctags
 brew install tidy-html5
 brew install shellcheck # for vim shell static check
 brew install ievms
+brew install nvm
 
 # Shells
 brew install zsh zsh-completions
 brew install bash
-brew install homebrew/versions/bash-completion2
+brew install homebrew/versions/bash-completion@2
 
 # Completions
 brew tap homebrew/completions
@@ -41,9 +42,10 @@ brew install rails-completion rake-completion bundler-completion gem-completion 
 brew install git git-flow-avh hub diff-so-fancy
 
 # Tools
-brew install wget coreutils md5sha1sum rename tree cheat stormssh osquery dos2unix prettyping googler
+brew install wget coreutils md5sha1sum rename tree cheat stormssh osquery dos2unix prettyping googler pstree
 brew install findutils homebrew/dupes/grep gnu-sed --with-default-names
 brew install htop --with-ncurses
+brew install ncdu # NCurses Disk Usage
 brew install archey # small command line utility to show the OSX spec
 
 # Command line enhancement

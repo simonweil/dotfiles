@@ -273,7 +273,7 @@ Plug 'https://github.com/chrisbra/csv.vim.git'
 "https://github.com/phpvim/phpcd.vim
 
 " Configuration files
-Plug 'https://github.com/tejr/vim-tmux.git'
+"Plug 'https://github.com/tejr/vim-tmux.git'
 Plug 'https://github.com/kurayama/systemd-vim-syntax.git'
 Plug 'https://github.com/rodjek/vim-puppet.git'
 Plug 'https://github.com/blueyed/nginx.vim.git'
