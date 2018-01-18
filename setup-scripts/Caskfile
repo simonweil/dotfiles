@@ -27,6 +27,7 @@ brew cask install vagrant
 brew cask install virtualbox
 brew cask install gitbook-editor
 brew cask install electron
+brew cask install docker-toolbox
 
 # Browsers
 brew cask install google-chrome

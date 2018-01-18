@@ -35,7 +35,7 @@ brew install homebrew/versions/bash-completion@2
 brew tap homebrew/completions
 brew install rails-completion rake-completion bundler-completion gem-completion pip-completion \
              ruby-completion vagrant-completion tmuxinator-completion grunt-completion django-completion \
-             docker-completion packer-completion spring-completion brew-cask-completion open-completion \
+             packer-completion spring-completion brew-cask-completion open-completion \
              launchctl-completion fabric-completion
 
 # git
@@ -47,6 +47,7 @@ brew install findutils homebrew/dupes/grep gnu-sed --with-default-names
 brew install htop --with-ncurses
 brew install ncdu # NCurses Disk Usage
 brew install archey # small command line utility to show the OSX spec
+brew install awscli
 
 # Command line enhancement
 brew install antigen
