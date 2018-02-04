@@ -36,7 +36,8 @@ brew tap homebrew/completions
 brew install rails-completion rake-completion bundler-completion gem-completion pip-completion \
              ruby-completion vagrant-completion tmuxinator-completion grunt-completion django-completion \
              packer-completion spring-completion brew-cask-completion open-completion \
-             launchctl-completion fabric-completion
+             launchctl-completion fabric-completion \
+             docker-completion docker-compose-completion docker-machine-completion boot2docker-completion
 
 # git
 brew install git git-flow-avh hub diff-so-fancy

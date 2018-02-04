@@ -648,6 +648,7 @@ nmap gm :LivedownToggle<CR>
 " Setting tab witdh by file type
 autocmd Filetype html setlocal tabstop=4 softtabstop=4 expandtab shiftwidth=4 smarttab
 autocmd Filetype javascript setlocal tabstop=2 softtabstop=2 expandtab shiftwidth=2 smarttab
+autocmd Filetype yaml setlocal tabstop=2 softtabstop=2 expandtab shiftwidth=2 smarttab
 
 if has('dontdoathis')
 
