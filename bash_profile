@@ -83,8 +83,9 @@ alias update_pip3="pip3 list --outdated"
 # Setup virtual env
 export WORKON_HOME=~/work/virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
-export LDFLAGS="$LDFLAGS -L/usr/local/opt/libxml2/lib -L/usr/local/Cellar/libmemcached/1.0.18_1/lib/"
-export CPPFLAGS="$CPPFLAGS -I/usr/local/opt/libxml2/include/libxml2/ -I/usr/local/Cellar/libmemcached/1.0.18_1/include/"
+export LDFLAGS="-L/usr/local/opt/libxml2/lib -L$(brew info libmemcached | grep --color=none "\*$" | awk '{ print $1 }')/lib/"
+export CPPFLAGS="-I/usr/local/opt/libxml2/include/libxml2/ -I$(brew info libmemcached | grep --color=none "\*$" | awk '{ print $1 }’)/include/"
+
 
 #
 # git
