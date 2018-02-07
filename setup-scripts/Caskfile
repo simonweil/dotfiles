@@ -36,7 +36,7 @@ brew cask install firefoxdeveloperedition
 
 # File sharing
 #brew cask install dropbox
-brew cask install google-drive
+brew cask install google-drive-file-stream
 brew cask install filezilla
 
 # Editors

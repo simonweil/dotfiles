@@ -84,7 +84,7 @@ alias update_pip3="pip3 list --outdated"
 export WORKON_HOME=~/work/virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
 export LDFLAGS="-L/usr/local/opt/libxml2/lib -L$(brew info libmemcached | grep --color=none "\*$" | awk '{ print $1 }')/lib/"
-export CPPFLAGS="-I/usr/local/opt/libxml2/include/libxml2/ -I$(brew info libmemcached | grep --color=none "\*$" | awk '{ print $1 }’)/include/"
+export CPPFLAGS="-I/usr/local/opt/libxml2/include/libxml2/ -I$(brew info libmemcached | grep --color=none "\*$" | awk '{ print $1 }')/include/"
 
 
 #
