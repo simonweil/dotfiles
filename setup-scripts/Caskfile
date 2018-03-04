@@ -44,6 +44,24 @@ brew cask install sublime-text
 brew cask install pycharm
 brew cask install atom
 
+#
+# Password manager
+##################
+# Chrome plugin: https://chrome.google.com/webstore/detail/chromeipass/ompiailgknfdndiefoaoiligalphfdae?hl=en
+# FireFox: https://addons.mozilla.org/en-US/firefox/addon/passifox/
+#          https://addons.mozilla.org/en-US/firefox/addon/keefox/
+# Update MacPassHTTP here: https://github.com/MacPass/MacPassHTTP/releases
+#
+# Possible alternative: http://www.kyuran.be/software/kypass4mac/
+brew cask install macpass
+cd /tmp
+wget https://github.com/MacPass/MacPassHTTP/releases/download/0.3/MacPassHTTP.mpplugin-0.3.zip
+unzip MacPassHTTP.mpplugin-0.3.zip
+mkdir -p ~/Library/Application\ Support/MacPass
+\mv MacPassHTTP.mpplugin ~/Library/Application\ Support/MacPass
+\rm -f MacPassHTTP.mpplugin-0.3.zip
+cd -
+
 # Other
 brew cask install teamviewer
 brew cask install tunnelblick

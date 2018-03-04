@@ -52,8 +52,8 @@ alias apache_log="cd /var/log/apache2/"
 
 # homebrew
 alias update_brew="brew update && brew outdated"
-alias upgrade_brew="brew upgrade --all && brew outdated"
-alias upgrade_wine='if $(brew outdated | grep -q wine); then brew upgrade wine --devel; fi'
+alias upgrade_brew="brew upgrade && brew outdated"
+alias upgrade_wine='if [[ $(brew outdated wine) ]]; then brew upgrade wine --devel; fi'
 alias brew_desc="brew desc"
 alias brew_cask="brew cask"
 alias brew_formulas_that_depend_on="brew uses --recursive "
@@ -85,6 +85,7 @@ export WORKON_HOME=~/work/virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
 export LDFLAGS="-L/usr/local/opt/libxml2/lib -L$(brew info libmemcached | grep --color=none "\*$" | awk '{ print $1 }')/lib/"
 export CPPFLAGS="-I/usr/local/opt/libxml2/include/libxml2/ -I$(brew info libmemcached | grep --color=none "\*$" | awk '{ print $1 }')/include/"
+export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
 
 
 #

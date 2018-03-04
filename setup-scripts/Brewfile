@@ -4,25 +4,23 @@ brew tap homebrew/services
 # desc external command
 brew tap telemachus/homebrew-desc
 
-# meld
-brew install python --universal --with-brewed-openssl --with-tcl-tk
-brew install python3 --universal --with-quicktest
-brew install pygtk --universal
-brew install homebrew/gui/meld hicolor-icon-theme
-
 # wine
 brew install wine --devel
 brew install winetricks
 
 # Development
-brew install vim neovim/neovim/neovim
-brew install mysql node macvim
+brew install python --universal --with-brewed-openssl --with-tcl-tk
+brew install python3 --universal --with-quicktest
+brew install nvm node
+brew install mysql
 brew install postgresql pgcli
+
+# Vim
+brew install vim neovim/neovim/neovim macvim
 brew install ctags
 brew install tidy-html5
 brew install shellcheck # for vim shell static check
 brew install ievms
-brew install nvm
 
 # Shells
 brew install zsh zsh-completions
@@ -35,7 +33,7 @@ brew install rails-completion rake-completion bundler-completion gem-completion 
              ruby-completion vagrant-completion tmuxinator-completion grunt-completion django-completion \
              packer-completion spring-completion brew-cask-completion open-completion \
              launchctl-completion fabric-completion \
-             docker-completion docker-compose-completion docker-machine-completion boot2docker-completion
+             docker-compose-completion docker-machine-completion boot2docker-completion
 
 # git
 brew install git git-flow-avh hub diff-so-fancy
