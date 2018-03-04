@@ -9,8 +9,8 @@ brew install wine --devel
 brew install winetricks
 
 # Development
-brew install python --universal --with-brewed-openssl --with-tcl-tk
-brew install python3 --universal --with-quicktest
+brew install python --universal --with-tcl-tk
+brew install python@2 --universal --with-tcl-tk --with-quicktest
 brew install nvm node
 brew install mysql
 brew install postgresql pgcli
