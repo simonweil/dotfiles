@@ -1,21 +1,21 @@
 brew install brew-pip
 
 # development
-pip2 install virtualenv
-pip2 install virtualenvwrapper
+pip install virtualenv
+pip install virtualenvwrapper
 
 # Neovim
-pip2 install neovim
+pip install neovim
 pip3 install neovim
-pip2 install pylama
-pip2 install pylama_pylint
+pip install pylama
+pip install pylama_pylint
 
 # super charged AWS cli (https://github.com/donnemartin/saws)
-pip2 install saws
-#pip2 install aws-shell --upgrade --ignore-installed six
+pip install saws
+#pip install aws-shell --upgrade --ignore-installed six
 
 # git enhancements
-pip2 install git-sweep # remove mereged branches
+pip install git-sweep # remove mereged branches
 
 # Really cool REPL
-pip2 install ptpython
+pip install ptpython

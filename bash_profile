@@ -7,7 +7,7 @@ echo " -----------------------------------------------------------"
 #
 set -o vi # go into vi mode on the shell!!!
 alias v="mvim --remote-silent "
-alias upgrade_neovim="   pip2 install --upgrade neovim \
+alias upgrade_neovim="   pip install --upgrade neovim \
                       && pip3 install --upgrade neovim \
                       && brew reinstall --HEAD neovim"
 alias upgrade_submodules='(cd ~/.dotfiles && git submodule update --merge --remote)'
@@ -68,11 +68,12 @@ fi
 # python
 #
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-alias upgrade_pip="    pip2 install --upgrade setuptools \
-                    && pip2 install --upgrade pip        \
-                    && pip2 install --upgrade virtualenv virtualenvwrapper \
-                    && pip2 list --outdated 2> /dev/null | awk '{ print \$1 }' | xargs pip2 install -U"
-alias update_pip="pip2 list --outdated"
+export PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
+alias upgrade_pip="    pip install --upgrade setuptools \
+                    && pip install --upgrade pip        \
+                    && pip install --upgrade virtualenv virtualenvwrapper \
+                    && pip list --outdated 2> /dev/null | awk '{ print \$1 }' | xargs pip install -U"
+alias update_pip="pip list --outdated"
 
 alias upgrade_pip3="   pip3 install --upgrade setuptools wheel \
                     && pip3 install --upgrade pip        \
