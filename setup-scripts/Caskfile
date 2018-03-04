@@ -4,8 +4,6 @@ brew tap caskroom/versions
 # General purpose
 brew cask install xquartz
 brew cask install java
-brew cask install flash
-#brew cask install flash-player-debugger
 brew cask install karabiner
 brew cask install yujitach-menumeters #menumeters
 brew cask install recordit
@@ -15,7 +13,6 @@ brew cask install flux
 # Productivity
 brew cask install cheatsheet
 brew cask install sizeup
-#brew cask install adium
 brew cask install fluid
 #brew cask install alfred
 

@@ -7,7 +7,11 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # install HomeBrew
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+if hash brew 2>/dev/null; then
+  echo "Brew is already installed"
+else
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+fi
 
 # install all required homebrew formulas (Cask is first as it has dependencies for brew)
 source setup-scripts/Caskfile
