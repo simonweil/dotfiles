@@ -5,7 +5,7 @@ brew tap homebrew/services
 brew tap telemachus/homebrew-desc
 
 # wine
-brew install wine --devel
+brew install wine --HEAD
 brew install winetricks
 
 # Development
@@ -28,7 +28,6 @@ brew install bash
 brew install bash-completion@2
 
 # Completions
-brew tap homebrew/completions
 brew install rails-completion rake-completion bundler-completion gem-completion pip-completion \
              ruby-completion vagrant-completion tmuxinator-completion grunt-completion django-completion \
              packer-completion spring-completion brew-cask-completion open-completion \
