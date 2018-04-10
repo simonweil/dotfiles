@@ -50,6 +50,7 @@ brew cask install atom
 # Update MacPassHTTP here: https://github.com/MacPass/MacPassHTTP/releases
 #
 # Possible alternative: http://www.kyuran.be/software/kypass4mac/
+# Possible alternative: keepassxc
 brew cask install macpass
 cd /tmp
 wget https://github.com/MacPass/MacPassHTTP/releases/download/0.3/MacPassHTTP.mpplugin-0.3.zip

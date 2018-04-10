@@ -150,6 +150,7 @@ gl() {
   done
 }
 alias glo='gl origin/$(git rev-parse --abbrev-ref HEAD)'
+alias grh='git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)'
 
 # rake
 alias rake_bower_install="rake bower:dsl:install"

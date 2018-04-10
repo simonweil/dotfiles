@@ -35,7 +35,7 @@ brew install rails-completion rake-completion bundler-completion gem-completion 
              docker-compose-completion docker-machine-completion boot2docker-completion
 
 # git
-brew install git git-flow-avh hub diff-so-fancy
+brew install git git-flow-avh hub diff-so-fancy git-sizer
 
 # Tools
 brew install wget coreutils md5sha1sum rename tree cheat stormssh osquery dos2unix prettyping googler pstree
