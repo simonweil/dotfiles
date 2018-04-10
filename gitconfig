@@ -82,3 +82,5 @@
 	enabled = true
 [commit]
 	template = /Users/simon/.stCommitMsg
+[help]
+	autocorrect = 15
