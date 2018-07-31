@@ -120,6 +120,7 @@ gc() {
 alias gc-='git checkout -'
 alias gcd='git checkout develop'
 alias gcm='git checkout master'
+alias gcm-ec='git checkout master-ec'
 alias git_cherrypick='git cherry-pick --signoff -x'
 alias git_commit_files="git diff-tree --no-commit-id --name-status -r"
 alias git_bad_commit_messages="git log --oneline --since='last week' --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr)%Creset by %C(bold blue)%an%C(yellow)%d%Creset' --abbrev-commit --date=relative | grep -vE 'Merge (remote-tracking )?branch' | grep -vE 'NISITES-|AT-|KNSS-'"
