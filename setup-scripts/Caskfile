@@ -63,6 +63,7 @@ cd -
 # Other
 brew cask install teamviewer
 brew cask install tunnelblick
+brew cask install coconutbattery
 #brew cask install picasa
 #brew cask install utorrent
 #brew cask install xbmc
