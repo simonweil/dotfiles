@@ -72,20 +72,9 @@ brew install asciinema asciinema2gif
 # Tool for backing up mac
 brew install mackup
 
-# Download subtitles for movies
-brew install submarine subliminal
-
 
 #
 # PowToon
 #
 brew install geoip libmemcached
-brew install libxml2 --with-python
-
-############
-# Finalize #
-############
-
-# link to apps folder
-brew linkapps
-
+brew install libxml2
