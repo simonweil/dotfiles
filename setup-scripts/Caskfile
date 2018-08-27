@@ -1,5 +1,4 @@
-brew tap caskroom/cask
-brew tap caskroom/versions
+brew tap homebrew/cask-versions
 
 # General purpose
 brew cask install xquartz
@@ -83,7 +82,8 @@ brew cask install slack
 #brew cask install robomongo
 
 # Powerline fonts
-brew cask install caskroom/fonts/font-dejavu-sans-mono-for-powerline
+brew tap homebrew/cask-fonts
+brew cask install font-dejavu-sans-mono-for-powerline
 # I'm now using awesome fonts: awesome-terminal-fonts with branch: patching-strategy
 # install all fonts: brew cask install $(brew cask search /powerline/ | tail -n +2)
 # nice input: brew cask install font-input

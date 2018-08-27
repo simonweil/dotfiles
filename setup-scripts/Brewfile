@@ -9,8 +9,8 @@ brew install wine --HEAD
 brew install winetricks
 
 # Development
-brew install python --universal --with-tcl-tk
-brew install python@2 --universal --with-tcl-tk --with-quicktest
+brew install python --with-tcl-tk
+brew install python@2 --with-tcl-tk
 brew install nvm node
 brew install mysql
 brew install postgresql pgcli
@@ -32,13 +32,13 @@ brew install rails-completion rake-completion bundler-completion gem-completion 
              ruby-completion vagrant-completion tmuxinator-completion grunt-completion django-completion \
              packer-completion spring-completion brew-cask-completion open-completion \
              launchctl-completion fabric-completion \
-             docker-compose-completion docker-machine-completion boot2docker-completion
+             docker-compose-completion docker-machine-completion yarn-completion
 
 # git
 brew install git git-flow-avh hub diff-so-fancy git-sizer
 
 # Tools
-brew install wget coreutils md5sha1sum rename tree cheat stormssh osquery dos2unix prettyping googler pstree
+brew install wget coreutils md5sha1sum rename tree cheat stormssh osquery dos2unix prettyping googler pstree lsusb
 brew install findutils grep gnu-sed --with-default-names
 brew install htop --with-ncurses
 brew install ncdu # NCurses Disk Usage
@@ -57,7 +57,7 @@ $(brew info fzf | grep /install)
 # todo - TRIAL
 #brew install todo-txt
 #brew install googlecl
-brew install terminal-notifier
+#brew install terminal-notifier
 
 ########
 # apps #
@@ -72,6 +72,10 @@ brew install asciinema asciinema2gif
 # Tool for backing up mac
 brew install mackup
 
+# Check:
+# aws-okta
+# docker-credential-helper-ecr
+# serverless
 
 #
 # PowToon

@@ -1,9 +1,9 @@
 # frameworks
-npm install -g ember-cli
+#npm install -g ember-cli
 
 # builders and task runners
-npm install -g bower
-npm install -g grunt-cli
+#npm install -g bower
+#npm install -g grunt-cli
 npm install -g gulp
 npm install -g yarn
 
@@ -11,7 +11,7 @@ npm install -g yarn
 npm install -g js-beautify
 
 # tools
-npm install -g devtools-terminal
+#npm install -g devtools-terminal
 npm install -g livedown
 npm install -g git-open
 npm install -g nyaovim
