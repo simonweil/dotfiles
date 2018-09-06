@@ -1,7 +1,7 @@
 # Create OSX icons: https://iconverticons.com/online/
-MY_APPS_DIR="~/myapps"
+MY_APPS_DIR="$HOME/myapps"
 mkdir $MY_APPS_DIR
-nativefier --name Gmail --show-menu-bar --icon ~/.dotfiles/resources/gmail.icns https://www.gmail.com "$MY_APPS_DIR"
+nativefier --name Gmail --show-menu-bar --internal-urls ".*?\.google\.*?" https://www.gmail.com "$MY_APPS_DIR"
 nativefier --name "Google Calendar" --show-menu-bar https://calendar.google.com/calendar/b/1/render?tab=mc#main_7 "$MY_APPS_DIR"
 nativefier --name TweetDeck https://tweetdeck.twitter.com "$MY_APPS_DIR"
 nativefier --name WhatsApp web.whatsapp.com "$MY_APPS_DIR"

@@ -68,7 +68,7 @@ fi
 # python
 #
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-export PATH="/usr/local/opt/python@2/libexec/bin:$PATH"
+export PATH="/usr/local/opt/python@2/bin:$PATH"
 alias upgrade_pip="    pip install --upgrade setuptools \
                     && pip install --upgrade pip        \
                     && pip install --upgrade virtualenv virtualenvwrapper \

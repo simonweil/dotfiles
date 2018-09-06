@@ -26,7 +26,7 @@ brew cask install electron
 brew cask install docker-toolbox
 
 # Browsers
-brew cask install google-chrome
+brew cask install google-chrome google-chrome-canary
 brew cask install firefox
 brew cask install firefox-developer-edition
 
