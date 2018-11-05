@@ -6,19 +6,18 @@ Plug 'https://github.com/tpope/vim-sensible.git'
 Plug 'https://github.com/jeffkreeftmeijer/vim-numbertoggle.git' " smart setting of number and relative number
 
 " Completion
-"Plug 'https://github.com/Valloric/YouCompleteMe.git', { 'do': './install.py' }
-
 Plug 'https://github.com/Shougo/deoplete.nvim.git'
-"Plug 'https://github.com/Shougo/neco-vim.git'               " vim source for Vim script
-"Plug 'https://github.com/Shougo/neoinclude.vim.git'         " include and file/include sources
-"Plug 'https://github.com/Shougo/neco-syntax.git'            " syntax source
-Plug 'https://github.com/zchee/deoplete-jedi.git'           " jedi source
+Plug 'https://github.com/Shougo/neco-vim.git'               " vim source for Vim script
+Plug 'https://github.com/Shougo/neoinclude.vim.git'         " include and file/include sources
+Plug 'https://github.com/Shougo/neco-syntax.git'            " syntax source
+Plug 'https://github.com/zchee/deoplete-jedi.git'           " pythom source
 let deoplete#sources#jedi#show_docstring = 1
 
 Plug 'https://github.com/ervandew/supertab.git'
 let g:SuperTabDefaultCompletionType = "<c-n>" " Make the tabing on completion menu go from top to bottom
 let g:SuperTabClosePreviewOnPopupClose = 1 " Close the preview when completion ends
-"Plug 'http://github.com/Shougo/echodoc.vim.git'
+"Plug 'http://github.com/Shougo/echodoc.vim.git' " TODO: use?
+
 " Deoplete
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
@@ -26,7 +25,7 @@ let g:deoplete#enable_smart_case = 1
 "set cmdheight=2
 
 " Snippets
-Plug 'https://github.com/sirver/ultisnips.git'
+Plug 'https://github.com/sirver/ultisnips.git' " TODO: Learn to use
 " Don't map any tabs, I'll do it later
 let g:UltiSnipsExpandTrigger = '<NOP>'
 let g:UltiSnipsJumpForwardTrigger = '<NOP>'
@@ -91,28 +90,30 @@ Plug 'https://github.com/honza/vim-snippets.git'
 "Plug 'https://github.com/MarcWeber/vim-addon-mw-utils.git'
 
 " Static Analysis
-Plug 'https://github.com/scrooloose/syntastic.git'
+Plug 'https://github.com/neomake/neomake.git'
 
 " Apperance
 Plug 'https://github.com/morhetz/gruvbox.git'
+"Plug 'https://github.com/fenetikm/falcon.git' - TODO: colorscheme to test in the future
 Plug 'https://github.com/vim-airline/vim-airline.git'
 Plug 'https://github.com/vim-airline/vim-airline-themes.git'
-"Plug 'https://github.com/bling/vim-bufferline.git'
+"Plug 'https://github.com/bling/vim-bufferline.git' -
 Plug 'https://github.com/nathanaelkane/vim-indent-guides.git'
+Plug 'ryanoasis/vim-devicons' " add nice icons to the status line, tabline, etc.
 
 " Movement & Search
-Plug 'https://github.com/edsono/vim-matchit.git'
+"Plug 'https://github.com/edsono/vim-matchit.git'
 Plug 'https://github.com/haya14busa/incsearch.vim.git'
 Plug 'https://github.com/haya14busa/incsearch-fuzzy.vim.git'
 Plug 'https://github.com/justinmk/vim-sneak.git'
-Plug 'https://github.com/tpope/vim-unimpaired.git' " pairs of handy bracket mappings
-Plug 'https://github.com/nazo/pt.vim.git'
+Plug 'https://github.com/tpope/vim-unimpaired.git' " pairs of handy bracket mappings - TODO: learn to use
+Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] } " TODO: configure to use ripgrep
 
 " Make some command toggle for more speed!
 Plug '~/mine/my-repos/vim-cycle-movements'
-nnoremap <silent> ^ :call CycleMovements('^', '$' ,'0')<CR>
-nnoremap <silent> 0 :call CycleMovements('0' ,'^', '$')<CR>
-nnoremap <silent> $ :call CycleMovements('$', '0', '^')<CR>
+nnoremap <silent> ^ :call CycleMovements('^', ,'0')<CR>
+nnoremap <silent> 0 :call CycleMovements('0' ,'^')<CR>
+"nnoremap <silent> $ :call CycleMovements('$', '0', '^')<CR>
 nnoremap <silent> L :call CycleMovements('L', 'M', 'H')<CR>
 nnoremap <silent> M :call CycleMovements('M', 'H', 'L')<CR>
 nnoremap <silent> H :call CycleMovements('H', 'L', 'M')<CR>
@@ -122,17 +123,18 @@ nnoremap <silent> gg :call CycleMovements('gg', 'G')<CR>
 """""""""""
 " Editing "
 """""""""""
-Plug 'https://github.com/tpope/vim-surround.git'
-Plug 'https://github.com/jiangmiao/auto-pairs.git'
-Plug 'https://github.com/tpope/vim-speeddating.git' " use CTRL-A/CTRL-X to increment dates, times, and more
+Plug 'https://github.com/tpope/vim-surround.git' " TODO: learn to use
+Plug 'https://github.com/jiangmiao/auto-pairs.git' " TODO: learn to use
+Plug 'https://github.com/tpope/vim-speeddating.git' " use CTRL-A/CTRL-X to increment dates, times, and more - TODO: learn to use
                                                     " Use SpeedDatingFormat! for help defining new formats
                                                     " http://www.thegeekstuff.com/2009/10/vim-editor-how-to-increase-or-decrease-date-time-roman-number-and-ordinals/
-"Plug 'https://github.com/mattn/emmet-vim.git'
+"Plug 'https://github.com/mjbrownie/swapit.git' " increment/swap different types like true/false TODO: test
+"Plug 'https://github.com/mattn/emmet-vim.git' " TODO: learn to use
 Plug 'https://github.com/tpope/vim-characterize.git'
 Plug 'https://github.com/bronson/vim-trailing-whitespace.git'
 let g:extra_whitespace_ignored_filetypes = ['git']
 
-Plug 'https://github.com/terryma/vim-multiple-cursors.git'
+Plug 'https://github.com/terryma/vim-multiple-cursors.git' " TODO: learn to use
 " disable deoplate when using multiplae cursors (see: https://github.com/Shougo/deoplete.nvim/blob/master/doc/deoplete.txt#L1070)
 function g:Multiple_cursors_before()
   let g:deoplete#disable_auto_complete = 1
@@ -144,16 +146,16 @@ endfunction
 Plug 'https://github.com/kana/vim-textobj-user.git'           " Needed to define custom text objects
 Plug 'https://github.com/michaeljsmith/vim-indent-object.git' " Indentation level text object (i & I)
 Plug 'https://github.com/Chiel92/vim-autoformat.git'          " Reformat files
-"Plug 'https://github.com/foosoft/vim-argwrap.git'
+"Plug 'https://github.com/foosoft/vim-argwrap.git' " TODO: learn to use and define mapping
 
-Plug 'https://github.com/dhruvasagar/vim-table-mode.git' " For working with tables, Lazy load when using TableModeToggle
+Plug 'https://github.com/dhruvasagar/vim-table-mode.git' " For working with tables, Lazy load when using TableModeToggle - TODO: learn to use
 
 " Help
-Plug 'https://github.com/rizzatti/dash.vim'
+Plug 'https://github.com/rizzatti/dash.vim' " TODO: learn to use
 
 " Git
 Plug 'https://github.com/tpope/vim-git.git'
-Plug 'https://github.com/tpope/vim-fugitive.git'      " Git integration
+Plug 'https://github.com/tpope/vim-fugitive.git'      " Git integration - TODO: learn to use
 Plug 'https://github.com/airblade/vim-gitgutter.git'
 Plug 'https://github.com/rhysd/committia.vim.git'     " Better commiting messageing
 let g:committia_open_only_vim_starting = 1
@@ -174,15 +176,15 @@ function! g:committia_hooks.edit_open(info)
 endfunction
 
 " General improvements
-Plug 'https://github.com/tpope/vim-repeat.git'        " Better . (dot)
-Plug 'https://github.com/svermeulen/vim-easyclip.git' " Better clipboard
+Plug 'https://github.com/tpope/vim-repeat.git'        " Better .
+Plug 'https://github.com/svermeulen/vim-easyclip.git' " Better clipboard - TODO: learn to use
 Plug 'https://github.com/kopischke/vim-fetch.git'     " Open file on line and character
-Plug 'https://github.com/junegunn/vim-peekaboo.git'   " Register helper
-Plug 'https://github.com/majutsushi/tagbar.git'       " Display tags in a window
-Plug 'https://github.com/jeetsukumaran/vim-buffergator.git' " List, select and switch between buffers
-Plug 'https://github.com/amiorin/vim-project.git'
-Plug 'https://github.com/tpope/vim-eunuch.git'        " helpers commands for UNIX
-"Plug 'https://github.com/tpope/vim-sleuth.git'
+Plug 'https://github.com/junegunn/vim-peekaboo.git'   " Register helper - TODO: learn to use
+Plug 'https://github.com/majutsushi/tagbar.git'       " Display tags in a window - TODO: learn to use
+Plug 'https://github.com/jeetsukumaran/vim-buffergator.git' " List, select and switch between buffers - TODO: learn to use
+Plug 'https://github.com/amiorin/vim-project.git'     " TODO: learn to use
+Plug 'https://github.com/tpope/vim-eunuch.git'        " helpers commands for UNIX - TODO: learn to use
+"Plug 'https://github.com/tpope/vim-sleuth.git' - TODO: test and learn
 
 " Plugin creating helpers
 Plug 'https://github.com/vim-jp/vital.vim.git'
@@ -201,13 +203,13 @@ let g:fzf_commits_log_options = '--color=always --pretty=format:"%Cred%h%Creset 
 """""""""""
 " NyaoVim "
 """""""""""
-Plug 'https://github.com/rhysd/nyaovim-popup-tooltip.git'
-Plug 'https://github.com/rhysd/nyaovim-markdown-preview.git'
+"Plug 'https://github.com/rhysd/nyaovim-popup-tooltip.git'
+"Plug 'https://github.com/rhysd/nyaovim-markdown-preview.git'
 "Plug '~/mine/projects/nyaovim-markdown-preview'
-let g:markdown_preview_auto = 1
-let g:markdown_preview_eager = 1
+"let g:markdown_preview_auto = 1
+"let g:markdown_preview_eager = 1
 "Plug 'https://github.com/rhysd/nyaovim-mini-browser.git'
-Plug '~/mine/projects/cheatsheet.vim'
+"Plug '~/mine/projects/cheatsheet.vim'
 
 
 
@@ -215,17 +217,19 @@ Plug '~/mine/projects/cheatsheet.vim'
 " Languge Specific "
 """"""""""""""""""""
 " language pack, look here to find language plugins
-" https://github.com/sheerun/vim-polyglot
+Plug 'https://github.com/sheerun/vim-polyglot.git'
+"https://github.com/vim-python/python-syntax - TODO: check that settings are good for me
+let g:polyglot_disabled = ['ruby', 'puppet']
 
 " Set filetype in by context in of the file (e.g. javascript tag in an html file)
-"Plug 'https://github.com/Shougo/context_filetype.vim.git'
+"Plug 'https://github.com/Shougo/context_filetype.vim.git' - TODO: test!
 
 " Ruby
-Plug 'https://github.com/vim-ruby/vim-ruby.git'
-Plug 'https://github.com/tpope/vim-endwise.git'
-Plug 'https://github.com/tpope/vim-rails.git'
-Plug 'https://github.com/tpope/vim-bundler.git'
-Plug 'https://github.com/depuracao/vim-rdoc.git'
+Plug 'https://github.com/vim-ruby/vim-ruby.git', {'for': 'ruby'}
+Plug 'https://github.com/tpope/vim-endwise.git', {'for': 'ruby'}
+Plug 'https://github.com/tpope/vim-rails.git', {'for': 'ruby'}
+Plug 'https://github.com/tpope/vim-bundler.git', {'for': 'ruby'}
+Plug 'https://github.com/depuracao/vim-rdoc.git', {'for': 'ruby'}
 "Plug 'https://github.com/skwp/vim-rspec.git'
 "Plug 'https://github.com/sunaku/vim-ruby-minitest.git'
 "Plug 'https://github.com/skalnik/vim-vroom.git'
@@ -235,35 +239,24 @@ Plug 'https://github.com/depuracao/vim-rdoc.git'
 "Plug 'https://github.com/noprompt/vim-yardoc.git'
 
 " Python
-Plug 'https://github.com/mitsuhiko/vim-python-combined.git'
-Plug 'https://github.com/mjbrownie/django-template-textobjects.git'
-
-" Ember
-Plug 'https://github.com/heartsentwined/vim-emblem.git'
-"Plug 'https://github.com/heartsentwined/vim-ember-script.git'
+Plug 'https://github.com/mjbrownie/django-template-textobjects.git' " TODO: learn to use
 
 " JavaScript
-Plug 'https://github.com/pangloss/vim-javascript.git'
+Plug 'https://github.com/pangloss/vim-javascript.git' " TODO: keep? or use polyglot
 Plug 'https://github.com/maksimr/vim-jsbeautify.git'
-Plug 'https://github.com/mmalecki/vim-node.js.git'
-Plug 'https://github.com/mxw/vim-jsx.git'
+Plug 'https://github.com/mmalecki/vim-node.js.git' " TODO: keep? or use polyglot
+Plug 'https://github.com/mxw/vim-jsx.git' " TODO: keep? or use polyglot
 "Plug 'https://github.com/marijnh/tern_for_vim.git'
 "Plug 'https://github.com/kchmck/vim-coffee-script.git'
 
-" HTML
-Plug 'https://github.com/othree/html5.vim.git'
-
 " Markdown
-Plug 'https://github.com/tpope/vim-markdown.git'
-Plug 'https://github.com/shime/vim-livedown.git'
+Plug 'https://github.com/tpope/vim-markdown.git' " TODO: test
+Plug 'https://github.com/shime/vim-livedown.git' " TODO: test
 
 " SCSS / CSS
 Plug 'https://github.com/ap/vim-css-color.git'
-Plug 'https://github.com/JulesWang/css.vim.git'
-Plug 'https://github.com/cakebaker/scss-syntax.vim.git'
-
-" JSON
-Plug 'https://github.com/elzr/vim-json.git'
+Plug 'https://github.com/JulesWang/css.vim.git' " TODO: keep? or use polyglot
+Plug 'https://github.com/cakebaker/scss-syntax.vim.git' " TODO: keep? or use polyglot
 
 " CSV
 Plug 'https://github.com/chrisbra/csv.vim.git'
@@ -273,22 +266,40 @@ Plug 'https://github.com/chrisbra/csv.vim.git'
 "https://github.com/phpvim/phpcd.vim
 
 " Configuration files
-"Plug 'https://github.com/tejr/vim-tmux.git'
-Plug 'https://github.com/kurayama/systemd-vim-syntax.git'
-Plug 'https://github.com/rodjek/vim-puppet.git'
-Plug 'https://github.com/blueyed/nginx.vim.git'
-Plug 'https://github.com/honza/dockerfile.vim.git'
+Plug 'https://github.com/rodjek/vim-puppet.git', {'for': 'puppet'}
 
 
 "Check and add
 
-"""Plug 'https://github.com/xolox/vim-easytags.git'
-"""Plug 'https://github.com/scrooloose/nerdcommenter.git'
-"""Plug 'https://github.com/itspriddle/ZoomWin.git'
+"https://github.com/raghur/vim-ghost
+"https://github.com/jalvesaq/vimcmdline
+"https://github.com/hardenedapple/vsh
+"https://github.com/lucc/nvimpager
+"https://github.com/cyansprite/Extract
+"https://github.com/krisajenkins/vim-projectlocal
+"https://github.com/Vigemus/nvimux
+"https://gitlab.com/HiPhish/repl.nvim
+"https://github.com/neoclide/coc.nvim - LSP support
+"https://github.com/brooth/far.vim - better find/replace
+"https://github.com/jsfaint/gen_tags.vim
+"https://github.com/kassio/neoterm - better terminal
+"https://github.com/brettanomyces/nvim-editcommand
+"https://github.com/numirias/semshi
+"https://github.com/tek/proteome
+"https://github.com/teto/nvim-palette
+"https://github.com/bfredl/nvim-miniyank
+"https://github.com/bfredl/nvim-ipy
+"https://github.com/brettanomyces/nvim-terminus
+"https://github.com/chrisbra/vim-diff-enhanced
+"https://github.com/sheerun/vim-polyglot
+"https://github.com/Shougo/denite.nvim
+"Plug 'https://github.com/xolox/vim-easytags.git'
+"Plug 'https://github.com/scrooloose/nerdcommenter.git'
+"Plug 'https://github.com/itspriddle/ZoomWin.git'
 "Plug 'https://github.com/mileszs/ack.vim.git'
-"""Plug 'https://github.com/sjl/gundo.vim.git'
+"https://github.com/mbbill/undotree.git
 "Plug 'https://github.com/scrooloose/nerdtree.git'
-"Plug 'https://github.com/mattn/webapi-vim.git'
+"Plug 'https://github.com/mattn/webapi-vim.git' - plugin development
 "Plug 'https://github.com/mattn/gist-vim.git'
 "Plug 'https://github.com/vim-scripts/vimwiki.git'
 """Plug 'https://github.com/chrisbra/NrrwRgn.git'
@@ -309,10 +320,10 @@ Plug 'https://github.com/honza/dockerfile.vim.git'
 "Plugin 'kshenoy/vim-signature'
 "Plugin 'majutsushi/tagbar'
 "Plugin 'mattn/gist-vim'
-"Plugin 'mattn/webapi-vim'
 "Plugin 'mmozuras/vim-github-comment'
 "Plugin 'perl-support.vim'
 "Plugin 'syngan/vim-vimlint'
+"https://github.com/dbakker/vim-lint
 "Plugin 'tfnico/vim-gradle'
 "Plugin 'thinca/vim-localrc'
 "Plugin 'vim-perl/vim-perl'
@@ -356,7 +367,7 @@ augroup END
 
 " = Better settings = {{{
 " Set leader key
-let mapleader=" "
+let mapleader="'"
 let maplocalleader="`"
 
 " Highlight the screen line of the cursor
@@ -396,6 +407,12 @@ if !&readonly
   augroup END
 endif
 let &spellfile = $HOME . "/.dotfiles/vim/dictionary.en.add"
+
+" Turn on true colors
+set termguicolors
+
+" Turn on live substitute
+set inccommand=split
 " }}}
 
 
@@ -496,11 +513,6 @@ if has('nvim')
   augroup END
   " }}}
 
-  " Have thin cursor shap in insert mode
-  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-
-  " enable true color support
-  "let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
   " = Terminal and Splits movment and creation = {{{
   " ================================================
@@ -570,31 +582,11 @@ let g:bufferline_echo = 0
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
 
-
-" = Syntastic = {{{
-" =================
-" maybe relace with: https://github.com/benekastah/neomake
-" ---------
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 2
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_aggregate_errors = 1 " Run all checkers
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_warning_symbol = '⚠'
-let g:syntastic_enable_signs = 1
-
-" https://github.com/scrooloose/syntastic/wiki/Syntax-Checkers
-let g:syntastic_python_checkers = ['pylama']
-
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exe = 'npm run lint --'
+" = neomake = {{{
+" ===============
+" You can then navigate them using the built-in methods like :lwindow / :lopen (to view the list) and :lprev / :lnext to go back and forth.
+call neomake#configure#automake('nrwi', 200)
 " }}}
-
 
 " = incsearch = {{{
 " ========================
@@ -650,7 +642,7 @@ autocmd Filetype html setlocal tabstop=4 softtabstop=4 expandtab shiftwidth=4 sm
 autocmd Filetype javascript setlocal tabstop=2 softtabstop=2 expandtab shiftwidth=2 smarttab
 autocmd Filetype yaml setlocal tabstop=2 softtabstop=2 expandtab shiftwidth=2 smarttab
 
-if has('dontdoathis')
+if has('dontdoathis') " TODO: do I need this?
 
 " ----------------------------------------------------------
 " setup the projects: https://github.com/amiorin/vim-project
