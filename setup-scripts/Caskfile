@@ -40,6 +40,9 @@ brew cask install sublime-text
 brew cask install pycharm
 brew cask install atom
 
+# VPN
+brew cask install FortiClient
+
 #
 # Password manager
 ##################
@@ -80,13 +83,12 @@ brew cask install slack
 # DB browsers
 #brew cask install sqlitebrowser
 #brew cask install robomongo
+brew cask install dbeaver-community # multi DB browser
 
 # Powerline fonts
 brew tap homebrew/cask-fonts
 brew cask install font-dejavu-sans-mono-for-powerline
-# I'm now using awesome fonts: awesome-terminal-fonts with branch: patching-strategy
-# install all fonts: brew cask install $(brew cask search /powerline/ | tail -n +2)
-# nice input: brew cask install font-input
+brew cask install font-droidsansmono-nerd-font
 
 # Screen Saver
 brew cask install aerial

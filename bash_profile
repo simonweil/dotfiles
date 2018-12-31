@@ -15,6 +15,7 @@ alias vim='nvim'
 alias vi='nvim'
 alias git_neo_log='git_log --first-parent $(nvim --version | grep commit | cut -d" " -f2)..'
 export EDITOR='nvim'
+export MANPAGER="nvim -c 'set ft=man' -"
 ###
 
 # useful shortcuts
@@ -84,8 +85,8 @@ alias update_pip3="pip3 list --outdated"
 # Setup virtual env
 export WORKON_HOME=~/work/virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
-export LDFLAGS="-L/usr/local/opt/libxml2/lib -L$(brew info libmemcached | grep --color=none "\*$" | awk '{ print $1 }')/lib/"
-export CPPFLAGS="-I/usr/local/opt/libxml2/include/libxml2/ -I$(brew info libmemcached | grep --color=none "\*$" | awk '{ print $1 }')/include/"
+export LDFLAGS="-L/usr/local/opt/openssl/lib -L/usr/local/opt/libxml2/lib -L$(brew info libmemcached | grep --color=none "\*$" | awk '{ print $1 }')/lib/"
+export CPPFLAGS="-I/usr/local/opt/openssl/include -I/usr/local/opt/libxml2/include/libxml2/ -I$(brew info libmemcached | grep --color=none "\*$" | awk '{ print $1 }')/include/"
 export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
 
 
@@ -164,9 +165,6 @@ export FZF_COMPLETION_TRIGGER=',,'
 export FZF_COMPLETION_OPTS='-m --ansi'
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-# submarine - automatic subtitles download
-alias submarine="submarine --language=he "
-
 # cheat
 export CHEATCOLORS=true # add colores to cheat
 
@@ -207,7 +205,8 @@ alias gem_docs="yard server -g"
 
 # Node
 export NVM_DIR="$HOME/.nvm"
-source "$(brew --prefix)/opt/nvm/nvm.sh"
+[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && source "$(brew --prefix)/opt/nvm/nvm.sh"
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && source "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
 
 
 ############
@@ -318,9 +317,5 @@ alias sites_down='sudo networksetup -setdnsservers "Wi-Fi" empty && sudo network
 [ -r "$HOME/.smartcd_config" ] && ( [ -n $BASH_VERSION ] || [ -n $ZSH_VERSION ] ) && source ~/.smartcd_config
 
 export PATH=".:$PATH"
-
-# Check if terminal supports true colors
-alias true_color='printf " - \x1b[38;2;255;100;0mIs this colorfull? if so, enable true color in neovim.\x1b[0m\n"'
-true_color
 
 echo " -----------------------------------------------------------"

@@ -14,11 +14,12 @@ else
 fi
 
 # install all required homebrew formulas (Cask is first as it has dependencies for brew)
-source setup-scripts/Caskfile
-source setup-scripts/Brewfile
-source setup-scripts/Brew-Gemfile
-source setup-scripts/Nodefile
-source setup-scripts/Pipfile
+source ./setup-scripts/Caskfile
+source ./setup-scripts/Brewfile
+source ./setup-scripts/Brew-Gemfile
+source ./setup-scripts/Nodefile
+source ./setup-scripts/Pipfile
+source ./setup-scripts/Nativefierfile
 
 # Setup bash from brew
 sudo sh -c 'echo "/usr/local/bin/bash" >> /etc/shells'
@@ -33,9 +34,6 @@ mkdir ~/.nvm
 
 # Global gems
 #rvm @global do gem install tmuxinator
-
-# janus
-#curl -Lo- https://bit.ly/janus-bootstrap | bash
 
 # For updating the submodules
 git submodule init
@@ -78,10 +76,7 @@ link_files () {
 
 # Setup all symlinks
 link_files $PWD/config/              ~/.config
-#ln -s $PWD/vimrc.before         ~/.vimrc.before
-#ln -s $PWD/vimrc.after          ~/.vimrc.after
 link_files $PWD/liquidpromptrc       ~/.liquidpromptrc
-#ln -s $PWD/janus                ~/.janus
 link_files $PWD/gitconfig            ~/.gitconfig
 link_files $PWD/zshrc                ~/.zshrc
 link_files $PWD/bashrc               ~/.bashrc
@@ -97,6 +92,7 @@ link_files $PWD/non-packaged-repos/LS_COLORS/LS_COLORS ~/.dircolors
 link_files $PWD/nvimrc               ~/.vimrc
 link_files $PWD/nvimrc               $PWD/config/nvim/init.vim
 link_files $PWD/non-packaged-repos/vim-plug/plug.vim $PWD/config/nvim/autoload/plug.vim
+link_files $PWD/sshconfig            ~/.ssh/config
 
 # OSX settings
 source setup-scripts/osx-setup.sh
