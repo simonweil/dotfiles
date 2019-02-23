@@ -5,8 +5,8 @@ pip install virtualenv
 pip install virtualenvwrapper
 
 # Neovim
-pip install neovim
-pip3 install neovim
+pip install pynvim
+pip3 install pynvim
 pip install pylama
 pip install pylama_pylint
 

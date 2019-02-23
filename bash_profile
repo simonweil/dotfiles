@@ -7,9 +7,11 @@ echo " -----------------------------------------------------------"
 #
 set -o vi # go into vi mode on the shell!!!
 alias v="mvim --remote-silent "
-alias upgrade_neovim="   pip install --upgrade neovim \
-                      && pip3 install --upgrade neovim \
-                      && brew reinstall --HEAD neovim"
+alias upgrade_neovim="   pip install --upgrade pynvim \
+                      && pip3 install --upgrade pynvim \
+                      && npm -g update neovim \
+                      && brew unlink neovim \
+                      && brew install --HEAD neovim"
 alias upgrade_submodules='(cd ~/.dotfiles && git submodule update --merge --remote)'
 alias vim='nvim'
 alias vi='nvim'
@@ -36,7 +38,6 @@ alias ls="ls --color"
 
 alias bin="cd ~/bin"
 alias dev="cd ~/Dev"
-
 alias grep="grep --color=always -i "
 
 # IP addresses
@@ -73,13 +74,13 @@ export PATH="/usr/local/opt/python@2/bin:$PATH"
 alias upgrade_pip="    pip install --upgrade setuptools \
                     && pip install --upgrade pip        \
                     && pip install --upgrade virtualenv virtualenvwrapper \
-                    && pip list --outdated 2> /dev/null | awk '{ print \$1 }' | xargs pip install -U"
+                    && pip list --outdated 2> /dev/null | tail -n +3 | awk '{ print \$1 }' | xargs pip install -U"
 alias update_pip="pip list --outdated"
 
 alias upgrade_pip3="   pip3 install --upgrade setuptools wheel \
                     && pip3 install --upgrade pip        \
                     && pip3 install --upgrade virtualenv virtualenvwrapper \
-                    && pip3 list --outdated 2> /dev/null | awk '{ print \$1 }' | xargs pip3 install -U"
+                    && pip3 list --outdated 2> /dev/null | tail -n +3 | awk '{ print \$1 }' | xargs pip3 install -U"
 alias update_pip3="pip3 list --outdated"
 
 # Setup virtual env
@@ -93,17 +94,17 @@ export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
 #
 # git
 #
-alias git_grep='git log --grep "(NISITES-51" --pretty=oneline'
 alias git_bad_files='find . -name ".DS_Store" -or -name "Thumbs.db"'
 alias git_log="git log --graph --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr)%Creset by %C(bold blue)%an%C(yellow)%d%Creset' --abbrev-commit --date=relative" # add --all to see all branches and not only the checkedout branch
 alias git_log_all="git_log --branches --remotes --tags --decorate"
 alias git_lastest_branches="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
 alias gp="git pull --rebase=preserve"
 alias gpush="git push --set-upstream origin HEAD" # Push current branch to origin with same branch name and set as tracking branch
-alias gf="git fetch && git fetch --tags"
+alias gf="git fetch --all && git fetch --tags --force"
 alias gs="git status"
 alias gde="git diff --ignore-space-at-eol -b -w --ignore-blank-lines"
 alias gd="gde --no-ext-diff"
+alias gdo="gd origin/\$(git rev-parse --abbrev-ref HEAD)..HEAD"
 gc() {
   local BRANCH
   # Interactivly choose a branch to checkout
@@ -124,7 +125,6 @@ alias gcm='git checkout master'
 alias gcm-ec='git checkout master-ec'
 alias git_cherrypick='git cherry-pick --signoff -x'
 alias git_commit_files="git diff-tree --no-commit-id --name-status -r"
-alias git_bad_commit_messages="git log --oneline --since='last week' --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr)%Creset by %C(bold blue)%an%C(yellow)%d%Creset' --abbrev-commit --date=relative | grep -vE 'Merge (remote-tracking )?branch' | grep -vE 'NISITES-|AT-|KNSS-'"
 
 # gl - git commit browser (enter for show, ctrl-d for diff, ` toggles sort)
 # TODO: Add options to seatch all branchs and exact seatch
@@ -269,17 +269,19 @@ function upgrade_say {
 }
 
 alias update_macos="mas outdated"
-alias upgrage_macox="mas upgrade"
+alias upgrade_macox="mas upgrade"
 
 alias update_all="update_node; update_pip && update_pip3 && update_macos && update_brew && echo -e \"\$(date)\\n\""
 alias upgrade_all="   upgrade_say 'node'   && upgrade_node      \
                    && upgrade_say 'neovim' && upgrade_neovim    \
-                   && upgrade_say 'Wine'   && upgrade_wine \
+                   && upgrade_say 'Wine'   && upgrade_wine      \
                    && upgrade_say 'Brew'   && upgrade_brew      \
                    && upgrade_say 'pip'    && upgrade_pip       \
                    && upgrade_say 'pip3'   && upgrade_pip3      \
                    && upgrade_say 'RVM'    && upgrade_rvm       \
-                   && upgrade_say 'Dotfiles (all submodules)' && upgrade_submodules"
+                   && upgrade_say 'Dotfiles (all submodules)' && upgrade_submodules \
+                   && upgrade_say 'MAC'    && upgrade_macox     \
+                   && echo 'Done upgrading.'"
 alias update_project="update_node_project && rake bower:list && bundle outdated"
 
 # http://www.kirsle.net/wizards/ps1.html

@@ -93,6 +93,7 @@ link_files $PWD/nvimrc               ~/.vimrc
 link_files $PWD/nvimrc               $PWD/config/nvim/init.vim
 link_files $PWD/non-packaged-repos/vim-plug/plug.vim $PWD/config/nvim/autoload/plug.vim
 link_files $PWD/sshconfig            ~/.ssh/config
+link_files $PWD/rvmrc                ~/.rvmrc
 
 # OSX settings
 source setup-scripts/osx-setup.sh

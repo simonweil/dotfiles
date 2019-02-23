@@ -46,7 +46,7 @@
         cmd = nvim -d "$LOCAL" "$REMOTE"
 
 [mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 
 [alias]
@@ -81,6 +81,6 @@
 	autoupdate = true
 	enabled = true
 [commit]
-	template = /Users/simon/.stCommitMsg
+	template = ~/.stCommitMsg
 [help]
 	autocorrect = 15

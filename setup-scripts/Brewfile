@@ -16,7 +16,7 @@ brew install mysql
 brew install postgresql pgcli
 
 # Vim
-brew install vim neovim/neovim/neovim macvim
+brew install vim neovim/neovim/neovim
 brew install ctags
 brew install tidy-html5
 brew install shellcheck # for vim shell static check
@@ -38,7 +38,7 @@ brew install rails-completion rake-completion bundler-completion gem-completion 
 brew install git git-flow-avh hub diff-so-fancy git-sizer
 
 # Tools
-brew install wget coreutils md5sha1sum rename tree cheat stormssh osquery dos2unix prettyping googler pstree lsusb gawk
+brew install wget coreutils md5sha1sum rename tree cheat stormssh osquery dos2unix prettyping googler pstree lsusb gawk telnet
 brew install findutils grep gnu-sed gnu-tar --with-default-names
 brew install htop --with-ncurses
 brew install ncdu # NCurses Disk Usage
