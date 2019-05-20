@@ -38,7 +38,7 @@ brew cask install filezilla
 # Editors
 brew cask install sublime-text
 brew cask install pycharm
-brew cask install atom
+brew cask install visual-studio-code
 
 # VPN
 brew cask install FortiClient
