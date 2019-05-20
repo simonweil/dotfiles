@@ -16,16 +16,13 @@ let deoplete#sources#jedi#show_docstring = 1
 Plug 'https://github.com/ervandew/supertab.git'
 let g:SuperTabDefaultCompletionType = "<c-n>" " Make the tabing on completion menu go from top to bottom
 let g:SuperTabClosePreviewOnPopupClose = 1 " Close the preview when completion ends
-"Plug 'http://github.com/Shougo/echodoc.vim.git' " TODO: use?
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
-"let g:echodoc_enable_at_startup = 1
-"set cmdheight=2
 
 " Snippets
-Plug 'https://github.com/sirver/ultisnips.git' " TODO: Learn to use
+Plug 'https://github.com/sirver/ultisnips.git'
 " Don't map any tabs, I'll do it later
 let g:UltiSnipsExpandTrigger = '<NOP>'
 let g:UltiSnipsJumpForwardTrigger = '<NOP>'
@@ -84,17 +81,12 @@ inoremap <silent> <s-tab> <C-R>=g:SmartShiftTab()<cr>
 snoremap <silent> <s-tab> <Esc>:call g:SmartShiftTab()<cr>
 
 Plug 'https://github.com/honza/vim-snippets.git'
-" Alternative:
-"Plug 'https://github.com/garbas/vim-snipmate.git'
-"Plug 'https://github.com/tomtom/tlib_vim.git'
-"Plug 'https://github.com/MarcWeber/vim-addon-mw-utils.git'
 
 " Static Analysis
 Plug 'https://github.com/neomake/neomake.git'
 
 " Apperance
 Plug 'https://github.com/morhetz/gruvbox.git'
-"Plug 'https://github.com/fenetikm/falcon.git' - TODO: colorscheme to test in the future
 Plug 'https://github.com/vim-airline/vim-airline.git'
 Plug 'https://github.com/vim-airline/vim-airline-themes.git'
 "Plug 'https://github.com/bling/vim-bufferline.git' -
@@ -108,6 +100,7 @@ Plug 'https://github.com/haya14busa/incsearch-fuzzy.vim.git'
 Plug 'https://github.com/justinmk/vim-sneak.git'
 Plug 'https://github.com/tpope/vim-unimpaired.git' " pairs of handy bracket mappings - TODO: learn to use
 Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] } " TODO: configure to use ripgrep
+"Plug 'https://github.com/svermeulen/nvim-marksman.git' " TODO: check and use
 
 " Make some command toggle for more speed!
 Plug '~/mine/my-repos/vim-cycle-movements'
@@ -413,6 +406,11 @@ set termguicolors
 
 " Turn on live substitute
 set inccommand=split
+
+" Python executables
+let g:python_host_prog = $HOME . '/work/virtualenvs/neovim/bin/python'
+let g:python3_host_prog = $HOME . '/work/virtualenvs/neovim3/bin/python'
+
 " }}}
 
 
@@ -474,12 +472,8 @@ imap <silent> <leader>ul <ESC>:call UnderlineCurrentLine("i")<CR>
 
 
 " Use a special color scheme for MacVim GUI
-if has("gui_running")
-  colorscheme Tomorrow-Night-Bright
-else
-  colorscheme gruvbox
-  set background=dark
-endif
+colorscheme gruvbox
+set background=dark
 
 
 " search google with the word under the cursor

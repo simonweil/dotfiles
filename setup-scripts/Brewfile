@@ -9,8 +9,8 @@ brew install wine --HEAD
 brew install winetricks
 
 # Development
-brew install python --with-tcl-tk
-brew install python@2 --with-tcl-tk
+brew install python
+brew install python@2
 brew install nvm node
 brew install mysql
 brew install postgresql pgcli
@@ -38,9 +38,8 @@ brew install rails-completion rake-completion bundler-completion gem-completion 
 brew install git git-flow-avh hub diff-so-fancy git-sizer
 
 # Tools
-brew install wget coreutils md5sha1sum rename tree cheat stormssh osquery dos2unix prettyping googler pstree lsusb gawk telnet
-brew install findutils grep gnu-sed gnu-tar --with-default-names
-brew install htop --with-ncurses
+brew install wget coreutils md5sha1sum rename tree cheat stormssh osquery dos2unix prettyping googler pstree lsusb \
+             gawk telnet findutils grep gnu-sed gnu-tar htop
 brew install ncdu # NCurses Disk Usage
 brew install archey # small command line utility to show the OSX spec
 brew install awscli
@@ -81,4 +80,4 @@ brew install mackup
 # PowToon
 #
 brew install geoip libmemcached
-brew install libxml2
+brew install libxml2 libgit2

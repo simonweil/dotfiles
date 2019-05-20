@@ -20,6 +20,10 @@ export EDITOR='nvim'
 export MANPAGER="nvim -c 'set ft=man' -"
 ###
 
+# brew installed utils
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
+export MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
+
 # useful shortcuts
 alias ..="cd .."
 alias ...="cd ../.."
@@ -55,7 +59,7 @@ alias apache_log="cd /var/log/apache2/"
 # homebrew
 alias update_brew="brew update && brew outdated"
 alias upgrade_brew="brew upgrade && brew outdated"
-alias upgrade_wine='if [[ $(brew outdated wine) ]]; then brew upgrade wine --devel; fi'
+alias upgrade_wine='if [[ $(brew outdated wine) ]]; then brew upgrade wine; fi'
 alias brew_desc="brew desc"
 alias brew_cask="brew cask"
 alias brew_formulas_that_depend_on="brew uses --recursive "
@@ -86,9 +90,12 @@ alias update_pip3="pip3 list --outdated"
 # Setup virtual env
 export WORKON_HOME=~/work/virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
+
+# For installing dependencies
 export LDFLAGS="-L/usr/local/opt/openssl/lib -L/usr/local/opt/libxml2/lib -L$(brew info libmemcached | grep --color=none "\*$" | awk '{ print $1 }')/lib/"
 export CPPFLAGS="-I/usr/local/opt/openssl/include -I/usr/local/opt/libxml2/include/libxml2/ -I$(brew info libmemcached | grep --color=none "\*$" | awk '{ print $1 }')/include/"
 export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
+export PYCURL_SSL_LIBRARY=openssl
 
 
 #
@@ -167,10 +174,6 @@ export FZF_COMPLETION_OPTS='-m --ansi'
 
 # cheat
 export CHEATCOLORS=true # add colores to cheat
-
-# coreutils
-export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
-export MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
 
 # node
 alias node_list='npm -g list --depth=0'

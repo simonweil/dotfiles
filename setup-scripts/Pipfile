@@ -3,12 +3,19 @@ brew install brew-pip
 # development
 pip install virtualenv
 pip install virtualenvwrapper
+export WORKON_HOME=~/work/virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
 
 # Neovim
+mkvirtualenv neovim --python=/usr/local/opt/python@2/bin/python
 pip install pynvim
-pip3 install pynvim
-pip install pylama
 pip install pylama_pylint
+deactivate
+
+mkvirtualenv neovim3
+pip install pynvim
+pip install pylama_pylint
+deactivate
 
 # super charged AWS cli (https://github.com/donnemartin/saws)
 pip install saws
