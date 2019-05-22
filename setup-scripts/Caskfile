@@ -55,11 +55,11 @@ brew cask install FortiClient
 # Possible alternative: keepassxc
 brew cask install macpass
 cd /tmp
-wget https://github.com/MacPass/MacPassHTTP/releases/download/0.3/MacPassHTTP.mpplugin-0.3.zip
-unzip MacPassHTTP.mpplugin-0.3.zip
+wget https://github.com/MacPass/MacPassHTTP/releases/download/0.3.1/MacPassHTTP.mpplugin-0.3.1.zip
+unzip MacPassHTTP.mpplugin-0.3.1.zip
 mkdir -p ~/Library/Application\ Support/MacPass
 \mv MacPassHTTP.mpplugin ~/Library/Application\ Support/MacPass
-\rm -f MacPassHTTP.mpplugin-0.3.zip
+\rm -f MacPassHTTP.mpplugin-0.3.1.zip
 cd -
 
 # Other
