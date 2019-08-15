@@ -39,7 +39,7 @@ brew install git git-flow-avh hub diff-so-fancy git-sizer
 
 # Tools
 brew install wget coreutils md5sha1sum rename tree cheat stormssh osquery dos2unix prettyping googler pstree lsusb \
-             gawk telnet findutils grep gnu-sed gnu-tar htop
+             gawk telnet findutils grep gnu-sed gnu-tar htop tcping
 brew install ncdu # NCurses Disk Usage
 brew install archey # small command line utility to show the OSX spec
 brew install awscli
@@ -75,6 +75,10 @@ brew install mackup
 # aws-okta
 # docker-credential-helper-ecr
 # serverless
+
+# K8s
+brew install kubectl kubernetes-helm
+brew install aws-iam-authenticator
 
 #
 # PowToon

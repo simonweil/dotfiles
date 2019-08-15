@@ -76,9 +76,10 @@ fi
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export PATH="/usr/local/opt/python@2/bin:$PATH"
 alias upgrade_pip="    pip install --upgrade setuptools \
-                    && pip install --upgrade pip        \
                     && pip install --upgrade virtualenv virtualenvwrapper \
                     && pip list --outdated 2> /dev/null | tail -n +3 | awk '{ print \$1 }' | xargs pip install -U"
+                    # removed as it fails - bring back in the future: && pip install --upgrade pip        \
+
 alias update_pip="pip list --outdated"
 
 alias upgrade_pip3="   pip3 install --upgrade setuptools wheel \
@@ -92,8 +93,8 @@ export WORKON_HOME=~/work/virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
 
 # For installing dependencies
-export LDFLAGS="-L/usr/local/opt/openssl/lib -L/usr/local/opt/libxml2/lib -L$(brew info libmemcached | grep --color=none "\*$" | awk '{ print $1 }')/lib/"
-export CPPFLAGS="-I/usr/local/opt/openssl/include -I/usr/local/opt/libxml2/include/libxml2/ -I$(brew info libmemcached | grep --color=none "\*$" | awk '{ print $1 }')/include/"
+export LDFLAGS="$LDFLAGS -L/usr/local/opt/libgeoip/lib/ -L/usr/local/opt/openssl/lib -L/usr/local/opt/libxml2/lib -L$(brew info libmemcached | grep --color=none "\*$" | awk '{ print $1 }')/lib/"
+export CPPFLAGS="$CPPFLAGS -I/usr/local/include/ -I/usr/local/opt/openssl/include -I/usr/local/opt/libxml2/include/libxml2/ -I$(brew info libmemcached | grep --color=none "\*$" | awk '{ print $1 }')/include/"
 export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
 export PYCURL_SSL_LIBRARY=openssl
 
@@ -181,7 +182,7 @@ export PATH="$HOME/bin:/usr/local/share/npm/bin:$PATH"
 alias update_project_node="npm outdated --quiet --depth=0"
 alias update_node="update_project_node --global"
 alias upgrade_project_node="npm update"
-alias upgrade_node="upgrade_project_node --global"
+alias upgrade_node="nvm install node --latest-npm && ~/.dotfiles/setup-scripts/Nodefile && upgrade_project_node --global"
 # add gulp completion
 eval "$(gulp --completion=bash)"
 
@@ -275,7 +276,8 @@ alias update_macos="mas outdated"
 alias upgrade_macox="mas upgrade"
 
 alias update_all="update_node; update_pip && update_pip3 && update_macos && update_brew && echo -e \"\$(date)\\n\""
-alias upgrade_all="   upgrade_say 'node'   && upgrade_node      \
+alias upgrade_all="   upgrade_say 'MAC'    && upgrade_macox     \
+                   && upgrade_say 'node'   && upgrade_node      \
                    && upgrade_say 'neovim' && upgrade_neovim    \
                    && upgrade_say 'Wine'   && upgrade_wine      \
                    && upgrade_say 'Brew'   && upgrade_brew      \
@@ -283,7 +285,6 @@ alias upgrade_all="   upgrade_say 'node'   && upgrade_node      \
                    && upgrade_say 'pip3'   && upgrade_pip3      \
                    && upgrade_say 'RVM'    && upgrade_rvm       \
                    && upgrade_say 'Dotfiles (all submodules)' && upgrade_submodules \
-                   && upgrade_say 'MAC'    && upgrade_macox     \
                    && echo 'Done upgrading.'"
 alias update_project="update_node_project && rake bower:list && bundle outdated"
 
