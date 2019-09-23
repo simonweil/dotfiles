@@ -83,5 +83,5 @@ brew install aws-iam-authenticator
 #
 # PowToon
 #
-brew install geoip libmemcached
+brew install geoip
 brew install libxml2 libgit2

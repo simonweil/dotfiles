@@ -19,11 +19,12 @@ brew cask install fluid
 brew cask install iterm2
 brew cask install sourcetree
 brew cask install dash
-brew cask install vagrant
-brew cask install virtualbox
+#brew cask install vagrant
 brew cask install gitbook-editor
-brew cask install electron
-brew cask install docker-toolbox
+
+# K8s
+brew cask install minikube virtualbox
+#brew cask install docker-toolbox
 
 # Browsers
 brew cask install google-chrome google-chrome-canary

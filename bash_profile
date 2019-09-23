@@ -70,6 +70,11 @@ if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
   source $(brew --prefix)/share/bash-completion/bash_completion
 fi
 
+# source kubectl and minikube bash completion
+source <(kubectl completion bash)
+source <(minikube completion bash)
+
+
 #
 # python
 #
@@ -106,7 +111,7 @@ alias git_bad_files='find . -name ".DS_Store" -or -name "Thumbs.db"'
 alias git_log="git log --graph --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr)%Creset by %C(bold blue)%an%C(yellow)%d%Creset' --abbrev-commit --date=relative" # add --all to see all branches and not only the checkedout branch
 alias git_log_all="git_log --branches --remotes --tags --decorate"
 alias git_lastest_branches="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
-alias gp="git pull --rebase=preserve"
+alias gp="git pull --rebase=merges"
 alias gpush="git push --set-upstream origin HEAD" # Push current branch to origin with same branch name and set as tracking branch
 alias gf="git fetch --all && git fetch --tags --force"
 alias gs="git status"
