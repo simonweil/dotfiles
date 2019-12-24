@@ -84,3 +84,7 @@ antigen apply
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH=".:$PATH"
+
+autoload -U +X bashcompinit && bashcompinit
+
+complete -o nospace -C /usr/local/bin/terraform terraform

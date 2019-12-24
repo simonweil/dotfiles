@@ -47,6 +47,9 @@ defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 # Disable the warning when changing a file extension
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
+# enable airdrop
+defaults write com.apple.NetworkBrowser DisableAirDrop -bool NO
+
 ###############################################################################
 # Spaces
 ###############################################################################

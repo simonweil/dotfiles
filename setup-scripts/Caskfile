@@ -23,8 +23,9 @@ brew cask install dash
 brew cask install gitbook-editor
 
 # K8s
-brew cask install minikube virtualbox
+#brew cask install virtualbox
 #brew cask install docker-toolbox
+brew cask install docker
 
 # Browsers
 brew cask install google-chrome google-chrome-canary

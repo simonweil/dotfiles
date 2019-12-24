@@ -1,4 +1,4 @@
-#!/usr/local/bin/bash
+#!/usr/bin/env bash
 
 echo " -----------------------------------------------------------"
 
@@ -7,8 +7,11 @@ echo " -----------------------------------------------------------"
 #
 set -o vi # go into vi mode on the shell!!!
 alias v="mvim --remote-silent "
-alias upgrade_neovim="   pip install --upgrade pynvim \
-                      && pip3 install --upgrade pynvim \
+alias upgrade_neovim="   workon neovim \
+                      && pip install --upgrade pynvim pylama_pylint pylama \
+                      && workon neovim3 \
+                      && pip install --upgrade pynvim pylama_pylint pylama \
+                      && deactivate \
                       && npm -g update neovim \
                       && brew unlink neovim \
                       && brew install --HEAD neovim"
@@ -66,9 +69,8 @@ alias brew_formulas_that_depend_on="brew uses --recursive "
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 # enable bash compleation
-if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
-  source $(brew --prefix)/share/bash-completion/bash_completion
-fi
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
 
 # source kubectl and minikube bash completion
 source <(kubectl completion bash)
@@ -81,16 +83,15 @@ source <(minikube completion bash)
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 export PATH="/usr/local/opt/python@2/bin:$PATH"
 alias upgrade_pip="    pip install --upgrade setuptools \
+                    && pip install --upgrade pip        \
                     && pip install --upgrade virtualenv virtualenvwrapper \
-                    && pip list --outdated 2> /dev/null | tail -n +3 | awk '{ print \$1 }' | xargs pip install -U"
-                    # removed as it fails - bring back in the future: && pip install --upgrade pip        \
-
+                    && for pkg in \$(pip list --outdated 2> /dev/null | tail -n +3 | awk '{ print \$1 }' | grep -v \"^pip\\\$\"); do pip install -U \$pkg; done"
 alias update_pip="pip list --outdated"
 
 alias upgrade_pip3="   pip3 install --upgrade setuptools wheel \
                     && pip3 install --upgrade pip        \
                     && pip3 install --upgrade virtualenv virtualenvwrapper \
-                    && pip3 list --outdated 2> /dev/null | tail -n +3 | awk '{ print \$1 }' | xargs pip3 install -U"
+                    && for pkg in \$(pip3 list --outdated 2> /dev/null | tail -n +3 | awk '{ print \$1 }' | grep -v \"^pip3\\\$\"); do pip3 install -U \$pkg; done"
 alias update_pip3="pip3 list --outdated"
 
 # Setup virtual env
@@ -278,16 +279,30 @@ function upgrade_say {
 }
 
 alias update_macos="mas outdated"
-alias upgrade_macox="mas upgrade"
+function upgrade_macos {
+        if command -v xcodebuild > /dev/null; then
+                XCODE_SAVE_VERSION="$(xcodebuild -version | grep --color=none Xcode)"
+        fi
+
+        mas upgrade
+
+        if [[ "X$XCODE_SAVE_VERSION" != "X" && "$XCODE_SAVE_VERSION" != "$(xcodebuild -version | grep --color=none Xcode)" ]]; then
+                sudo xcodebuild -license accept
+        else
+                echo "Xcode not upgraded"
+        fi
+        unset XCODE_SAVE_VERSION
+}
 
 alias update_all="update_node; update_pip && update_pip3 && update_macos && update_brew && echo -e \"\$(date)\\n\""
-alias upgrade_all="   upgrade_say 'MAC'    && upgrade_macox     \
+alias upgrade_all="   upgrade_say 'MAC'    && upgrade_macos     \
                    && upgrade_say 'node'   && upgrade_node      \
-                   && upgrade_say 'neovim' && upgrade_neovim    \
                    && upgrade_say 'Wine'   && upgrade_wine      \
                    && upgrade_say 'Brew'   && upgrade_brew      \
                    && upgrade_say 'pip'    && upgrade_pip       \
                    && upgrade_say 'pip3'   && upgrade_pip3      \
+                   && source ~/.dotfiles/setup-scripts/Pipfile  \
+                   && upgrade_say 'neovim' && upgrade_neovim    \
                    && upgrade_say 'RVM'    && upgrade_rvm       \
                    && upgrade_say 'Dotfiles (all submodules)' && upgrade_submodules \
                    && echo 'Done upgrading.'"

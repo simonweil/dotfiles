@@ -139,6 +139,7 @@ endfunction
 Plug 'https://github.com/kana/vim-textobj-user.git'           " Needed to define custom text objects
 Plug 'https://github.com/michaeljsmith/vim-indent-object.git' " Indentation level text object (i & I)
 Plug 'https://github.com/Chiel92/vim-autoformat.git'          " Reformat files
+"checkout https://github.com/sbdchd/neoformat instead of previous...
 "Plug 'https://github.com/foosoft/vim-argwrap.git' " TODO: learn to use and define mapping
 
 Plug 'https://github.com/dhruvasagar/vim-table-mode.git' " For working with tables, Lazy load when using TableModeToggle - TODO: learn to use
@@ -193,16 +194,40 @@ Plug '/usr/local/opt/fzf'
 Plug 'https://github.com/junegunn/fzf.vim.git'
 let g:fzf_commits_log_options = '--color=always --pretty=format:"%Cred%h%Creset - %s %Cgreen(%cr)%Creset by %C(bold blue)%an%C(yellow)%d%Creset" --abbrev-commit --date=relative'
 
-"""""""""""
-" NyaoVim "
-"""""""""""
-"Plug 'https://github.com/rhysd/nyaovim-popup-tooltip.git'
-"Plug 'https://github.com/rhysd/nyaovim-markdown-preview.git'
-"Plug '~/mine/projects/nyaovim-markdown-preview'
-"let g:markdown_preview_auto = 1
-"let g:markdown_preview_eager = 1
-"Plug 'https://github.com/rhysd/nyaovim-mini-browser.git'
-"Plug '~/mine/projects/cheatsheet.vim'
+""""""""""""""""""""
+" External plugins "
+""""""""""""""""""""
+Plug 'https://github.com/glacambre/firenvim.git', { 'do': function('firenvim#install') }
+
+" Exclude from intercom chats and google docs
+let g:firenvim_config = {
+    \ 'localSettings': {
+        \ '.*': {
+            \ 'selector': '*:not(.intercom-composer) > textarea',
+            \ 'priority': 0,
+        \ },
+        \ 'docs\.google\.com': {
+            \ 'selector': '',
+            \ 'priority': 1,
+        \ },
+        \ '.*\.atlassian.net': {
+            \ 'selector': '',
+            \ 'priority': 1,
+        \ },
+    \ }
+\ }
+
+if exists('g:started_by_firenvim')
+  " Make github textareas be with markdown syntax
+  au BufEnter github.com_*.txt set filetype=markdown
+
+  " Allow moving focus back to the page with double esc
+  nnoremap <Esc><Esc> :call firenvim#focus_page()<CR>
+
+  " Write the buffer contents back to the page all the time automaticly 
+  au TextChanged * ++nested write
+  au TextChangedI * ++nested write
+endif
 
 
 
@@ -329,7 +354,6 @@ Plug 'https://github.com/rodjek/vim-puppet.git', {'for': 'puppet'}
 "Plugin 'shawncplus/phpcomplete.vim'
 "Plugin 'heavenshell/vim-slack'
 "Plugin 'tpope/vim-rsi'
-"Plugin 'Chiel92/vim-autoformat'
 "Plugin 'Xuyuanp/nerdtree-git-plugin'
 "Plugin 'jszakmeister/vim-togglecursor'
 "Plugin 'TagHighlight'
@@ -345,6 +369,8 @@ Plug 'https://github.com/rodjek/vim-puppet.git', {'for': 'puppet'}
 "Plugin 'farseer90718/vim-taskwarrior'
 "Plugin 'KabbAmine/vCoolor.vim'
 "Plugin 'fatih/vim-go'
+"https://github.com/vim-ctrlspace/vim-ctrlspace
+"https://github.com/edkolev/promptline.vim
 
 call plug#end()
 

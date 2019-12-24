@@ -7,11 +7,13 @@ export WORKON_HOME=~/work/virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
 
 # Neovim
+[ -d $WORKON_HOME/neovim ] && rm -rf $WORKON_HOME/neovim
 mkvirtualenv neovim --python=/usr/local/opt/python@2/bin/python
 pip install pynvim
 pip install pylama_pylint
 deactivate
 
+[ -d $WORKON_HOME/neovim3 ] && rm -rf $WORKON_HOME/neovim3
 mkvirtualenv neovim3
 pip install pynvim
 pip install pylama_pylint
