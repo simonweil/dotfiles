@@ -1,5 +1,8 @@
+# Convert to https://github.com/Homebrew/homebrew-bundle ?
+
 # services external command
 brew tap homebrew/services
+brew tap homebrew/command-not-found
 
 # desc external command
 brew tap telemachus/homebrew-desc
@@ -16,6 +19,8 @@ brew install mysql
 brew install postgresql pgcli
 #brew install jd # json diff tool - test it
 brew install awscli
+brew install fx jq # JSON tools
+brew install howdoi
 
 # Vim
 brew install vim neovim/neovim/neovim
@@ -38,12 +43,16 @@ brew install rails-completion rake-completion bundler-completion gem-completion 
 # git
 brew install git git-flow-avh hub diff-so-fancy git-sizer onefetch
 
-# Tools
+brew tap "rhysd/git-brws" "https://github.com/rhysd/git-brws"
+brew install git-brws # Cool browsing command for git
+
+# Command line tools
 brew install wget coreutils md5sha1sum rename tree cheat stormssh osquery dos2unix prettyping googler pstree lsusb \
              gawk telnet findutils grep gnu-sed gnu-tar htop tcping
 brew install ncdu # NCurses Disk Usage
 brew install archey # small command line utility to show the OSX spec
 brew install speedtest-cli
+#brew install gotop
 
 # Command line enhancement
 #brew install antigen
@@ -86,8 +95,3 @@ terraform --install-autocomplete
 brew install docker-clean
 #kube-aws gimme-aws-creds awsume
 
-#
-# PowToon
-#
-brew install geoip
-brew install libxml2 libgit2

@@ -12,14 +12,12 @@ Plug 'https://github.com/Shougo/neoinclude.vim.git'         " include and file/i
 Plug 'https://github.com/Shougo/neco-syntax.git'            " syntax source
 Plug 'https://github.com/zchee/deoplete-jedi.git'           " pythom source
 let deoplete#sources#jedi#show_docstring = 1
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
 
 Plug 'https://github.com/ervandew/supertab.git'
 let g:SuperTabDefaultCompletionType = "<c-n>" " Make the tabing on completion menu go from top to bottom
 let g:SuperTabClosePreviewOnPopupClose = 1 " Close the preview when completion ends
-
-" Deoplete
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
 
 " Snippets
 Plug 'https://github.com/sirver/ultisnips.git'
@@ -27,7 +25,6 @@ Plug 'https://github.com/sirver/ultisnips.git'
 let g:UltiSnipsExpandTrigger = '<NOP>'
 let g:UltiSnipsJumpForwardTrigger = '<NOP>'
 let g:UltiSnipsJumpBackwardTrigger = '<NOP>'
-let g:SuperTabMappingForward = '<NOP>'
 let g:SuperTabMappingBackward = '<NOP>'
 " Don't unmap my mappings
 let g:UltiSnipsMappingsToIgnore = [ "SmartTab", "SmartShiftTab" ]
@@ -43,7 +40,7 @@ function! Ulti_ExpandOrEnter()
   elseif pumvisible()
     " if in completion menu - just close it and leave the cursor at the
     " end of the completion
-    return deoplete#mappings#close_popup()
+    return deoplete#close_popup()
   else
     " otherwise, just do an "enter"
     return "\<return>"
@@ -94,19 +91,22 @@ Plug 'https://github.com/nathanaelkane/vim-indent-guides.git'
 Plug 'ryanoasis/vim-devicons' " add nice icons to the status line, tabline, etc.
 
 " Movement & Search
-"Plug 'https://github.com/edsono/vim-matchit.git'
 Plug 'https://github.com/haya14busa/incsearch.vim.git'
 Plug 'https://github.com/haya14busa/incsearch-fuzzy.vim.git'
 Plug 'https://github.com/justinmk/vim-sneak.git'
-Plug 'https://github.com/tpope/vim-unimpaired.git' " pairs of handy bracket mappings - TODO: learn to use
-Plug 'mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] } " TODO: configure to use ripgrep
-"Plug 'https://github.com/svermeulen/nvim-marksman.git' " TODO: check and use
+Plug 'https://github.com/tpope/vim-unimpaired.git' " pairs of handy bracket mappings - use: [ with q,a,b,<space>,x,u,y,f,n
+Plug 'https://github.com/mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
+let g:grepper = {}
+let g:grepper.dir = 'repo,file'
+let g:grepper.tools = ['rg', 'ag', 'git', 'grep']
+nmap gs  <plug>(GrepperOperator)
+xmap gs  <plug>(GrepperOperator)
+nnoremap <leader>* :Grepper -tool git -open -switch -cword -noprompt<cr>
+command! Todo Grepper -noprompt -tool git -query -E '(TODO|FIXME|XXX):'
+
 
 " Make some command toggle for more speed!
 Plug '~/mine/my-repos/vim-cycle-movements'
-nnoremap <silent> ^ :call CycleMovements('^', ,'0')<CR>
-nnoremap <silent> 0 :call CycleMovements('0' ,'^')<CR>
-"nnoremap <silent> $ :call CycleMovements('$', '0', '^')<CR>
 nnoremap <silent> L :call CycleMovements('L', 'M', 'H')<CR>
 nnoremap <silent> M :call CycleMovements('M', 'H', 'L')<CR>
 nnoremap <silent> H :call CycleMovements('H', 'L', 'M')<CR>
@@ -117,7 +117,7 @@ nnoremap <silent> gg :call CycleMovements('gg', 'G')<CR>
 " Editing "
 """""""""""
 Plug 'https://github.com/tpope/vim-surround.git' " TODO: learn to use
-Plug 'https://github.com/jiangmiao/auto-pairs.git' " TODO: learn to use
+Plug 'https://github.com/jiangmiao/auto-pairs.git' " Use <a-e> to toggle autopairs
 Plug 'https://github.com/tpope/vim-speeddating.git' " use CTRL-A/CTRL-X to increment dates, times, and more - TODO: learn to use
                                                     " Use SpeedDatingFormat! for help defining new formats
                                                     " http://www.thegeekstuff.com/2009/10/vim-editor-how-to-increase-or-decrease-date-time-roman-number-and-ordinals/
@@ -136,8 +136,11 @@ function g:Multiple_cursors_after()
   let g:deoplete#disable_auto_complete = 0
 endfunction
 
+" Text objects
 Plug 'https://github.com/kana/vim-textobj-user.git'           " Needed to define custom text objects
 Plug 'https://github.com/michaeljsmith/vim-indent-object.git' " Indentation level text object (i & I)
+Plug 'https://github.com/rhysd/vim-textobj-anyblock'          " Use b to for the closest of '', \"\", (), {}, [] and <>
+
 Plug 'https://github.com/Chiel92/vim-autoformat.git'          " Reformat files
 "checkout https://github.com/sbdchd/neoformat instead of previous...
 "Plug 'https://github.com/foosoft/vim-argwrap.git' " TODO: learn to use and define mapping
@@ -147,11 +150,19 @@ Plug 'https://github.com/dhruvasagar/vim-table-mode.git' " For working with tabl
 " Help
 Plug 'https://github.com/rizzatti/dash.vim' " TODO: learn to use
 
+"
 " Git
+"
 Plug 'https://github.com/tpope/vim-git.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'      " Git integration - TODO: learn to use
 Plug 'https://github.com/airblade/vim-gitgutter.git'
 Plug 'https://github.com/rhysd/committia.vim.git'     " Better commiting messageing
+Plug 'https://github.com/APZelos/blamer.nvim.git'
+let g:blamer_enabled = 1
+
+Plug 'https://github.com/rhysd/git-messenger.vim.git', {'on': ['GitMessenger', '<Plug>(git-messenger']}
+
+" Commita config
 let g:committia_open_only_vim_starting = 1
 let g:committia_hooks = {}
 function! g:committia_hooks.edit_open(info)
@@ -308,7 +319,6 @@ Plug 'https://github.com/rodjek/vim-puppet.git', {'for': 'puppet'}
 "https://github.com/bfredl/nvim-miniyank
 "https://github.com/bfredl/nvim-ipy
 "https://github.com/brettanomyces/nvim-terminus
-"https://github.com/chrisbra/vim-diff-enhanced
 "https://github.com/sheerun/vim-polyglot
 "https://github.com/Shougo/denite.nvim
 "Plug 'https://github.com/xolox/vim-easytags.git'
@@ -372,6 +382,9 @@ Plug 'https://github.com/rodjek/vim-puppet.git', {'for': 'puppet'}
 "https://github.com/vim-ctrlspace/vim-ctrlspace
 "https://github.com/edkolev/promptline.vim
 
+" Use patience algorithm for vim diff
+set diffopt+=internal,algorithm:patience
+
 call plug#end()
 
 
@@ -386,8 +399,8 @@ augroup END
 
 " = Better settings = {{{
 " Set leader key
-let mapleader="'"
-let maplocalleader="`"
+let mapleader="`"
+let maplocalleader="'"
 
 " Highlight the screen line of the cursor
 set cursorline

@@ -1,4 +1,5 @@
 brew tap homebrew/cask-versions
+brew tap homebrew/cask-drivers
 
 # General purpose
 brew cask install xquartz
@@ -90,7 +91,7 @@ brew cask install dbeaver-community # multi DB browser
 # Powerline fonts
 brew tap homebrew/cask-fonts
 brew cask install font-dejavu-sans-mono-for-powerline
-brew cask install font-droidsansmono-nerd-font
+brew cask install font-droidsansmono-nerd-font font-fira-code
 
 # Screen Saver
 brew cask install aerial

@@ -320,6 +320,11 @@ if [ -f $(brew --prefix)/share/liquidprompt ]; then
   . $(brew --prefix)/share/liquidprompt
 fi
 
+# setup brew command-not-found
+if brew command command-not-found-init > /dev/null 2>&1; then
+        eval "$(brew command-not-found-init)"
+fi
+
 # Set ls colors (update from https://github.com/trapd00r/LS_COLORS)
 # Another theme is: https://github.com/seebi/dircolors-solarized
 eval $(dircolors -b $HOME/.dotfiles/non-packaged-repos/LS_COLORS/LS_COLORS)
@@ -330,10 +335,15 @@ eval $(dircolors -b $HOME/.dotfiles/non-packaged-repos/LS_COLORS/LS_COLORS)
 # https://github.com/pindexis/marker - clone the repo when iTerm 2.9 is released
 #[[ -s "$HOME/.local/share/marker/marker.sh" ]] && source "$HOME/.local/share/marker/marker.sh"
 echo " - Enable marker"
+echo "Check: https://starship.rs/ as replacement for liquidprompt"
+echo "Check: git-delta for git highlighting+"
 
 ##########################
 # Other general settings #
 ##########################
+# do not update brew every time brew command is used
+export HOMEBREW_NO_AUTO_UPDATE=1
+
 export DISABLE_AUTO_TITLE=true # for tmux titles
 alias tmux_attach="tmux -CC attach"
 

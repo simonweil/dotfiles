@@ -5,3 +5,4 @@ config/nvim/init.vim
 config/nvim/.init.vim-rplugin~
 config/yarn/
 config/nvim/.netrwhist
+.idea/
