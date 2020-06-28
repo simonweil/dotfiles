@@ -17,6 +17,7 @@ brew cask install sizeup
 brew cask install fluid
 #brew cask install alfred
 brew cask install time-out
+brew cask install maccy # Clipboard manager
 
 # Development
 brew cask install iterm2
