@@ -9,24 +9,25 @@ brew cask install yujitach-menumeters #menumeters
 brew cask install recordit
 brew cask install keepingyouawake
 brew cask install flux
+brew cask install whatsapp
 
 # Productivity
 brew cask install cheatsheet
 brew cask install sizeup
 brew cask install fluid
 #brew cask install alfred
+brew cask install time-out
 
 # Development
 brew cask install iterm2
 brew cask install sourcetree
 brew cask install dash
 #brew cask install vagrant
-brew cask install gitbook-editor
+#brew cask install gitbook-editor
 
 # K8s
-#brew cask install virtualbox
-#brew cask install docker-toolbox
 brew cask install docker
+brew cask install lens # k8slens IDE for k8s
 
 # Browsers
 brew cask install google-chrome google-chrome-canary
@@ -34,8 +35,7 @@ brew cask install firefox
 brew cask install firefox-developer-edition
 
 # File sharing
-#brew cask install dropbox
-brew cask install google-drive-file-stream
+brew cask install google-backup-and-sync
 brew cask install filezilla
 
 # Editors
@@ -44,26 +44,10 @@ brew cask install pycharm
 brew cask install visual-studio-code
 
 # VPN
-brew cask install FortiClient
+#brew cask install FortiClient
 
-#
 # Password manager
-##################
-# Chrome plugin: https://chrome.google.com/webstore/detail/chromeipass/ompiailgknfdndiefoaoiligalphfdae?hl=en
-# FireFox: https://addons.mozilla.org/en-US/firefox/addon/passifox/
-#          https://addons.mozilla.org/en-US/firefox/addon/keefox/
-# Update MacPassHTTP here: https://github.com/MacPass/MacPassHTTP/releases
-#
-# Possible alternative: http://www.kyuran.be/software/kypass4mac/
-# Possible alternative: keepassxc
-brew cask install macpass
-cd /tmp
-wget https://github.com/MacPass/MacPassHTTP/releases/download/0.3.1/MacPassHTTP.mpplugin-0.3.1.zip
-unzip MacPassHTTP.mpplugin-0.3.1.zip
-mkdir -p ~/Library/Application\ Support/MacPass
-\mv MacPassHTTP.mpplugin ~/Library/Application\ Support/MacPass
-\rm -f MacPassHTTP.mpplugin-0.3.1.zip
-cd -
+brew cask install KeePassXC
 
 # Other
 brew cask install teamviewer
@@ -73,15 +57,11 @@ brew cask install coconutbattery
 #brew cask install utorrent
 #brew cask install xbmc
 #brew cask install gimp
-#brew cask install remote-desktop-connection - removed the cask as it's not maintained - a new one is in beta
 #brew cask install jing
 
 # Communications
-brew cask install skype
 brew cask install slack
-
-# In trial
-#brew cask install todotxt
+brew cask install google-hangouts
 
 # DB browsers
 #brew cask install sqlitebrowser

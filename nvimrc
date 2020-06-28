@@ -447,7 +447,7 @@ set termguicolors
 set inccommand=split
 
 " Python executables
-let g:python_host_prog = $HOME . '/work/virtualenvs/neovim/bin/python'
+"let g:python_host_prog = $HOME . '/work/virtualenvs/neovim/bin/python'
 let g:python3_host_prog = $HOME . '/work/virtualenvs/neovim3/bin/python'
 
 " }}}

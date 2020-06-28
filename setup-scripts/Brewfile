@@ -4,22 +4,18 @@
 brew tap homebrew/services
 brew tap homebrew/command-not-found
 
-# desc external command
-brew tap telemachus/homebrew-desc
-
 # wine
 brew install wine --HEAD
 brew install winetricks
 
 # Development
 brew install python
-brew install python@2
 brew install nvm node
 brew install mysql
 brew install postgresql pgcli
-#brew install jd # json diff tool - test it
+brew install jd # json diff tool - test it
 brew install awscli
-brew install fx jq # JSON tools
+brew install fx jq qp # JSON tools - test qp, a sql like syntax for json quering
 brew install howdoi
 
 # Vim
@@ -64,10 +60,16 @@ brew install fzf # consider peco https://github.com/peco/peco
 # Install shell extensions - this should be done whenever fzf is updated
 $(brew info fzf | grep /install)
 
-# todo - TRIAL
-#brew install todo-txt
-#brew install googlecl
-#brew install terminal-notifier
+# K8s
+brew install kubectl helm helmfile
+brew install terraform terraform_landscape terraform-docs terraformer terraforming
+terraform --install-autocomplete
+brew install docker-clean
+#kube-aws gimme-aws-creds awsume
+
+# Security Tools
+brew install ccheck ssllabs-scan testssl sslyze
+
 
 ########
 # apps #
@@ -87,11 +89,4 @@ brew install mackup
 # docker-credential-helper-ecr
 # serverless
 
-# K8s
-brew install minikube kubectl helm helmfile
-brew install aws-iam-authenticator
-brew install terraform terraform_landscape terraform-docs terraformer terraforming
-terraform --install-autocomplete
-brew install docker-clean
-#kube-aws gimme-aws-creds awsume
 

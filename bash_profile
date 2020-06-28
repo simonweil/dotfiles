@@ -7,9 +7,7 @@ echo " -----------------------------------------------------------"
 #
 set -o vi # go into vi mode on the shell!!!
 alias v="mvim --remote-silent "
-alias upgrade_neovim="   workon neovim \
-                      && pip install --upgrade pynvim pylama_pylint pylama \
-                      && workon neovim3 \
+alias upgrade_neovim="   workon neovim3 \
                       && pip install --upgrade pynvim pylama_pylint pylama \
                       && deactivate \
                       && npm -g update neovim \
@@ -74,19 +72,12 @@ export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
 
 # source kubectl and minikube bash completion
 source <(kubectl completion bash)
-source <(minikube completion bash)
 
 
 #
 # python
 #
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-export PATH="/usr/local/opt/python@2/bin:$PATH"
-alias upgrade_pip="    pip install --upgrade setuptools \
-                    && pip install --upgrade pip        \
-                    && pip install --upgrade virtualenv virtualenvwrapper \
-                    && for pkg in \$(pip list --outdated 2> /dev/null | tail -n +3 | awk '{ print \$1 }' | grep -v \"^pip\\\$\"); do pip install -U \$pkg; done"
-alias update_pip="pip list --outdated"
 
 alias upgrade_pip3="   pip3 install --upgrade setuptools wheel \
                     && pip3 install --upgrade pip        \
@@ -294,12 +285,11 @@ function upgrade_macos {
         unset XCODE_SAVE_VERSION
 }
 
-alias update_all="update_node; update_pip && update_pip3 && update_macos && update_brew && echo -e \"\$(date)\\n\""
+alias update_all="update_node; update_pip3 && update_macos && update_brew && echo -e \"\$(date)\\n\""
 alias upgrade_all="   upgrade_say 'MAC'    && upgrade_macos     \
                    && upgrade_say 'node'   && upgrade_node      \
                    && upgrade_say 'Wine'   && upgrade_wine      \
                    && upgrade_say 'Brew'   && upgrade_brew      \
-                   && upgrade_say 'pip'    && upgrade_pip       \
                    && upgrade_say 'pip3'   && upgrade_pip3      \
                    && source ~/.dotfiles/setup-scripts/Pipfile  \
                    && upgrade_say 'neovim' && upgrade_neovim    \
