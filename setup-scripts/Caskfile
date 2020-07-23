@@ -4,17 +4,18 @@ brew tap homebrew/cask-drivers
 # General purpose
 brew cask install xquartz
 brew cask install java
-brew cask install karabiner
-brew cask install yujitach-menumeters #menumeters
+brew cask install adoptopenjdk
+brew cask install karabiner-elements
+brew cask install menumeters
 brew cask install recordit
 brew cask install keepingyouawake
 brew cask install flux
 brew cask install whatsapp
+brew cask install wine-stable --no-quarantine
 
 # Productivity
 brew cask install cheatsheet
 brew cask install sizeup
-brew cask install fluid
 #brew cask install alfred
 brew cask install time-out
 brew cask install maccy # Clipboard manager
@@ -34,10 +35,11 @@ brew cask install lens # k8slens IDE for k8s
 brew cask install google-chrome google-chrome-canary
 brew cask install firefox
 brew cask install firefox-developer-edition
+brew cask install brave-browser
 
 # File sharing
 brew cask install google-backup-and-sync
-brew cask install filezilla
+#brew cask install filezilla - removed from cask...
 
 # Editors
 brew cask install sublime-text
@@ -51,7 +53,7 @@ brew cask install visual-studio-code
 brew cask install KeePassXC
 
 # Other
-brew cask install teamviewer
+#brew cask install teamviewer
 brew cask install tunnelblick
 brew cask install coconutbattery
 #brew cask install picasa
@@ -62,7 +64,7 @@ brew cask install coconutbattery
 
 # Communications
 brew cask install slack
-brew cask install google-hangouts
+#brew cask install google-hangouts
 
 # DB browsers
 #brew cask install sqlitebrowser

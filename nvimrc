@@ -6,14 +6,20 @@ Plug 'https://github.com/tpope/vim-sensible.git'
 Plug 'https://github.com/jeffkreeftmeijer/vim-numbertoggle.git' " smart setting of number and relative number
 
 " Completion
+" More: https://github.com/Shougo/deoplete.nvim/wiki/Completion-Sources
 Plug 'https://github.com/Shougo/deoplete.nvim.git'
 Plug 'https://github.com/Shougo/neco-vim.git'               " vim source for Vim script
 Plug 'https://github.com/Shougo/neoinclude.vim.git'         " include and file/include sources
 Plug 'https://github.com/Shougo/neco-syntax.git'            " syntax source
-Plug 'https://github.com/zchee/deoplete-jedi.git'           " pythom source
+Plug 'https://github.com/deoplete-plugins/deoplete-jedi'    " pythom source
+"Plug 'https://github.com/kristijanhusak/vim-dadbod-completion' " SQL
+Plug 'https://github.com/fszymanski/deoplete-emoji'         " Emoji completion
 let deoplete#sources#jedi#show_docstring = 1
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_smart_case = 1
+call deoplete#custom#option({
+\ 'smart_case': v:true,
+\ 'num_processes': 0,
+\ })
 
 Plug 'https://github.com/ervandew/supertab.git'
 let g:SuperTabDefaultCompletionType = "<c-n>" " Make the tabing on completion menu go from top to bottom
@@ -252,6 +258,10 @@ let g:polyglot_disabled = ['ruby', 'puppet']
 
 " Set filetype in by context in of the file (e.g. javascript tag in an html file)
 "Plug 'https://github.com/Shougo/context_filetype.vim.git' - TODO: test!
+
+" SQL
+"Plug 'https://github.com/tpope/vim-dadbod'
+"Plug 'https://github.com/kristijanhusak/vim-dadbod-ui'
 
 " Ruby
 Plug 'https://github.com/vim-ruby/vim-ruby.git', {'for': 'ruby'}

@@ -6,6 +6,9 @@ set -o errexit
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+# do not update brew every time brew command is used
+export HOMEBREW_NO_AUTO_UPDATE=1
+
 # install HomeBrew
 if hash brew 2>/dev/null; then
   echo "Brew is already installed"
@@ -99,7 +102,7 @@ link_files $PWD/rvmrc                ~/.rvmrc
 source setup-scripts/osx-setup.sh
 
 # Karabiner setup (https://pqrs.org/osx/karabiner/)
-source setup-scripts/karabiner-import.sh
+source setup-scripts/karabiner-import.sh - need to fix!
 
 # Mackup setup all apps prefs (I use mackup to save apps settings stored in google drive to keep my private data)
 #mackup restore

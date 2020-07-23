@@ -5,13 +5,12 @@ brew tap homebrew/services
 brew tap homebrew/command-not-found
 
 # wine
-brew install wine --HEAD
 brew install winetricks
 
 # Development
 brew install python
 brew install nvm node
-brew install mysql
+#brew install mysql
 brew install postgresql pgcli
 brew install jd # json diff tool - test it
 brew install awscli
@@ -19,7 +18,7 @@ brew install fx jq qp # JSON tools - test qp, a sql like syntax for json quering
 brew install howdoi
 
 # Vim
-brew install vim neovim/neovim/neovim
+brew install vim neovim
 brew install ctags
 brew install tidy-html5
 brew install shellcheck # for vim shell static check
@@ -33,18 +32,19 @@ brew install bash-completion@2
 brew install rails-completion rake-completion bundler-completion gem-completion pip-completion \
              ruby-completion vagrant-completion tmuxinator-completion grunt-completion django-completion \
              packer-completion spring-completion brew-cask-completion open-completion \
-             launchctl-completion fabric-completion \
+             launchctl-completion fabric-completion stormssh-completion \
              docker-compose-completion docker-machine-completion yarn-completion docker-completion
 
 # git
 brew install git git-flow-avh hub diff-so-fancy git-sizer onefetch
+brew install svn
 
 brew tap "rhysd/git-brws" "https://github.com/rhysd/git-brws"
 brew install git-brws # Cool browsing command for git
 
 # Command line tools
-brew install wget coreutils md5sha1sum rename tree cheat stormssh osquery dos2unix prettyping googler pstree lsusb \
-             gawk telnet findutils grep gnu-sed gnu-tar htop tcping
+brew install wget coreutils rename tree cheat stormssh dos2unix prettyping googler pstree lsusb \
+             gawk telnet findutils grep gnu-sed gnu-tar htop tcping lunchy-go
 brew install ncdu # NCurses Disk Usage
 brew install archey # small command line utility to show the OSX spec
 brew install speedtest-cli
@@ -63,12 +63,11 @@ $(brew info fzf | grep /install)
 # K8s
 brew install kubectl helm helmfile
 brew install terraform terraform_landscape terraform-docs terraformer terraforming
-terraform --install-autocomplete
 brew install docker-clean
 #kube-aws gimme-aws-creds awsume
 
 # Security Tools
-brew install ccheck ssllabs-scan testssl sslyze
+brew install ccheck ssllabs-scan testssl sslyze dnsprobe
 
 
 ########
@@ -79,10 +78,10 @@ brew install ccheck ssllabs-scan testssl sslyze
 brew install graphviz
 
 # asciinema - record the terminal
-brew install asciinema asciinema2gif
+brew install asciinema
 
 # Tool for backing up mac
-brew install mackup
+#brew install mackup
 
 # Check:
 # aws-okta

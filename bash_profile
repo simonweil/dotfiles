@@ -70,8 +70,9 @@ export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
 
-# source kubectl and minikube bash completion
+# source kubectl and terraform bash completion
 source <(kubectl completion bash)
+complete -C /usr/local/bin/terraform terraform
 
 
 #

@@ -1,5 +1,6 @@
 brew install brew-pip
 
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 # development
 pip install virtualenv
 pip install virtualenvwrapper
@@ -8,17 +9,17 @@ source /usr/local/bin/virtualenvwrapper.sh
 
 # Neovim
 [ -d $WORKON_HOME/neovim3 ] && rm -rf $WORKON_HOME/neovim3
-mkvirtualenv neovim3
+mkvirtualenv neovim3 || true
 pip install pynvim
 pip install pylama_pylint
 deactivate
 
 # super charged AWS cli (https://github.com/donnemartin/saws)
-pip install saws
+pip3 install saws
 #pip install aws-shell --upgrade --ignore-installed six
 
 # git enhancements
-pip install git-sweep # remove mereged branches
+pip3 install git-sweep # remove mereged branches
 
 # Really cool REPL
-pip install ptpython
+pip3 install ptpython

@@ -13,3 +13,4 @@ npm install -g livedown
 npm install -g git-open
 npm install -g nativefier
 npm install -g neovim
+npm install -g svg-term-cli
