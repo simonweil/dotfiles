@@ -18,10 +18,18 @@ brew install fx jq qp # JSON tools - test qp, a sql like syntax for json quering
 brew install howdoi
 
 # Vim
+brew install luarocks cmake # neovim build dependencies
 brew install vim neovim
 brew install ctags
 brew install tidy-html5
 brew install shellcheck # for vim shell static check
+
+# perl for neovim
+brew install perl cpanm
+export PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"
+cpan local::lib
+cpanm Neovim::Ext
+
 
 # Shells
 brew install zsh zsh-completions

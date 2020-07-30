@@ -60,7 +60,6 @@ alias apache_log="cd /var/log/apache2/"
 # homebrew
 alias update_brew="brew update && brew outdated"
 alias upgrade_brew="brew upgrade && brew outdated"
-alias upgrade_wine='if [[ $(brew outdated wine) ]]; then brew upgrade wine; fi'
 alias brew_desc="brew desc"
 alias brew_cask="brew cask"
 alias brew_formulas_that_depend_on="brew uses --recursive "
@@ -174,13 +173,21 @@ export FZF_COMPLETION_OPTS='-m --ansi'
 # cheat
 export CHEATCOLORS=true # add colores to cheat
 
-# node
+########
+# node #
+########
 alias node_list='npm -g list --depth=0'
 export PATH="$HOME/bin:/usr/local/share/npm/bin:$PATH"
 alias update_project_node="npm outdated --quiet --depth=0"
 alias update_node="update_project_node --global"
 alias upgrade_project_node="npm update"
 alias upgrade_node="nvm install node --latest-npm && ~/.dotfiles/setup-scripts/Nodefile && upgrade_project_node --global"
+
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && source "$(brew --prefix)/opt/nvm/nvm.sh"
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && source "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
+
 # add gulp completion
 eval "$(gulp --completion=bash)"
 
@@ -205,11 +212,8 @@ alias gem_docs="yard server -g"
 [[ -r "$HOME/.rvm/scripts/completion" ]] && source "$HOME/.rvm/scripts/completion"
 
 
-# Node
-export NVM_DIR="$HOME/.nvm"
-[ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && source "$(brew --prefix)/opt/nvm/nvm.sh"
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && source "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
-
+# Perl
+eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)
 
 ############
 # win apps #
@@ -289,7 +293,6 @@ function upgrade_macos {
 alias update_all="update_node; update_pip3 && update_macos && update_brew && echo -e \"\$(date)\\n\""
 alias upgrade_all="   upgrade_say 'MAC'    && upgrade_macos     \
                    && upgrade_say 'node'   && upgrade_node      \
-                   && upgrade_say 'Wine'   && upgrade_wine      \
                    && upgrade_say 'Brew'   && upgrade_brew      \
                    && upgrade_say 'pip3'   && upgrade_pip3      \
                    && source ~/.dotfiles/setup-scripts/Pipfile  \
@@ -305,7 +308,7 @@ alias update_project="update_node_project && rake bower:list && bundle outdated"
 export CLICOLOR=""
 
 # Add all private configuration
-source ~/.dotfiles/bash_profile.private
+[[ -f ~/.dotfiles/bash_profile.private ]] && source ~/.dotfiles/bash_profile.private
 
 if [ -f $(brew --prefix)/share/liquidprompt ]; then
   . $(brew --prefix)/share/liquidprompt

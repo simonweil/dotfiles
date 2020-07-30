@@ -23,6 +23,7 @@ source ./setup-scripts/Brew-Gemfile
 source ./setup-scripts/Nodefile
 source ./setup-scripts/Pipfile
 source ./setup-scripts/Nativefierfile
+source ./setup-scripts/MacOSfile
 
 # Setup bash from brew
 sudo sh -c 'echo "/usr/local/bin/bash" >> /etc/shells'
