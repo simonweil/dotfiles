@@ -107,3 +107,12 @@ source setup-scripts/karabiner-import.sh - need to fix!
 
 # Mackup setup all apps prefs (I use mackup to save apps settings stored in google drive to keep my private data)
 #mackup restore
+
+echo "Notes:
+
+* KeePassXC - to setup for chrome canary, first setup the DB in the regular chrome
+  then copy the messaging JSON to the canary directory:
+  cp ~/Library/Application\ Support/Google/Chrome/NativeMessagingHosts/org.keepassxc.keepassxc_browser.json \"$HOME/Library/Application Support/Google/Chrome Canary/NativeMessagingHosts\"
+"
+
+echo "Done"

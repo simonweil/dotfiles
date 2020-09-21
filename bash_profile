@@ -64,6 +64,7 @@ alias brew_desc="brew desc"
 alias brew_cask="brew cask"
 alias brew_formulas_that_depend_on="brew uses --recursive "
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
+export PATH="/usr/local/opt/terraform@0.12/bin:$PATH" # until we upgrade...
 
 # enable bash compleation
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
@@ -77,7 +78,7 @@ complete -C /usr/local/bin/terraform terraform
 #
 # python
 #
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+export PATH="/usr/local/opt/python/libexec/bin:$HOME/Library/Python/3.8/bin:$PATH"
 
 alias upgrade_pip3="   pip3 install --upgrade setuptools wheel \
                     && pip3 install --upgrade pip        \

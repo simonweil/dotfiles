@@ -45,6 +45,7 @@ brew install rails-completion rake-completion bundler-completion gem-completion 
 
 # git
 brew install git git-flow-avh hub diff-so-fancy git-sizer onefetch
+brew install lazygit
 brew install svn
 
 brew tap "rhysd/git-brws" "https://github.com/rhysd/git-brws"
@@ -72,6 +73,7 @@ $(brew info fzf | grep /install)
 brew install kubectl helm helmfile
 brew install terraform terraform_landscape terraform-docs terraformer terraforming
 brew install docker-clean
+brew install lazygit lazydocker skanehira/docui/docui
 #kube-aws gimme-aws-creds awsume
 
 # Security Tools

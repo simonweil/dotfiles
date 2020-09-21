@@ -14,12 +14,6 @@ Plug 'https://github.com/Shougo/neco-syntax.git'            " syntax source
 Plug 'https://github.com/deoplete-plugins/deoplete-jedi'    " pythom source
 "Plug 'https://github.com/kristijanhusak/vim-dadbod-completion' " SQL
 Plug 'https://github.com/fszymanski/deoplete-emoji'         " Emoji completion
-let deoplete#sources#jedi#show_docstring = 1
-let g:deoplete#enable_at_startup = 1
-call deoplete#custom#option({
-\ 'smart_case': v:true,
-\ 'num_processes': 0,
-\ })
 
 Plug 'https://github.com/ervandew/supertab.git'
 let g:SuperTabDefaultCompletionType = "<c-n>" " Make the tabing on completion menu go from top to bottom
@@ -595,6 +589,14 @@ endif
 nnoremap <localleader>sv :source ~/.nvimrc<cr>
 nnoremap <localleader>eva :vsplit ~/.nvimrc<cr>
 nnoremap <localleader>evb :vsplit ~/.nvimrc<cr>
+
+" Deoplate
+let deoplete#sources#jedi#show_docstring = 1
+let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option({
+\ 'smart_case': v:true,
+\ 'num_processes': 0,
+\ })
 
 
 " Indent Guides Settings

@@ -61,6 +61,7 @@ brew cask install coconutbattery
 #brew cask install xbmc
 #brew cask install gimp
 #brew cask install jing
+brew cask install authy
 
 # Communications
 brew cask install slack
