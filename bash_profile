@@ -64,7 +64,6 @@ alias brew_desc="brew desc"
 alias brew_cask="brew cask"
 alias brew_formulas_that_depend_on="brew uses --recursive "
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
-export PATH="/usr/local/opt/terraform@0.12/bin:$PATH" # until we upgrade...
 
 # enable bash compleation
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
@@ -72,6 +71,7 @@ export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
 
 # source kubectl and terraform bash completion
 source <(kubectl completion bash)
+source <(terraform-docs completion bash)
 complete -C /usr/local/bin/terraform terraform
 
 
@@ -347,6 +347,7 @@ alias sites_down='sudo networksetup -setdnsservers "Wi-Fi" empty && sudo network
 
 [ -r "$HOME/.smartcd_config" ] && ( [ -n $BASH_VERSION ] || [ -n $ZSH_VERSION ] ) && source ~/.smartcd_config
 
+alias aws-whoami='aws sts get-caller-identity'
 export PATH=".:$PATH"
 
 echo " -----------------------------------------------------------"

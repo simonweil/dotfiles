@@ -71,10 +71,15 @@ $(brew info fzf | grep /install)
 
 # K8s
 brew install kubectl helm helmfile
-brew install terraform terraform_landscape terraform-docs terraformer terraforming
+brew install terraform_landscape terraform-docs terraformer terraforming
 brew install docker-clean
 brew install lazygit lazydocker skanehira/docui/docui
+brew install liamg/tfsec/tfsec
+brew install tflint
+brew install pre-commit
+npm install -g markdown-link-check
 #kube-aws gimme-aws-creds awsume
+brew install tfenv
 
 # Security Tools
 brew install ccheck ssllabs-scan testssl sslyze dnsprobe

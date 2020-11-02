@@ -127,14 +127,14 @@ Plug 'https://github.com/tpope/vim-characterize.git'
 Plug 'https://github.com/bronson/vim-trailing-whitespace.git'
 let g:extra_whitespace_ignored_filetypes = ['git']
 
-Plug 'https://github.com/terryma/vim-multiple-cursors.git' " TODO: learn to use
-" disable deoplate when using multiplae cursors (see: https://github.com/Shougo/deoplete.nvim/blob/master/doc/deoplete.txt#L1070)
-function g:Multiple_cursors_before()
-  let g:deoplete#disable_auto_complete = 1
-endfunction
-function g:Multiple_cursors_after()
-  let g:deoplete#disable_auto_complete = 0
-endfunction
+"Plug 'https://github.com/mg979/vim-visual-multi.git' " TODO: learn to use
+"" disable deoplate when using multiplae cursors (see: https://github.com/Shougo/deoplete.nvim/blob/master/doc/deoplete.txt#L1070)
+"function g:Multiple_cursors_before()
+"  let g:deoplete#disable_auto_complete = 1
+"endfunction
+"function g:Multiple_cursors_after()
+"  let g:deoplete#disable_auto_complete = 0
+"endfunction
 
 " Text objects
 Plug 'https://github.com/kana/vim-textobj-user.git'           " Needed to define custom text objects
