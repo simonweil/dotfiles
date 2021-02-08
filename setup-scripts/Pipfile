@@ -15,7 +15,7 @@ pip install pylama_pylint
 deactivate
 
 # super charged AWS cli (https://github.com/donnemartin/saws)
-pip3 install saws
+#pip3 install saws - commented out until it supports up to date python
 #pip install aws-shell --upgrade --ignore-installed six
 
 # git enhancements

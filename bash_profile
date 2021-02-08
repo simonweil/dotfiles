@@ -66,8 +66,8 @@ alias brew_formulas_that_depend_on="brew uses --recursive "
 export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 # enable bash compleation
+#export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
-export BASH_COMPLETION_COMPAT_DIR="/usr/local/etc/bash_completion.d"
 
 # source kubectl and terraform bash completion
 source <(kubectl completion bash)
@@ -78,7 +78,7 @@ complete -C /usr/local/bin/terraform terraform
 #
 # python
 #
-export PATH="/usr/local/opt/python/libexec/bin:$HOME/Library/Python/3.8/bin:$PATH"
+export PATH="/usr/local/opt/python/libexec/bin:$HOME/Library/Python/3.9/bin:$PATH"
 
 alias upgrade_pip3="   pip3 install --upgrade setuptools wheel \
                     && pip3 install --upgrade pip        \

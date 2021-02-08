@@ -2,84 +2,84 @@ brew tap homebrew/cask-versions
 brew tap homebrew/cask-drivers
 
 # General purpose
-brew cask install xquartz
-brew cask install java
-brew cask install adoptopenjdk
-brew cask install karabiner-elements
-brew cask install menumeters
-brew cask install recordit
-brew cask install keepingyouawake
-brew cask install flux
-brew cask install whatsapp
-brew cask install wine-stable --no-quarantine
+brew install --cask xquartz
+brew install --cask java
+brew install --cask adoptopenjdk
+brew install --cask karabiner-elements
+brew install --cask menumeters
+brew install --cask recordit
+brew install --cask keepingyouawake
+brew install --cask flux
+brew install --cask whatsapp
+brew install --cask wine-stable --no-quarantine
 
 # Productivity
-brew cask install cheatsheet
-brew cask install sizeup
-#brew cask install alfred
-brew cask install time-out
-brew cask install maccy # Clipboard manager
+brew install --cask cheatsheet
+brew install --cask sizeup
+#brew install --cask alfred
+brew install --cask time-out
+brew install --cask maccy # Clipboard manager
 
 # Development
-brew cask install iterm2
-brew cask install sourcetree
-brew cask install dash
-#brew cask install vagrant
-#brew cask install gitbook-editor
+brew install --cask iterm2
+brew install --cask sourcetree
+brew install --cask dash
+#brew install --cask vagrant
+#brew install --cask gitbook-editor
 
 # K8s
-brew cask install docker
-brew cask install lens # k8slens IDE for k8s
+brew install --cask docker
+brew install --cask lens # k8slens IDE for k8s
 
 # Browsers
-brew cask install google-chrome google-chrome-canary
-brew cask install firefox
-brew cask install firefox-developer-edition
-brew cask install brave-browser
+brew install --cask google-chrome google-chrome-canary
+brew install --cask firefox
+brew install --cask firefox-developer-edition
+brew install --cask brave-browser
 
 # File sharing
-brew cask install google-backup-and-sync
-#brew cask install filezilla - removed from cask...
+brew install --cask google-backup-and-sync
+#brew install --cask filezilla - removed from cask...
 
 # Editors
-brew cask install sublime-text
-brew cask install pycharm
-brew cask install visual-studio-code
+brew install --cask sublime-text
+brew install --cask pycharm
+brew install --cask visual-studio-code
 
 # VPN
-#brew cask install FortiClient
+#brew install --cask FortiClient
 
 # Password manager
-brew cask install KeePassXC
+brew install --cask KeePassXC
 
 # Other
-#brew cask install teamviewer
-brew cask install tunnelblick
-brew cask install coconutbattery
-#brew cask install picasa
-#brew cask install utorrent
-#brew cask install xbmc
-#brew cask install gimp
-#brew cask install jing
-brew cask install authy
+#brew install --cask teamviewer
+brew install --cask tunnelblick
+brew install --cask coconutbattery
+#brew install --cask picasa
+#brew install --cask utorrent
+#brew install --cask xbmc
+#brew install --cask gimp
+#brew install --cask jing
+brew install --cask authy
 
 # Communications
-brew cask install slack
-#brew cask install google-hangouts
+brew install --cask slack
+#brew install --cask google-hangouts
 
 # DB browsers
-#brew cask install sqlitebrowser
-#brew cask install robomongo
-brew cask install dbeaver-community # multi DB browser
+#brew install --cask sqlitebrowser
+#brew install --cask robomongo
+brew install --cask dbeaver-community # multi DB browser
 
 # Powerline fonts
 brew tap homebrew/cask-fonts
-brew cask install font-dejavu-sans-mono-for-powerline
-brew cask install font-droidsansmono-nerd-font font-fira-code
+brew install --cask font-dejavu-sans-mono-for-powerline
+brew install --cask font-droidsansmono-nerd-font font-fira-code
 
 # Screen Saver
-brew cask install aerial
+brew install --cask aerial
 
 # quick look plugins
-brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv qlimagesize \
+brew install --cask qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv qlimagesize \
                   webpquicklook suspicious-package
