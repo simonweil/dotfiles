@@ -75,7 +75,7 @@ brew install --cask dbeaver-community # multi DB browser
 # Powerline fonts
 brew tap homebrew/cask-fonts
 brew install --cask font-dejavu-sans-mono-for-powerline
-brew install --cask font-droidsansmono-nerd-font font-fira-code
+brew install --cask font-droid-sans-mono-nerd-font font-fira-code
 
 # Screen Saver
 brew install --cask aerial
