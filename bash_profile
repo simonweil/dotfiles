@@ -49,6 +49,7 @@ alias grep="grep --color=always -i "
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias localip="ipconfig getifaddr en1"
 alias myip="ifconfig | grep 'inet ' | grep -v 127.0.0.1 | awk '{print \$2}'"
+alias show_routes="netstat -rn"
 
 # dev
 alias apache_start="sudo apachectl -k start"
