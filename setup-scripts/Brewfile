@@ -81,6 +81,12 @@ npm install -g markdown-link-check
 #kube-aws gimme-aws-creds awsume
 brew install tfenv
 
+# TF tools to test:
+#https://github.com/flosell/iam-policy-json-to-terraform
+#https://github.com/minamijoyo/tfschema
+#https://github.com/minamijoyo/tfupdate
+#https://github.com/hieven/terraform-visual
+
 # Security Tools
 brew install ccheck ssllabs-scan testssl sslyze dnsprobe
 
