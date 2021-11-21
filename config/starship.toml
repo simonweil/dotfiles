@@ -1,0 +1,68 @@
+add_newline = false
+format = "$battery$jobs$all"
+right_format = "$ruby$python$nodejs$terraform"
+command_timeout = 2500 # for terraform that is slow in showing the version...
+
+[character]
+success_symbol = "[➜](bold green)"
+error_symbol = "[✗](bold red)"
+
+[line_break]
+disabled = true
+
+[directory]
+truncation_length = 5
+fish_style_pwd_dir_length = 1
+
+[cmd_duration]
+format = "[$duration]($style) "
+show_milliseconds = true
+min_time = 100
+
+[jobs]
+number_threshold = 1
+symbol = "z"
+style	= "bold yellow"
+format = "[$number$symbol]($style) "
+
+[git_commit]
+tag_disabled = false
+
+[git_metrics]
+disabled = false
+format = '(\([+$added]($added_style)/)([-$deleted]($deleted_style)\))'
+
+[git_status]
+modified = "±"
+untracked = "🤷"
+stashed = "📦"
+staged = '[++\($count\)](green)'
+deleted = "🗑"
+
+[battery]
+full_symbol = "🔋 "
+charging_symbol = "⚡️ "
+discharging_symbol = " "
+
+[[battery.display]]
+threshold = 10
+style = "yellow blod"
+
+[[battery.display]]
+threshold = 30
+discharging_symbol = "⏚ " #"🔌 "
+
+[aws]
+format = '[$symbol($profile )(\($region\) )(\[$duration\])]($style)'
+
+[python]
+format = ' [${symbol}${pyenv_prefix}(${version})( \($virtualenv\))]($style)'
+
+[nodejs]
+format = " [$symbol($version)]($style)"
+
+[terraform]
+format = " [$symbol$version $workspace]($style)"
+
+[ruby]
+format = " [$symbol($version)]($style)"

@@ -1,5 +1,8 @@
 brew install mas
 
+mas account
+echo "You must login manually until https://github.com/mas-cli/mas/issues/164 is fixed"
+
 # Xcode
 mas install 497799835
 

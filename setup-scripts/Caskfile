@@ -3,7 +3,6 @@ brew tap homebrew/cask-drivers
 
 # General purpose
 brew install --cask xquartz
-brew install --cask java
 brew install --cask adoptopenjdk
 brew install --cask karabiner-elements
 brew install --cask menumeters
@@ -11,7 +10,7 @@ brew install --cask recordit
 brew install --cask keepingyouawake
 brew install --cask flux
 brew install --cask whatsapp
-brew install --cask wine-stable --no-quarantine
+#brew install --cask wine-stable --no-quarantine
 
 # Productivity
 brew install --cask cheatsheet
@@ -23,9 +22,10 @@ brew install --cask maccy # Clipboard manager
 # Development
 brew install --cask iterm2
 brew install --cask sourcetree
-brew install --cask dash
+#brew install --cask dash
 #brew install --cask vagrant
 #brew install --cask gitbook-editor
+brew install --cask session-manager-plugin # AWS CLI SSM Plugin
 
 # K8s
 brew install --cask docker
@@ -34,23 +34,24 @@ brew install --cask lens # k8slens IDE for k8s
 # Browsers
 brew install --cask google-chrome google-chrome-canary
 brew install --cask firefox
-brew install --cask firefox-developer-edition
-brew install --cask brave-browser
+#brew install --cask firefox-developer-edition
+#brew install --cask brave-browser
 
 # File sharing
-brew install --cask google-backup-and-sync
+#brew install --cask google-backup-and-sync
 #brew install --cask filezilla - removed from cask...
 
 # Editors
 brew install --cask sublime-text
 brew install --cask pycharm
-brew install --cask visual-studio-code
+#brew install --cask visual-studio-code
 
 # VPN
 #brew install --cask FortiClient
 
 # Password manager
 brew install --cask KeePassXC
+brew install --cask 1password
 
 # Other
 #brew install --cask teamviewer
@@ -65,12 +66,11 @@ brew install --cask authy
 
 # Communications
 brew install --cask slack
-#brew install --cask google-hangouts
 
 # DB browsers
 #brew install --cask sqlitebrowser
 #brew install --cask robomongo
-brew install --cask dbeaver-community # multi DB browser
+#brew install --cask dbeaver-community # multi DB browser
 
 # Powerline fonts
 brew tap homebrew/cask-fonts

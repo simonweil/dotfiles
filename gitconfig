@@ -1,6 +1,6 @@
 [user]
 	name = Simon Weil
-	email = simon@powtoon.com
+	email = simon.weil@biodata.com
 [credential]
         helper = osxkeychain
 [core]
@@ -82,5 +82,8 @@
 	enabled = true
 [commit]
 	template = ~/.stCommitMsg
+	gpgsign = true
 [help]
 	autocorrect = 15
+[init]
+	defaultBranch = master

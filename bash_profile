@@ -72,7 +72,7 @@ export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 
 # source kubectl and terraform bash completion
 source <(kubectl completion bash)
-source <(terraform-docs completion bash)
+which terraform-docs > /dev/null && source <(terraform-docs completion bash)
 complete -C /usr/local/bin/terraform terraform
 
 
@@ -193,12 +193,6 @@ export NVM_DIR="$HOME/.nvm"
 # add gulp completion
 eval "$(gulp --completion=bash)"
 
-# todo.txt
-alias t="todo.sh"
-complete -F _todo t
-export TODOTXT_DEFAULT_ACTION=ls
-
-
 ####################
 # RVM, Ruby, Rails #
 ####################
@@ -215,7 +209,7 @@ alias gem_docs="yard server -g"
 
 
 # Perl
-eval $(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)
+eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
 
 ############
 # win apps #
@@ -337,18 +331,34 @@ echo "Check: git-delta for git highlighting+"
 ##########################
 # Other general settings #
 ##########################
-# do not update brew every time brew command is used
+# do not update brew every time brew command is used and don't autoupgrade on install
 export HOMEBREW_NO_AUTO_UPDATE=1
+export HOMEBREW_NO_INSTALL_UPGRADE=1
 
 export DISABLE_AUTO_TITLE=true # for tmux titles
 alias tmux_attach="tmux -CC attach"
 
-alias sites_up='nameservers=$(scutil --dns | grep nameserver | grep -v "127.0.0.1" | sort -u | cut -d":" -f2 | sed "s/ //g" | sort -u | tr "\n" "," | awk -F, "{ printf $1; for (i=2; i < NF; i++) printf \",\"$i   }"); sudo networksetup -setdnsservers Wi-Fi 127.0.0.1 && sudo networksetup -setdnsservers "Thunderbolt Ethernet" 127.0.0.1 && sudo ~/bin/dnschef.py --fakeipv6 ::1  --fakeip 10.25.1.10 --fakedomains *.local.*,*.local.*.*,*.local.*.*.*,*.local.*.*.*.*,*.*.local.*,*.*.local.*.*,*.*.local.*.*.*,*.*.local.*.*.*.* --nameserver $nameservers'
-alias sites_down='sudo networksetup -setdnsservers "Wi-Fi" empty && sudo networksetup -setdnsservers "Thunderbolt Ethernet" empty'
-
 [ -r "$HOME/.smartcd_config" ] && ( [ -n $BASH_VERSION ] || [ -n $ZSH_VERSION ] ) && source ~/.smartcd_config
 
 alias aws-whoami='aws sts get-caller-identity'
+
+aws-ssh() {
+  local save_profile="$AWS_PROFILE"
+  if [[ "$1" != "" ]]; then
+    export AWS_PROFILE="$1"
+  else
+    unset AWS_PROFILE
+  fi
+
+  aws ssm start-session --target "$(aws ec2 describe-instances --query "Reservations[].Instances[].[InstanceId,InstanceType,Tags[?Key==\`Name\`]|[0].Value]" --output json | jq -r ".[]|@tsv" | fzf  | cut -f1)"
+
+  if [[ $save_profile != "" ]]; then
+    export AWS_PROFILE="$save_profile"
+  else
+    unset AWS_PROFILE
+  fi
+}
+
 export PATH=".:$PATH"
 
 echo " -----------------------------------------------------------"

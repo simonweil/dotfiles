@@ -103,7 +103,7 @@ link_files $PWD/rvmrc                ~/.rvmrc
 source setup-scripts/osx-setup.sh
 
 # Karabiner setup (https://pqrs.org/osx/karabiner/)
-source setup-scripts/karabiner-import.sh - need to fix!
+#source setup-scripts/karabiner-import.sh - need to fix!
 
 # Mackup setup all apps prefs (I use mackup to save apps settings stored in google drive to keep my private data)
 #mackup restore

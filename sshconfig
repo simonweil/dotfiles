@@ -3,4 +3,5 @@ Host *
  AddKeysToAgent yes
  IgnoreUnknown UseKeychain
  UseKeychain yes
- IdentityFile ~/.ssh/id_rsa
+Host github.com
+ IdentityFile ~/.ssh/id_ed25519

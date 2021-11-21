@@ -105,14 +105,6 @@ nnoremap <leader>* :Grepper -tool git -open -switch -cword -noprompt<cr>
 command! Todo Grepper -noprompt -tool git -query -E '(TODO|FIXME|XXX):'
 
 
-" Make some command toggle for more speed!
-Plug '~/mine/my-repos/vim-cycle-movements'
-nnoremap <silent> L :call CycleMovements('L', 'M', 'H')<CR>
-nnoremap <silent> M :call CycleMovements('M', 'H', 'L')<CR>
-nnoremap <silent> H :call CycleMovements('H', 'L', 'M')<CR>
-nnoremap <silent> G :call CycleMovements('G', 'gg')<CR>
-nnoremap <silent> gg :call CycleMovements('gg', 'G')<CR>
-
 """""""""""
 " Editing "
 """""""""""
@@ -545,7 +537,6 @@ if has('nvim')
 
   augroup terminal_vim
     autocmd!
-    "autocmd BufEnter term://* normal! :QuickfixsignsDisable
     autocmd WinEnter term://* startinsert
   augroup END
   " }}}
@@ -580,6 +571,14 @@ if has('nvim')
   inoremap <A-s-t>  <ESC>:sp<bar>enew<bar>call termopen("bash -l")<CR>
   nnoremap <A-t>    :vsp<bar>enew<bar>call termopen("bash -l")<CR>
   nnoremap <A-s-t>  :sp<bar>enew<bar>call termopen("bash -l")<CR>
+  " }}}
+
+  " = Lua stuff = {{{
+  " =================
+  augroup LuaHighlight
+    autocmd!
+    autocmd TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=300}
+  augroup END
   " }}}
 endif
 " }}}
