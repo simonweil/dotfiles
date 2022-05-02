@@ -1,6 +1,6 @@
 add_newline = false
-format = "$battery$jobs$all"
 right_format = "$ruby$python$nodejs$terraform"
+format = "$battery$jobs$all"
 command_timeout = 2500 # for terraform that is slow in showing the version...
 
 [character]

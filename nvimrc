@@ -6,6 +6,7 @@ Plug 'https://github.com/tpope/vim-sensible.git'
 Plug 'https://github.com/jeffkreeftmeijer/vim-numbertoggle.git' " smart setting of number and relative number
 
 " Completion
+Plug 'https://github.com/neovim/nvim-lspconfig.git' " TODO: check in wiki for many more improvements
 " More: https://github.com/Shougo/deoplete.nvim/wiki/Completion-Sources
 Plug 'https://github.com/Shougo/deoplete.nvim.git'
 Plug 'https://github.com/Shougo/neco-vim.git'               " vim source for Vim script
@@ -13,7 +14,8 @@ Plug 'https://github.com/Shougo/neoinclude.vim.git'         " include and file/i
 Plug 'https://github.com/Shougo/neco-syntax.git'            " syntax source
 Plug 'https://github.com/deoplete-plugins/deoplete-jedi'    " pythom source
 "Plug 'https://github.com/kristijanhusak/vim-dadbod-completion' " SQL
-Plug 'https://github.com/fszymanski/deoplete-emoji'         " Emoji completion
+Plug 'https://github.com/deoplete-plugins/deoplete-lsp.git'
+Plug 'https://github.com/deoplete-plugins/deoplete-docker.git'
 
 Plug 'https://github.com/ervandew/supertab.git'
 let g:SuperTabDefaultCompletionType = "<c-n>" " Make the tabing on completion menu go from top to bottom
@@ -87,7 +89,7 @@ Plug 'https://github.com/morhetz/gruvbox.git'
 Plug 'https://github.com/vim-airline/vim-airline.git'
 Plug 'https://github.com/vim-airline/vim-airline-themes.git'
 "Plug 'https://github.com/bling/vim-bufferline.git' -
-Plug 'https://github.com/nathanaelkane/vim-indent-guides.git'
+Plug 'https://github.com/lukas-reineke/indent-blankline.nvim.git'
 Plug 'ryanoasis/vim-devicons' " add nice icons to the status line, tabline, etc.
 
 " Movement & Search
@@ -95,19 +97,21 @@ Plug 'https://github.com/haya14busa/incsearch.vim.git'
 Plug 'https://github.com/haya14busa/incsearch-fuzzy.vim.git'
 Plug 'https://github.com/justinmk/vim-sneak.git'
 Plug 'https://github.com/tpope/vim-unimpaired.git' " pairs of handy bracket mappings - use: [ with q,a,b,<space>,x,u,y,f,n
-Plug 'https://github.com/mhinz/vim-grepper', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
+Plug 'https://github.com/mhinz/vim-grepper.git', { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
 let g:grepper = {}
 let g:grepper.dir = 'repo,file'
 let g:grepper.tools = ['rg', 'ag', 'git', 'grep']
+autocmd! User vim-grepper let g:grepper.git.grepprg .= ' --no-color'
 nmap gs  <plug>(GrepperOperator)
 xmap gs  <plug>(GrepperOperator)
-nnoremap <leader>* :Grepper -tool git -open -switch -cword -noprompt<cr>
+nnoremap <leader>* :Grepper -tool rg -open -switch -cword -noprompt<cr>
 command! Todo Grepper -noprompt -tool git -query -E '(TODO|FIXME|XXX):'
 
 
 """""""""""
 " Editing "
 """""""""""
+Plug 'https://github.com/numToStr/Comment.nvim.git' " Better commenting of code
 Plug 'https://github.com/tpope/vim-surround.git' " TODO: learn to use
 Plug 'https://github.com/jiangmiao/auto-pairs.git' " Use <a-e> to toggle autopairs
 Plug 'https://github.com/tpope/vim-speeddating.git' " use CTRL-A/CTRL-X to increment dates, times, and more - TODO: learn to use
@@ -116,8 +120,12 @@ Plug 'https://github.com/tpope/vim-speeddating.git' " use CTRL-A/CTRL-X to incre
 "Plug 'https://github.com/mjbrownie/swapit.git' " increment/swap different types like true/false TODO: test
 "Plug 'https://github.com/mattn/emmet-vim.git' " TODO: learn to use
 Plug 'https://github.com/tpope/vim-characterize.git'
-Plug 'https://github.com/bronson/vim-trailing-whitespace.git'
-let g:extra_whitespace_ignored_filetypes = ['git']
+Plug 'https://github.com/ntpeters/vim-better-whitespace.git'
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_on_save=1
+let g:show_spaces_that_precede_tabs=1
+nnoremap ]w :NextTrailingWhitespace<CR>
+nnoremap [w :PrevTrailingWhitespace<CR>
 
 "Plug 'https://github.com/mg979/vim-visual-multi.git' " TODO: learn to use
 "" disable deoplate when using multiplae cursors (see: https://github.com/Shougo/deoplete.nvim/blob/master/doc/deoplete.txt#L1070)
@@ -147,6 +155,7 @@ Plug 'https://github.com/rizzatti/dash.vim' " TODO: learn to use
 "
 Plug 'https://github.com/tpope/vim-git.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'      " Git integration - TODO: learn to use
+Plug 'https://github.com/tpope/vim-rhubarb.git'       " Github integration for fugitive
 Plug 'https://github.com/airblade/vim-gitgutter.git'
 Plug 'https://github.com/rhysd/committia.vim.git'     " Better commiting messageing
 Plug 'https://github.com/APZelos/blamer.nvim.git'
@@ -176,7 +185,7 @@ endfunction
 Plug 'https://github.com/tpope/vim-repeat.git'        " Better .
 Plug 'https://github.com/svermeulen/vim-easyclip.git' " Better clipboard - TODO: learn to use
 Plug 'https://github.com/kopischke/vim-fetch.git'     " Open file on line and character
-Plug 'https://github.com/junegunn/vim-peekaboo.git'   " Register helper - TODO: learn to use
+"Plug 'https://github.com/junegunn/vim-peekaboo.git'   " Register helper - TODO: learn to use - perhaps remove as whichkey gives the functionality
 Plug 'https://github.com/majutsushi/tagbar.git'       " Display tags in a window - TODO: learn to use
 Plug 'https://github.com/jeetsukumaran/vim-buffergator.git' " List, select and switch between buffers - TODO: learn to use
 Plug 'https://github.com/amiorin/vim-project.git'     " TODO: learn to use
@@ -196,6 +205,30 @@ Plug 'https://github.com/vim-jp/vital.vim.git'
 Plug '/usr/local/opt/fzf'
 Plug 'https://github.com/junegunn/fzf.vim.git'
 let g:fzf_commits_log_options = '--color=always --pretty=format:"%Cred%h%Creset - %s %Cgreen(%cr)%Creset by %C(bold blue)%an%C(yellow)%d%Creset" --abbrev-commit --date=relative'
+
+Plug 'https://github.com/voldikss/vim-floaterm.git'
+let g:floaterm_width = 0.8
+let g:floaterm_height = 0.8
+let g:floaterm_opener = 'edit'
+let g:floaterm_keymap_new    = '<F5>'
+let g:floaterm_keymap_toggle = '<F6>'
+
+" Install plugin dependencies
+Plug 'https://github.com/kyazdani42/nvim-web-devicons.git'
+Plug 'https://github.com/nvim-treesitter/nvim-treesitter.git', {'do': ':TSUpdate'}
+Plug 'https://github.com/nvim-lua/popup.nvim.git'
+Plug 'https://github.com/nvim-lua/plenary.nvim.git'
+"
+" Install Telescope
+Plug 'https://github.com/nvim-telescope/telescope.nvim.git'
+Plug 'https://github.com/nvim-telescope/telescope-fzf-native.nvim.git', { 'do': 'make' }
+Plug 'https://github.com/xiyaowong/telescope-emoji.nvim.git'
+Plug 'https://github.com/ANGkeith/telescope-terraform-doc.nvim.git'
+
+" Navigation and work assistance
+Plug 'https://github.com/kyazdani42/nvim-tree.lua.git'
+Plug 'https://github.com/sudormrfbin/cheatsheet.nvim.git'
+Plug 'https://github.com/folke/which-key.nvim.git'
 
 """"""""""""""""""""
 " External plugins "
@@ -227,7 +260,7 @@ if exists('g:started_by_firenvim')
   " Allow moving focus back to the page with double esc
   nnoremap <Esc><Esc> :call firenvim#focus_page()<CR>
 
-  " Write the buffer contents back to the page all the time automaticly 
+  " Write the buffer contents back to the page all the time automaticly
   au TextChanged * ++nested write
   au TextChangedI * ++nested write
 endif
@@ -520,6 +553,75 @@ fun! Google()
   exec 'silent !"' . path . 'open" ' . url
 endfun
 
+" = Plugins setup = {{{
+" =====================
+let g:nvim_tree_show_icons = {
+    \ 'git': 1,
+    \ 'folders': 1,
+    \ 'files': 1,
+    \ 'folder_arrows': 1,
+    \ }
+
+lua << EOF
+  require('nvim-web-devicons').setup()
+  require('telescope').setup()
+  require('telescope').load_extension('fzf')
+  require('telescope').load_extension('emoji')
+  require('telescope').load_extension('terraform_doc')
+  require('nvim-tree').setup()
+  require("which-key").setup()
+
+  -- Config: https://github.com/numToStr/Comment.nvim#configuration-optional
+  require('Comment').setup()
+EOF
+
+" Keymaps
+nnoremap gtf :Telescope terraform_doc full_name=hashicorp/aws version=3.74.3<cr>
+nnoremap gof :Telescope oldfiles<cr>
+nnoremap gob :FloatermNew broot<cr>
+"nnoremap <F1> :Telescope project<cr>
+nnoremap <F2> :Telescope git_files<cr>
+nnoremap <F3> :Telescope commands<cr>
+nnoremap <F4> :Telescope buffers<cr>
+nnoremap <F9> :NvimTreeToggle<CR>
+
+" Telescope
+autocmd FileType TelescopePrompt call deoplete#custom#buffer_option('auto_complete', v:false)
+
+"""""""""""""""""""""""""
+" Vim Plug Improvements "
+"""""""""""""""""""""""""
+function! s:plug_doc()
+  let name = matchstr(getline('.'), '^- \zs\S\+\ze:')
+  if has_key(g:plugs, name)
+    for doc in split(globpath(g:plugs[name].dir, 'doc/*.txt'), '\n')
+      execute 'tabe' doc
+    endfor
+  endif
+endfunction
+
+function! s:plug_gx()
+  let line = getline('.')
+  let sha  = matchstr(line, '^  \X*\zs\x\{7,9}\ze ')
+  let name = empty(sha) ? matchstr(line, '^[-x+] \zs[^:]\+\ze:')
+                      \ : getline(search('^- .*:$', 'bn'))[2:-2]
+  let uri  = get(get(g:plugs, name, {}), 'uri', '')
+  if uri !~ 'github.com'
+    return
+  endif
+  let repo = matchstr(uri, '[^:/]*/'.name)
+  let url  = empty(sha) ? 'https://github.com/'.repo
+                      \ : printf('https://github.com/%s/commit/%s', repo, sha)
+  call netrw#BrowseX(url, 0)
+endfunction
+
+augroup PlugGx
+  autocmd!
+  autocmd FileType vim-plug nnoremap <buffer> <silent> gx :call <sid>plug_gx()<cr>
+  autocmd FileType vim-plug nnoremap <buffer> <silent> H :call <sid>plug_doc()<cr>
+augroup END
+
+" }}}
 
 " = NeoVim Specific Settings = {{{
 " ================================
@@ -533,7 +635,7 @@ if has('nvim')
   tnoremap <Esc><Esc> <C-\><C-n>
 
   " make window commads work in the terminal from the insert mode
-  tnoremap <c-w> <C-\><C-n><c-w>
+  "tnoremap <c-w> <C-\><C-n><c-w> - disabled as this prevents terminal <c-w> which deletes a word
 
   augroup terminal_vim
     autocmd!
@@ -585,24 +687,52 @@ endif
 
 
 " vimrc helpers
-nnoremap <localleader>sv :source ~/.nvimrc<cr>
-nnoremap <localleader>eva :vsplit ~/.nvimrc<cr>
-nnoremap <localleader>evb :vsplit ~/.nvimrc<cr>
+nnoremap <localleader>sv :source ~/.config/nvim/init.vim<cr>
+nnoremap <localleader>eva :vsplit ~/.config/nvim/init.vim<cr>
 
 " Deoplate
 let deoplete#sources#jedi#show_docstring = 1
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#lsp#use_icons_for_candidates = v:true
 call deoplete#custom#option({
 \ 'smart_case': v:true,
 \ 'num_processes': 0,
 \ })
 
+" Setup LSP servers
+" Configurations: https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
+" Possible: SQL, CSS, HTML
+lua << EOF
+  local lspconfig = require 'lspconfig'
+  local on_attach = function(_, bufnr)
+    local opts = { noremap = true, silent = true }
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>so', [[<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>]], opts)
+    vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
+  end
 
-" Indent Guides Settings
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_guide_size = 1
-let g:indent_guides_color_change_percent = 15
-let g:indent_guides_exclude_filetypes = ['help', 'nerdtree', 'git', 'vim-plug', 'man']
+  local servers = { 'bashls', 'dockerls', 'jsonls', 'vimls', 'terraformls', 'jedi_language_server' }
+  for _, lsp in ipairs(servers) do
+    lspconfig[lsp].setup {
+      on_attach = on_attach,
+    }
+  end
+EOF
+autocmd BufWritePre *.tf lua vim.lsp.buf.formatting_sync()
+
+" Indent Settings
+let g:indent_blankline_filetype_exclude = ['help', 'nerdtree', 'git', 'vim-plug', 'man', 'lspinfo', 'packer', 'checkhealth', 'NvimTree']
 
 
 " Number Toggle
@@ -617,6 +747,8 @@ let g:multi_cursor_skip_key='<A-S-x>'
 
 " Airline plugin
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#hunks#enabled = 1
+let g:airline#extensions#grepper#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='luna'
 

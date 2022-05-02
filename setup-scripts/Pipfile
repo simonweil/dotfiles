@@ -12,6 +12,7 @@ source /usr/local/bin/virtualenvwrapper.sh
 mkvirtualenv neovim3 || true
 pip install pynvim
 pip install pylama_pylint
+pip install -U jedi-language-server
 deactivate
 
 # super charged AWS cli (https://github.com/donnemartin/saws)

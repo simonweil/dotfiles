@@ -72,7 +72,7 @@ link_files () {
   fi
 
   echo "linking '$soft_link' to '$dest_file'"
-  ln -s $dest_file $soft_link 
+  ln -s $dest_file $soft_link
 }
 
 # Create the bin dir if it doesn't exist yet
@@ -89,7 +89,7 @@ link_files $PWD/pryrc                ~/.pryrc
 link_files $PWD/editorconfig         ~/.editorconfig # for the js beutifier vim plugin
 link_files $PWD/mackup.cfg           ~/.mackup.cfg
 link_files $PWD/tmux.conf            ~/.tmux.conf
-link_files $PWD/bin/git-meld         ~/bin/
+link_files $PWD/bin/aws-console      ~/bin/
 link_files $PWD/bin/find_stories.py  ~/bin/
 link_files $PWD/non-packaged-repos/emojify/emojify ~/bin/
 link_files $PWD/non-packaged-repos/LS_COLORS/LS_COLORS ~/.dircolors

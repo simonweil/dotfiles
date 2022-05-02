@@ -1,0 +1,18 @@
+## Custom
+Grepper                             | gs
+Grepper                             | <leader>*
+Open terraform AWS provider docs    | gtf
+FloatTerm New                       | <F5>
+FloatTerm Toggle                    | <F6>
+init.vim - source                   | <localleader>sv
+init.vim - edit in split            | <localleader>eva
+
+## Terraform
+Open Terraform AWS documentation        | gtf
+Open Terraform modules documentation    | :Telescope terraform_doc modules
+Terraform Docs - open in preview window | <c-d>
+
+## Vim-Plug
+Open Help                                | H
+Revert Upgrade                           | X
+Open commit or repository in the browser | gx

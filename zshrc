@@ -2,52 +2,24 @@
 
 echo " -----------------------------------------------------------"
 
-# Init Zinit plugin manager - https://zdharma.github.io/zinit/wiki/INTRODUCTION/
-source /usr/local/opt/zinit/zinit.zsh
-
-zinit wait lucid for \
- blockf \
-    zsh-users/zsh-completions
-
-# Load starship theme (https://starship.rs/config/)
-zinit ice as"command" from"gh-r" \
-          atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
-          atpull"%atclone" src"init.zsh"
-zinit light starship/starship
-
-#
-# VIM mode
-#
-zinit load softmoth/zsh-vim-mode
-
-
-#
-# Other
-#
-
-# TODO: customize autosuggestions
-zinit wait lucid for \
- atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
-    zdharma/fast-syntax-highlighting \
- atload"!_zsh_autosuggest_start" \
-    zsh-users/zsh-autosuggestions
 
 ###
 # vim related
 #
-alias v="mvim --remote-silent "
+alias v="nvim --remote-silent "
 alias upgrade_neovim="   workon neovim3 \
-                      && pip install --upgrade pynvim pylama_pylint pylama \
+                      && pip install --upgrade pynvim pylama_pylint pylama urllib3 \
                       && deactivate \
                       && npm -g update neovim \
+                      && gem update neovim \
                       && brew unlink neovim \
-                      && brew install --HEAD neovim"
+                      && brew reinstall neovim"
 alias upgrade_submodules='(cd ~/.dotfiles && git submodule update --merge --remote)'
 alias vim='nvim'
 alias vi='nvim'
 alias git_neo_log='git_log --first-parent $(nvim --version | grep commit | cut -d" " -f2)..'
 export EDITOR='nvim'
-export MANPAGER="nvim -c 'set ft=man' -"
+export MANPAGER='nvim +Man!'
 ###
 
 # useful shortcuts
@@ -55,16 +27,17 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ..3="cd ../../.."
 alias ..4="cd ../../../.."
+alias cdg='cd $(git rev-parse --show-toplevel)'
 
 # cd into whatever is the forefront Finder window.
 cdf() {  # short for cdfinder
   cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')" || return
 }
 
-alias ld="exa --color=always -lhA | grep '^d'"
-alias ll="exa --color=always -lhF"
-alias lla="exa --color=always -lhFA"
-alias ls="exa --color=always"
+alias ld="ls --color=always -lhA | grep '^d'"
+alias ll="ls --color=always -lhF"
+alias lla="ls --color=always -lhFA"
+alias ls="ls --color=always"
 
 alias bin="cd ~/bin"
 alias dev="cd ~/Dev"
@@ -89,11 +62,55 @@ alias upgrade_brew="brew upgrade && brew outdated"
 alias brew_desc="brew desc"
 alias brew_cask="brew cask"
 alias brew_formulas_that_depend_on="brew uses --recursive "
-export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
- 
+export BREW_ROOT="$(/usr/local/bin/brew --prefix)"
+export PATH="$BREW_ROOT/bin:$BREW_ROOT/sbin:$PATH"
+
 # brew installed utils
 export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
 export MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
+
+#
+# Init Zinit plugin manager - https://github.com/zdharma-continuum/zinit
+#
+source /usr/local/opt/zinit/zinit.zsh
+
+zinit wait lucid for \
+ blockf \
+    zsh-users/zsh-completions
+
+# Load a few important annexes, without Turbo
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
+
+# Load starship theme (https://starship.rs/config/)
+#zinit ice as"command" from"gh-r" \
+#          atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
+#          atpull"%atclone" src"init.zsh"
+#zinit light starship/starship
+
+# TODO: Use untill https://github.com/zdharma-continuum/zinit/issues/197 is fixed, then remove from brew
+eval "$(starship init zsh)"
+
+
+#
+# VIM mode
+#
+zinit load softmoth/zsh-vim-mode
+
+
+#
+# Other
+#
+
+# TODO: customize autosuggestions
+zinit wait lucid for \
+  atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zicdreplay" \
+    zdharma/fast-syntax-highlighting \
+  atload"!_zsh_autosuggest_start" \
+    zsh-users/zsh-autosuggestions
 
 #
 # python
@@ -195,9 +212,11 @@ alias upgrade_node="nvm install node --latest-npm && ~/.dotfiles/setup-scripts/N
 # nvm
 export NVM_DIR="$HOME/.nvm"
 # It loads every time I cd... need to fix that... export NVM_AUTOLOAD=1 # load a node version when if finds a .nvmrc file in the current working directory
-zinit depth'3' lucid light-mode for \
-  trigger-load'!yarn;npm;node' \
-    OMZP::nvm
+# TODO: bring back, currently not working
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"
+#zinit depth'3' lucid light-mode for \
+#  trigger-load'!yarn;npm;node' \
+#    OMZP::nvm
 
 ####################
 # RVM, Ruby, Rails #
@@ -207,7 +226,10 @@ alias rvm_cheatsheat="start http://cheat.errtheblog.com/s/rvm"
 alias rvm_known_rubys="rvm list known"
 alias rc="rails console --sandbox"
 alias gem_docs="yard server -g"
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+#export PATH="$HOME/.rvm/bin:$PATH" # Add RVM to PATH for scripting
+export PATH="$BREW_ROOT/opt/ruby/bin:$PATH"
+export LDFLAGS="-L$BREW_ROOT/opt/ruby/lib"
+export CPPFLAGS="-I$BREW_ROOT/opt/ruby/include"
 
 # TODO: make fast! -[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
@@ -323,6 +345,17 @@ zinit depth'3' lucid wait'0a' light-mode for \
 ql () { qlmanage -p "$*" >& /dev/null & }
 
 
+#############
+# Terraform #
+#############
+alias tf-reset="find ~ -type d -name ".terraform" -exec rm -rf {} +"
+alias tfp="terraform plan -out plan.out && terraform show plan.out | less -R"
+alias tfv="terraform validate"
+alias tfi="terraform init"
+alias tfc="terraform console"
+
+
+
 ####################
 # general settings #
 ####################
@@ -357,9 +390,9 @@ alias upgrade_all="   echo 'remove' \
                    && upgrade_say 'pip3'   && upgrade_pip3      \
                    && source ~/.dotfiles/setup-scripts/Pipfile  \
                    && upgrade_say 'neovim' && upgrade_neovim    \
-                   && upgrade_say 'RVM'    && upgrade_rvm       \
                    && upgrade_say 'Dotfiles (all submodules)' && upgrade_submodules \
                    && echo 'Done upgrading.'"
+#                   && upgrade_say 'RVM'    && upgrade_rvm       \
 alias update_project="update_node_project && rake bower:list && bundle outdated"
 
 [[ -f ~/.dotfiles/zshrc.private ]] && source ~/.dotfiles/zshrc.private
@@ -414,30 +447,60 @@ aws-ssh() {
 }
 
 aws-login() {
-   unset AWS_PROFILE
-   local file_name="/tmp/$$"
-   aws configure sso 2>&1 | tee "$file_name"
-   export AWS_PROFILE="$(grep "ls \-\-profile" "$file_name" | cut -d" " -f5)"
-   \rm "$file_name"
-   aws-whoami
+  unset AWS_PROFILE
+  local file_name="/tmp/$$"
+  workon aws-cli
+  $HOME/work/aws-cli/bin/aws configure sso 2>&1 | tee "$file_name"
+  deactivate
+  export AWS_PROFILE="$(grep "ls \-\-profile" "$file_name" | cut -d" " -f5)"
+  \rm "$file_name"
+  chpwd
+  aws-whoami
+}
+
+aws-logout() {
+  aws sso logout
+  unset AWS_PROFILE
+  chpwd
 }
 
 # Set the iTerm2 title
 function title {
-    echo -ne "\033]0;"$*"\007"
+  echo -ne "\033]0;"$*"\007"
 }
 
 # Function to run on directory change
 function chpwd {
-  local title="$(pwd)"
-  title="${title#"$HOME/work/"}"
+  local git_path="$(pwd)"
+  git_path="${git_path#"$HOME/work/"}"
+  git_path="$(echo $git_path | cut -d/ -f1)"
 
-  if [[ $title != "" ]]; then
-    title "Git repo: $(echo $title | cut -d/ -f1)"
-  else
-    title "Default"
+  local aws_title=""
+  if [[ -n $AWS_PROFILE ]]; then
+     aws_title="AWS account: $(echo "$AWS_PROFILE" | cut -d- -f1-3)"
   fi
+
+  local git_title=""
+  if [[ "$git_path" != "" ]]; then
+    git_title="Git repo: $git_path"
+  fi
+
+  local title
+  if [[ -n $git_title ]]; then
+    title="$git_title"
+    if [[ -n $aws_title ]]; then
+       title="$title ~ $aws_title"
+    fi
+  elif [[ -n $aws_title ]]; then
+    title="$aws_title"
+  else
+    title="Default"
+  fi
+
+  title "$title"
 }
+chpwd
+
 #
 # Maccy
 alias maccy-disable="defaults write org.p0deje.Maccy ignoreEvents true"
@@ -446,3 +509,6 @@ alias maccy-enable="defaults write org.p0deje.Maccy ignoreEvents false"
 export PATH=".:$PATH"
 
 echo " -----------------------------------------------------------"
+
+
+source "$HOME/.config/broot/launcher/bash/br"

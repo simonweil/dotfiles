@@ -1,4 +1,4 @@
 brew install brew-gem
 
 #brew gem install tmuxinator
-brew gem install neovim
+gem install neovim

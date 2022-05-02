@@ -14,3 +14,11 @@ npm install -g git-open
 npm install -g nativefier
 npm install -g neovim
 npm install -g svg-term-cli
+
+# LSP
+npm install -g awk-language-server \
+               bash-language-server \
+               dockerfile-language-server-nodejs \
+               vscode-langservers-extracted \
+               vim-language-server
+

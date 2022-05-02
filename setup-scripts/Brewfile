@@ -17,6 +17,7 @@ brew install awscli
 brew install fx jq qp # JSON tools - test qp, a sql like syntax for json quering
 brew install howdoi
 brew install gpg # GnuPGP
+brew install http-prompt
 
 # Vim
 brew install luarocks cmake # neovim build dependencies
@@ -43,31 +44,32 @@ brew install rails-completion rake-completion bundler-completion gem-completion 
              ruby-completion vagrant-completion tmuxinator-completion grunt-completion django-completion \
              packer-completion spring-completion brew-cask-completion open-completion \
              launchctl-completion fabric-completion stormssh-completion \
-             docker-compose-completion docker-machine-completion yarn-completion docker-completion
+             yarn-completion docker-completion
 
 # git
-brew install git git-flow-avh hub diff-so-fancy git-sizer onefetch
+brew install git git-flow-avh diff-so-fancy git-sizer onefetch
 brew install lazygit
 brew install svn
+brew install gh # GitHub CLI
 
 brew tap "rhysd/git-brws" "https://github.com/rhysd/git-brws"
 brew install git-brws # Cool browsing command for git
 
 # Command line tools
-brew install wget coreutils rename tree cheat stormssh dos2unix prettyping googler pstree lsusb \
+brew install wget coreutils rename tree cheat stormssh dos2unix prettyping pstree lsusb \
              gawk telnet findutils grep gnu-sed gnu-tar htop tcping lunchy-go ipinfo-cli
 brew install fd # better find
 brew install bat # better cat
 brew install exa # better ls
 brew install ncdu # NCurses Disk Usage
-brew install archey # small command line utility to show the OSX spec
 brew install speedtest-cli
 brew install aria2 # download accelerator
+brew install broot # a new way to search files - use br
 #brew install TomAnthony/brews/itermocil - is broken...
 
 # Command line enhancement
 #brew install antigen
-brew install liquidprompt autojump
+brew install starship
 brew install ripgrep-all the_platinum_searcher the_silver_searcher
 #brew install tmux
 brew install fzf # consider peco https://github.com/peco/peco
@@ -86,6 +88,9 @@ brew install lazygit lazydocker skanehira/docui/docui gitui
 #npm install -g markdown-link-check
 #kube-aws gimme-aws-creds awsume
 brew install tfenv
+brew install iam-policy-json-to-terraform
+brew install minamijoyo/tfupdate/tfupdate # a tool to update TF version constraints
+brew install hashicorp/tap/terraform-ls
 
 # TF tools to test:
 #https://github.com/flosell/iam-policy-json-to-terraform
@@ -94,7 +99,7 @@ brew install tfenv
 #https://github.com/hieven/terraform-visual
 
 # Security Tools
-brew install ccheck ssllabs-scan testssl sslyze dnsprobe
+brew install ccheck ssllabs-scan testssl sslyze
 
 
 ########

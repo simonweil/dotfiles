@@ -19,21 +19,13 @@
 
 [difftool]
   prompt = false
-[difftool "meld"]
-  trustExitCode = true
-  cmd = open -W -a Meld --args \"$LOCAL\" \"$REMOTE\"
 [merge]
-  tool = meld
+  conflictStyle = zdiff3
 [mergetool]
   prompt = false
-[mergetool "meld"]
-  trustExitCode = true
-  cmd = open -W -a Meld --args --auto-merge \"$LOCAL\" \"$BASE\" \"$REMOTE\" --output=\"$MERGED\"
 
 
 [diff]
-        tool = meld
-        external = git-meld
         algorithm = patience
 
 [mergetool "vimdiff"]
@@ -84,6 +76,6 @@
 	template = ~/.stCommitMsg
 	gpgsign = true
 [help]
-	autocorrect = 15
+  autocorrect = prompt
 [init]
 	defaultBranch = master

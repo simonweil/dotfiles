@@ -54,7 +54,6 @@ VIM
 17. https://github.com/kshenoy/vim-signature - marks
 19. better md live view? https://github.com/euclio/vim-markdown-composer
 20. Python REPL: https://github.com/bfredl/nvim-ipy
-21. even better grep? https://github.com/mhinz/vim-grepper
 22. Run Tests from vim: https://github.com/janko-m/vim-test
 
 Rails

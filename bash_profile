@@ -362,3 +362,5 @@ aws-ssh() {
 export PATH=".:$PATH"
 
 echo " -----------------------------------------------------------"
+
+source "$HOME/.config/broot/launcher/bash/br"
