@@ -6232,7 +6232,7 @@
 			<key>Non-ASCII Ligatures</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>FiraCodeRoman-Regular 12</string>
+			<string>FiraCode-Regular 12</string>
 			<key>Option Key Sends</key>
 			<integer>2</integer>
 			<key>Prompt Before Closing 2</key>
@@ -10412,5 +10412,9 @@
 	<integer>4</integer>
 	<key>findRegex_iTerm</key>
 	<true/>
+	<key>kCPKSelectionViewPreferredModeKey</key>
+	<integer>5</integer>
+	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>
+	<false/>
 </dict>
 </plist>

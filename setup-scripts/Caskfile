@@ -3,7 +3,7 @@ brew tap homebrew/cask-drivers
 
 # General purpose
 brew install --cask xquartz
-brew install --cask adoptopenjdk
+#brew install --cask adoptopenjdk - deprecated - maybe use temurin
 brew install --cask karabiner-elements
 brew install --cask menumeters
 brew install --cask recordit

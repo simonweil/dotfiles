@@ -62,17 +62,24 @@ alias upgrade_brew="brew upgrade && brew outdated"
 alias brew_desc="brew desc"
 alias brew_cask="brew cask"
 alias brew_formulas_that_depend_on="brew uses --recursive "
-export BREW_ROOT="$(/usr/local/bin/brew --prefix)"
-export PATH="$BREW_ROOT/bin:$BREW_ROOT/sbin:$PATH"
+
+#export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
+#export HOMEBREW_REPOSITORY="/opt/homebrew"
+export MANPATH="/opt/homebrew/share/man:$MANPATH"
+export INFOPATH="/opt/homebrew/share/info:$INFOPATH"
+
+export HOMEBREW_PREFIX="$(/usr/local/bin/brew --prefix)"
+export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH"
+export HOMEBREW_APP_PREFIX="$(dirname $(brew --prefix coreutils))"
 
 # brew installed utils
-export PATH="$(brew --prefix coreutils)/libexec/gnubin:/usr/local/opt/findutils/libexec/gnubin:/usr/local/opt/grep/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/opt/gnu-tar/libexec/gnubin:$PATH"
-export MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
+export PATH="$HOMEBREW_APP_PREFIX/coreutils/libexec/gnubin:$HOMEBREW_APP_PREFIX/findutils/libexec/gnubin:$HOMEBREW_APP_PREFIX/grep/libexec/gnubin:$HOMEBREW_APP_PREFIX/gnu-sed/libexec/gnubin:$HOMEBREW_APP_PREFIX/gnu-tar/libexec/gnubin:$PATH"
+export MANPATH="$HOMEBREW_APP_PREFIX/coreutils/libexec/gnuman:$MANPATH"
 
 #
 # Init Zinit plugin manager - https://github.com/zdharma-continuum/zinit
 #
-source /usr/local/opt/zinit/zinit.zsh
+source $HOMEBREW_APP_PREFIX/zinit/zinit.zsh
 
 zinit wait lucid for \
  blockf \
@@ -115,7 +122,7 @@ zinit wait lucid for \
 #
 # python
 #
-export PATH="/usr/local/opt/python/libexec/bin:$HOME/Library/Python/3.9/bin:$PATH"
+export PATH="$HOMEBREW_APP_PREFIX/python/libexec/bin:$HOME/Library/Python/3.9/bin:$PATH"
 
 alias upgrade_pip3="   pip3 install --upgrade setuptools wheel \
                     && pip3 install --upgrade pip        \
@@ -129,9 +136,9 @@ zinit depth'3' lucid wait'0a' light-mode for \
   OMZP::virtualenvwrapper
 
 # For installing dependencies
-export LDFLAGS="$LDFLAGS -L/usr/local/opt/libgeoip/lib/ -L/usr/local/opt/openssl/lib -L/usr/local/opt/libxml2/lib"
-export CPPFLAGS="$CPPFLAGS -I/usr/local/include/ -I/usr/local/opt/openssl/include -I/usr/local/opt/libxml2/include/libxml2/"
-export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
+export LDFLAGS="$LDFLAGS -L$HOMEBREW_APP_PREFIX/libgeoip/lib/ -L$HOMEBREW_APP_PREFIX/openssl/lib -L$HOMEBREW_APP_PREFIX/libxml2/lib"
+export CPPFLAGS="$CPPFLAGS -I/usr/local/include/ -I$HOMEBREW_APP_PREFIX/openssl/include -I$HOMEBREW_APP_PREFIX/libxml2/include/libxml2/"
+export PKG_CONFIG_PATH="$HOMEBREW_APP_PREFIX/libffi/lib/pkgconfig"
 export PYCURL_SSL_LIBRARY=openssl
 
 
@@ -213,7 +220,7 @@ alias upgrade_node="nvm install node --latest-npm && ~/.dotfiles/setup-scripts/N
 export NVM_DIR="$HOME/.nvm"
 # It loads every time I cd... need to fix that... export NVM_AUTOLOAD=1 # load a node version when if finds a .nvmrc file in the current working directory
 # TODO: bring back, currently not working
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"
+[ -s "$HOMEBREW_APP_PREFIX/nvm/nvm.sh" ] && \. "$HOMEBREW_APP_PREFIX/nvm/nvm.sh"
 #zinit depth'3' lucid light-mode for \
 #  trigger-load'!yarn;npm;node' \
 #    OMZP::nvm
@@ -227,9 +234,9 @@ alias rvm_known_rubys="rvm list known"
 alias rc="rails console --sandbox"
 alias gem_docs="yard server -g"
 #export PATH="$HOME/.rvm/bin:$PATH" # Add RVM to PATH for scripting
-export PATH="$BREW_ROOT/opt/ruby/bin:$PATH"
-export LDFLAGS="-L$BREW_ROOT/opt/ruby/lib"
-export CPPFLAGS="-I$BREW_ROOT/opt/ruby/include"
+export PATH="$HOMEBREW_PREFIX/opt/ruby/bin:$PATH"
+export LDFLAGS="-L$HOMEBREW_PREFIX/opt/ruby/lib"
+export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/ruby/include"
 
 # TODO: make fast! -[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 

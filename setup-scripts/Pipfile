@@ -1,11 +1,9 @@
-brew install brew-pip
-
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+export PATH="/opt/homebrew/opt/python@3.9/libexec/bin:$PATH"
 # development
 pip install virtualenv
 pip install virtualenvwrapper
 export WORKON_HOME=~/work/virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
+source /opt/homebrew//bin/virtualenvwrapper.sh
 
 # Neovim
 [ -d $WORKON_HOME/neovim3 ] && rm -rf $WORKON_HOME/neovim3

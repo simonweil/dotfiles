@@ -13,7 +13,7 @@ export HOMEBREW_NO_AUTO_UPDATE=1
 if hash brew 2>/dev/null; then
   echo "Brew is already installed"
 else
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 # install all required homebrew formulas (Cask is first as it has dependencies for brew)
@@ -26,9 +26,9 @@ source ./setup-scripts/Nativefierfile
 source ./setup-scripts/MacOSfile
 
 # Setup bash from brew
-sudo sh -c 'echo "/usr/local/bin/bash" >> /etc/shells'
-sudo sh -c 'echo "/usr/local/bin/zsh"  >> /etc/shells'
-chsh -s /usr/local/bin/bash
+sudo sh -c 'echo "/opt/homebrew/bin/bash" >> /etc/shells'
+sudo sh -c 'echo "/opt/homebrew/bin/zsh"  >> /etc/shells'
+chsh -s /opt/homebrew/bin/zsh
 
 # RVM
 curl -sSL https://get.rvm.io | bash -s stable --ruby --autolibs=brew
@@ -62,9 +62,10 @@ link_files () {
 
   if [[ -r $soft_link && ! -d $soft_link ]]; then
     echo "the file $soft_link exists"
-    ls -lh $soft_link
+    ls -lh "$soft_link"
     if prompt_confirm "Delete it?"; then
-      rm $soft_link
+      cp "$soft_link" "${soft_link}.$(date +"%Y-%M-%d-%H-%M-%S")"
+      rm "$soft_link"
     else
       echo "Not creating a soft link for $dest_file."
       return
@@ -104,15 +105,5 @@ source setup-scripts/osx-setup.sh
 
 # Karabiner setup (https://pqrs.org/osx/karabiner/)
 #source setup-scripts/karabiner-import.sh - need to fix!
-
-# Mackup setup all apps prefs (I use mackup to save apps settings stored in google drive to keep my private data)
-#mackup restore
-
-echo "Notes:
-
-* KeePassXC - to setup for chrome canary, first setup the DB in the regular chrome
-  then copy the messaging JSON to the canary directory:
-  cp ~/Library/Application\ Support/Google/Chrome/NativeMessagingHosts/org.keepassxc.keepassxc_browser.json \"$HOME/Library/Application Support/Google/Chrome Canary/NativeMessagingHosts\"
-"
 
 echo "Done"
