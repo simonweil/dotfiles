@@ -1,9 +1,9 @@
 # Create OSX icons: https://iconverticons.com/online/
 MY_APPS_DIR="$HOME/myapps"
-mkdir $MY_APPS_DIR
-nativefier --name Gmail --show-menu-bar --internal-urls ".*?\.google\.*?" https://www.gmail.com "$MY_APPS_DIR"
+#mkdir $MY_APPS_DIR
+nativefier --name Gmail --show-menu-bar --user-agent firefox --internal-urls ".*?\.google\.*?" https://www.gmail.com "$MY_APPS_DIR"
 #nativefier --name TweetDeck https://tweetdeck.twitter.com "$MY_APPS_DIR"
-nativefier --name "Google Calendar" --internal-urls ".*\.(okta|google)\..*" --show-menu-bar http://calendar.google.com/ "$MY_APPS_DIR"
+nativefier --name "Google Calendar" --user-agent firefox --internal-urls ".*\.(okta|google)\..*" --show-menu-bar http://calendar.google.com/ "$MY_APPS_DIR"
 nativefier --name "Google Keep" --internal-urls ".*\.(okta|google)\..*" --show-menu-bar http://keep.google.com/ "$MY_APPS_DIR"
 #nativefier --inject whatsapp-fix.js --name WhatsApp web.whatsapp.com "$MY_APPS_DIR"
 #nativefier --name JIRA --show-menu-bar --icon ~/.dotfiles/resources/jira.icns https://powtoon.atlassian.net "$MY_APPS_DIR"

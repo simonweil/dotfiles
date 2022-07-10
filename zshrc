@@ -136,10 +136,11 @@ zinit depth'3' lucid wait'0a' light-mode for \
   OMZP::virtualenvwrapper
 
 # For installing dependencies
-export LDFLAGS="$LDFLAGS -L$HOMEBREW_APP_PREFIX/libgeoip/lib/ -L$HOMEBREW_APP_PREFIX/openssl/lib -L$HOMEBREW_APP_PREFIX/libxml2/lib"
-export CPPFLAGS="$CPPFLAGS -I/usr/local/include/ -I$HOMEBREW_APP_PREFIX/openssl/include -I$HOMEBREW_APP_PREFIX/libxml2/include/libxml2/"
-export PKG_CONFIG_PATH="$HOMEBREW_APP_PREFIX/libffi/lib/pkgconfig"
+export LDFLAGS="$LDFLAGS -L$HOMEBREW_APP_PREFIX/libgeoip/lib/ -L$HOMEBREW_APP_PREFIX/openssl@1.1/lib -L$HOMEBREW_APP_PREFIX/libxml2/lib"
+export CPPFLAGS="$CPPFLAGS -I/usr/local/include/ -I$HOMEBREW_APP_PREFIX/openssl@1.1/include -I$HOMEBREW_APP_PREFIX/libxml2/include/libxml2/"
+export PKG_CONFIG_PATH="$HOMEBREW_APP_PREFIX/libffi/lib/pkgconfig:$HOMEBREW_APP_PREFIX/openssl@1.1/lib/pkgconfig"
 export PYCURL_SSL_LIBRARY=openssl
+export PATH="$HOMEBREW_APP_PREFIX/openssl@1.1/bin:$PATH"
 
 
 #

@@ -18,6 +18,7 @@ brew install fx jq qp # JSON tools - test qp, a sql like syntax for json quering
 brew install howdoi
 brew install gpg # GnuPGP
 brew install http-prompt
+brew install openssl@1.1 # needed as dependency for many things
 
 # Vim
 brew install luarocks cmake # neovim build dependencies
