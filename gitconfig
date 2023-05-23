@@ -3,10 +3,13 @@
 	email = simon.weil@biodata.com
 [credential]
         helper = osxkeychain
+
 [core]
         editor = /usr/local/bin/nvim
 	excludesfile = ~/.dotfiles/gitignore_global
 	autocrlf = input
+	fsmonitor = true
+
 [format]
         signoff = true
 

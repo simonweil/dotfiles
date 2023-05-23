@@ -5,3 +5,6 @@ Host *
  UseKeychain yes
 Host github.com
  IdentityFile ~/.ssh/id_ed25519
+
+ host i-* mi-*
+  ProxyCommand sh -c "aws ssm start-session --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=%p'"

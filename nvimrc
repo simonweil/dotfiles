@@ -555,13 +555,6 @@ endfun
 
 " = Plugins setup = {{{
 " =====================
-let g:nvim_tree_show_icons = {
-    \ 'git': 1,
-    \ 'folders': 1,
-    \ 'files': 1,
-    \ 'folder_arrows': 1,
-    \ }
-
 lua << EOF
   require('nvim-web-devicons').setup()
   require('telescope').setup()
@@ -722,7 +715,8 @@ lua << EOF
     vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
   end
 
-  local servers = { 'bashls', 'dockerls', 'jsonls', 'vimls', 'terraformls', 'jedi_language_server' }
+  local servers = { 'bashls', 'dockerls', 'jsonls', 'vimls', 'jedi_language_server', 'terraformls' }
+  -- removed 'terraformls',  as it makes the editor slow
   for _, lsp in ipairs(servers) do
     lspconfig[lsp].setup {
       on_attach = on_attach,
@@ -733,7 +727,7 @@ autocmd BufWritePre *.tf lua vim.lsp.buf.formatting_sync()
 
 " Indent Settings
 let g:indent_blankline_filetype_exclude = ['help', 'nerdtree', 'git', 'vim-plug', 'man', 'lspinfo', 'packer', 'checkhealth', 'NvimTree']
-
+let g:indent_blankline_use_treesitter_scope = v:true
 
 " Number Toggle
 let g:NumberToggleTrigger="<localleader>n"
@@ -823,8 +817,6 @@ if has('dontdoathis') " TODO: do I need this?
 " ----------------------------------------------------------
 " setup the projects: https://github.com/amiorin/vim-project
 " ----------------------------------------------------------
-" Enable Nerd treee
-let g:project_use_nerdtree = 1
 
 " Set my starting path
 call project#rc("~/work/")

@@ -174,6 +174,7 @@ gc() {
 
 alias gc-='git checkout -'
 alias gcd='git checkout develop'
+alias gcs='git checkout staging'
 alias gcm='git checkout master'
 alias gcp='git cherry-pick --signoff -x'
 alias git_commit_files="git diff-tree --no-commit-id --name-status -r"
@@ -357,7 +358,11 @@ ql () { qlmanage -p "$*" >& /dev/null & }
 # Terraform #
 #############
 alias tf-reset="find ~ -type d -name ".terraform" -exec rm -rf {} +"
-alias tfp="terraform plan -out plan.out && terraform show plan.out | less -R"
+tfp() {
+  terraform plan -parallelism=20 -out plan.out $* && terraform show plan.out | less -R
+}
+alias tfsummarize="terraform show -json plan.out | tf-summarize -tree"
+alias tfshow="terraform show plan.out | less -R"
 alias tfv="terraform validate"
 alias tfi="terraform init"
 alias tfc="terraform console"
@@ -464,6 +469,16 @@ aws-login() {
   \rm "$file_name"
   chpwd
   aws-whoami
+}
+
+aws-change-account() {
+  if [[ "$1" != "" ]]; then
+    profile="$1"
+  else
+    profile="$(aws configure list-profiles | grep --color=none superadmi | fzf)"
+  fi
+
+  export AWS_PROFILE="$profile"
 }
 
 aws-logout() {

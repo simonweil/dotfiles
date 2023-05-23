@@ -84,19 +84,19 @@ $(brew info fzf | grep /install)
 #brew install docker-clean
 brew install lazygit lazydocker skanehira/docui/docui gitui
 #brew install liamg/tfsec/tfsec
-#brew install tflint
-#brew install pre-commit
+brew install tflint
+brew install pre-commit
 #npm install -g markdown-link-check
 #kube-aws gimme-aws-creds awsume
 brew install tfenv
 brew install iam-policy-json-to-terraform
 brew install minamijoyo/tfupdate/tfupdate # a tool to update TF version constraints
 brew install hashicorp/tap/terraform-ls
+brew install thecasualcoder/stable/tf-summarize
 
 # TF tools to test:
 #https://github.com/flosell/iam-policy-json-to-terraform
 #https://github.com/minamijoyo/tfschema
-#https://github.com/minamijoyo/tfupdate
 #https://github.com/hieven/terraform-visual
 
 # Security Tools
