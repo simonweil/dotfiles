@@ -180,15 +180,33 @@ alias gcp='git cherry-pick --signoff -x'
 alias git_commit_files="git diff-tree --no-commit-id --name-status -r"
 
 # gl - git commit browser (enter for show, ctrl-d for diff, ` toggles sort)
-# TODO: Add options to seatch all branchs and exact seatch
+# TODO: Add options to seatch all branchs
 gl() {
-  local out shas sha q k
+  local out shas sha q k git_user_name
+
+  while getopts "me" opt; do
+    case $opt in
+      m) # Shortcut for "me". Only show your commits.
+        git_user_name="$(git config --get user.name)"
+        ;;
+      e) # Searches for the exact wording.
+        local exact="--exact"
+        ;;
+      \?)
+        return 1
+        ;;
+    esac
+  done
+
+  shift $((OPTIND - 1))  # Shifts the positional parameters to exclude the flags
+
   while out=$(
       git log --graph \
               --pretty=format:'%Cred%h%Creset - %s %Cgreen(%cr)%Creset by %C(bold blue)%an%C(yellow)%d%Creset' \
-              --abbrev-commit --date=relative --color=always "$@" |
-      fzf --ansi --multi --no-sort --reverse --query="$q" \
-          --print-query --expect=ctrl-d --toggle-sort=\`); do
+              --abbrev-commit --date=relative --color=always --author="$git_user_name" "$@" |
+      fzf $exact --ansi --multi --no-sort --reverse --query="$q" \
+          --print-query --expect=ctrl-d --toggle-sort=\`
+      ); do
     q=$(head -1 <<< "$out")
     k=$(head -2 <<< "$out" | tail -1)
     shas=$(sed '1,2d;s/^[^a-z0-9]*//;/^$/d' <<< "$out" | awk '{print $1}')
@@ -204,6 +222,8 @@ gl() {
     fi
   done
 }
+alias gl_exact='gl -e'
+alias gl_author='gl -m'
 alias glo='gl origin/$(git rev-parse --abbrev-ref HEAD)'
 alias grh='git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)'
 
