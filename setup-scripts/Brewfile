@@ -13,7 +13,7 @@ brew install nvm node
 #brew install mysql
 #brew install postgresql pgcli
 brew install jd # json diff tool - test it
-brew install awscli
+brew install awscli okta-aws-cli
 brew install fx jq qp # JSON tools - test qp, a sql like syntax for json quering
 brew install howdoi
 brew install gpg # GnuPGP
@@ -69,7 +69,6 @@ brew install broot # a new way to search files - use br
 #brew install TomAnthony/brews/itermocil - is broken...
 
 # Command line enhancement
-#brew install antigen
 brew install starship
 brew install ripgrep-all the_platinum_searcher the_silver_searcher
 #brew install tmux
@@ -87,7 +86,6 @@ brew install lazygit lazydocker skanehira/docui/docui gitui
 brew install tflint
 brew install pre-commit
 #npm install -g markdown-link-check
-#kube-aws gimme-aws-creds awsume
 brew install tfenv
 brew install iam-policy-json-to-terraform
 brew install minamijoyo/tfupdate/tfupdate # a tool to update TF version constraints
@@ -110,15 +108,9 @@ brew install ccheck ssllabs-scan testssl sslyze
 # Graphviz - tool for graphs
 brew install graphviz
 
-# asciinema - record the terminal
-brew install asciinema
-
 # Tool for backing up mac
 #brew install mackup
 
 # Check:
-# aws-okta
 # docker-credential-helper-ecr
 # serverless
-
-

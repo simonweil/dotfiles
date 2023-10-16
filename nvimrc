@@ -233,37 +233,37 @@ Plug 'https://github.com/folke/which-key.nvim.git'
 """"""""""""""""""""
 " External plugins "
 """"""""""""""""""""
-Plug 'https://github.com/glacambre/firenvim.git', { 'do': function('firenvim#install') }
-
-" Exclude from intercom chats and google docs
-let g:firenvim_config = {
-    \ 'localSettings': {
-        \ '.*': {
-            \ 'selector': '*:not(.intercom-composer) > textarea',
-            \ 'priority': 0,
-        \ },
-        \ 'docs\.google\.com': {
-            \ 'selector': '',
-            \ 'priority': 1,
-        \ },
-        \ '.*\.atlassian.net': {
-            \ 'selector': '',
-            \ 'priority': 1,
-        \ },
-    \ }
-\ }
-
-if exists('g:started_by_firenvim')
-  " Make github textareas be with markdown syntax
-  au BufEnter github.com_*.txt set filetype=markdown
-
-  " Allow moving focus back to the page with double esc
-  nnoremap <Esc><Esc> :call firenvim#focus_page()<CR>
-
-  " Write the buffer contents back to the page all the time automaticly
-  au TextChanged * ++nested write
-  au TextChangedI * ++nested write
-endif
+" Plug 'https://github.com/glacambre/firenvim.git', { 'do': function('firenvim#install') }
+"
+" " Exclude from intercom chats and google docs
+" let g:firenvim_config = {
+"     \ 'localSettings': {
+"         \ '.*': {
+"             \ 'selector': '*:not(.intercom-composer) > textarea',
+"             \ 'priority': 0,
+"         \ },
+"         \ 'docs\.google\.com': {
+"             \ 'selector': '',
+"             \ 'priority': 1,
+"         \ },
+"         \ '.*\.atlassian.net': {
+"             \ 'selector': '',
+"             \ 'priority': 1,
+"         \ },
+"     \ }
+" \ }
+"
+" if exists('g:started_by_firenvim')
+"   " Make github textareas be with markdown syntax
+"   au BufEnter github.com_*.txt set filetype=markdown
+"
+"   " Allow moving focus back to the page with double esc
+"   nnoremap <Esc><Esc> :call firenvim#focus_page()<CR>
+"
+"   " Write the buffer contents back to the page all the time automaticly
+"   au TextChanged * ++nested write
+"   au TextChangedI * ++nested write
+" endif
 
 
 

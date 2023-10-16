@@ -152,7 +152,7 @@ alias git_log_all="git_log --branches --remotes --tags --decorate"
 alias git_lastest_branches="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
 alias gp="git pull --rebase=merges"
 alias gpush="git push --set-upstream origin HEAD" # Push current branch to origin with same branch name and set as tracking branch
-alias gf="git fetch --all && git fetch --tags --force"
+alias gf="git fetch --all && git fetch --tags --force && git fetch --tags --prune-tags"
 alias gs="git status"
 alias gde="git diff --ignore-space-at-eol -b -w --ignore-blank-lines"
 alias gd="gde --no-ext-diff"
@@ -383,9 +383,33 @@ tfp() {
 }
 alias tfsummarize="terraform show -json plan.out | tf-summarize -tree"
 alias tfshow="terraform show plan.out | less -R"
+alias tfshow-copy="terraform show -no-color plan.out | pbcopy"
 alias tfv="terraform validate"
 alias tfi="terraform init"
 alias tfc="terraform console"
+
+tf() {
+  local plan_file="plan$$.out"
+
+  local plan_params=""
+  if [[ "$1" == "initial" ]]; then
+    plan_params=""
+  fi
+
+  tfp $plan_params
+
+  select action in "Show" "Summary" "Apply" "Exit" ; do
+    case $action in
+      Show ) echo show ;;
+      Summary ) echo summary ;;
+      Apply ) echo apply; break;;
+      Exit ) echo -e "\nBye bye :)" break;;
+      * ) echo -e "${RED}please answer${NC}"
+    esac
+  done
+
+  rm -f $plan_file
+}
 
 
 
@@ -465,6 +489,7 @@ export GPG_TTY=$(tty)
 alias aws-whoami='aws sts get-caller-identity'
 
 aws-ssh() {
+  unset AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN AWS_ACCESS_KEY_ID
   local save_profile="$AWS_PROFILE"
   if [[ "$1" != "" ]]; then
     export AWS_PROFILE="$1"
@@ -480,6 +505,7 @@ aws-ssh() {
 }
 
 aws-login() {
+  unset AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN AWS_ACCESS_KEY_ID
   unset AWS_PROFILE
   local file_name="/tmp/$$"
   workon aws-cli
@@ -492,6 +518,7 @@ aws-login() {
 }
 
 aws-change-account() {
+  unset AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN AWS_ACCESS_KEY_ID
   if [[ "$1" != "" ]]; then
     profile="$1"
   else
@@ -503,9 +530,18 @@ aws-change-account() {
 
 aws-logout() {
   aws sso logout
+  aws-exit-account
+}
+
+aws-exit-account() {
   unset AWS_PROFILE
+  unset AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN AWS_ACCESS_KEY_ID
   chpwd
 }
+
+alias aa="aws-change-account"
+alias ac="aws-console"
+alias as="aws-ssh"
 
 # Set the iTerm2 title
 function title {
