@@ -63,13 +63,7 @@ alias brew_desc="brew desc"
 alias brew_cask="brew cask"
 alias brew_formulas_that_depend_on="brew uses --recursive "
 
-#export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
-#export HOMEBREW_REPOSITORY="/opt/homebrew"
-export MANPATH="/opt/homebrew/share/man:$MANPATH"
-export INFOPATH="/opt/homebrew/share/info:$INFOPATH"
-
-export HOMEBREW_PREFIX="$(/usr/local/bin/brew --prefix)"
-export PATH="$HOMEBREW_PREFIX/bin:$HOMEBREW_PREFIX/sbin:$PATH"
+eval "$(/opt/homebrew/bin/brew shellenv)"
 export HOMEBREW_APP_PREFIX="$(dirname $(brew --prefix coreutils))"
 
 # brew installed utils
@@ -126,14 +120,11 @@ export PATH="$HOMEBREW_APP_PREFIX/python/libexec/bin:$HOME/Library/Python/3.9/bi
 
 alias upgrade_pip3="   pip3 install --upgrade setuptools wheel \
                     && pip3 install --upgrade pip        \
-                    && pip3 install --upgrade virtualenv virtualenvwrapper \
                     && for pkg in \$(pip3 list --outdated 2> /dev/null | tail -n +3 | awk '{ print \$1 }' | grep -v \"^pip3\\\$\"); do pip3 install -U \$pkg; done"
 alias update_pip3="pip3 list --outdated"
 
 # Setup virtual env
-export WORKON_HOME=~/work/virtualenvs
-zinit depth'3' lucid wait'0a' light-mode for \
-  OMZP::virtualenvwrapper
+export VENV_HOME="~/.venvs/"
 
 # For installing dependencies
 export LDFLAGS="$LDFLAGS -L$HOMEBREW_APP_PREFIX/libgeoip/lib/ -L$HOMEBREW_APP_PREFIX/openssl@1.1/lib -L$HOMEBREW_APP_PREFIX/libxml2/lib"
@@ -243,6 +234,7 @@ export NVM_DIR="$HOME/.nvm"
 # It loads every time I cd... need to fix that... export NVM_AUTOLOAD=1 # load a node version when if finds a .nvmrc file in the current working directory
 # TODO: bring back, currently not working
 [ -s "$HOMEBREW_APP_PREFIX/nvm/nvm.sh" ] && \. "$HOMEBREW_APP_PREFIX/nvm/nvm.sh"
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 #zinit depth'3' lucid light-mode for \
 #  trigger-load'!yarn;npm;node' \
 #    OMZP::nvm
@@ -250,17 +242,12 @@ export NVM_DIR="$HOME/.nvm"
 ####################
 # RVM, Ruby, Rails #
 ####################
-alias upgrade_rvm="rvm get stable && rvm requirements && rvm reload"
-alias rvm_cheatsheat="start http://cheat.errtheblog.com/s/rvm"
-alias rvm_known_rubys="rvm list known"
+eval "$(rbenv init - zsh)"
 alias rc="rails console --sandbox"
 alias gem_docs="yard server -g"
-#export PATH="$HOME/.rvm/bin:$PATH" # Add RVM to PATH for scripting
 export PATH="$HOMEBREW_PREFIX/opt/ruby/bin:$PATH"
 export LDFLAGS="-L$HOMEBREW_PREFIX/opt/ruby/lib"
 export CPPFLAGS="-I$HOMEBREW_PREFIX/opt/ruby/include"
-
-# TODO: make fast! -[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # Perl
 # TODO: make fast! - eval "$(perl -I$HOME/perl5/lib/perl5 -Mlocal::lib=$HOME/perl5)"
@@ -449,7 +436,6 @@ alias upgrade_all="   echo 'remove' \
                    && upgrade_say 'neovim' && upgrade_neovim    \
                    && upgrade_say 'Dotfiles (all submodules)' && upgrade_submodules \
                    && echo 'Done upgrading.'"
-#                   && upgrade_say 'RVM'    && upgrade_rvm       \
 alias update_project="update_node_project && rake bower:list && bundle outdated"
 
 [[ -f ~/.dotfiles/zshrc.private ]] && source ~/.dotfiles/zshrc.private
@@ -588,6 +574,3 @@ alias maccy-enable="defaults write org.p0deje.Maccy ignoreEvents false"
 export PATH=".:$PATH"
 
 echo " -----------------------------------------------------------"
-
-
-source "$HOME/.config/broot/launcher/bash/br"

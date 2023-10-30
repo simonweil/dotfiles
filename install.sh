@@ -15,6 +15,7 @@ if hash brew 2>/dev/null; then
 else
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # install all required homebrew formulas (Cask is first as it has dependencies for brew)
 source ./setup-scripts/Caskfile
@@ -23,21 +24,15 @@ source ./setup-scripts/Brew-Gemfile
 source ./setup-scripts/Nodefile
 source ./setup-scripts/Pipfile
 source ./setup-scripts/Nativefierfile
-source ./setup-scripts/MacOSfile
+#source ./setup-scripts/MacOSfile - doesn't work anymore :/
 
 # Setup bash from brew
 sudo sh -c 'echo "/opt/homebrew/bin/bash" >> /etc/shells'
 sudo sh -c 'echo "/opt/homebrew/bin/zsh"  >> /etc/shells'
 chsh -s /opt/homebrew/bin/zsh
 
-# RVM
-curl -sSL https://get.rvm.io | bash -s stable --ruby --autolibs=brew
-
 # NVM
 mkdir ~/.nvm
-
-# Global gems
-#rvm @global do gem install tmuxinator
 
 # For updating the submodules
 git submodule init
@@ -99,6 +94,7 @@ link_files $PWD/nvimrc               $PWD/config/nvim/init.vim
 link_files $PWD/non-packaged-repos/vim-plug/plug.vim $PWD/config/nvim/autoload/plug.vim
 link_files $PWD/sshconfig            ~/.ssh/config
 link_files $PWD/rvmrc                ~/.rvmrc
+link_files $PWD/terraformrc          ~/.terraformrc
 
 # OSX settings
 source setup-scripts/osx-setup.sh

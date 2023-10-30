@@ -2,7 +2,7 @@
 
 # services external command
 brew tap homebrew/services
-brew tap homebrew/command-not-found
+#brew tap homebrew/command-not-found
 
 # wine
 #brew install winetricks
@@ -10,8 +10,8 @@ brew tap homebrew/command-not-found
 # Development
 brew install python
 brew install nvm node
-#brew install mysql
-#brew install postgresql pgcli
+brew install rbenv
+#brew install pgcli
 brew install jd # json diff tool - test it
 brew install awscli okta-aws-cli
 brew install fx jq qp # JSON tools - test qp, a sql like syntax for json quering
@@ -44,8 +44,7 @@ brew install bash-completion@2
 brew install rails-completion rake-completion bundler-completion gem-completion pip-completion \
              ruby-completion vagrant-completion tmuxinator-completion grunt-completion django-completion \
              packer-completion spring-completion brew-cask-completion open-completion \
-             launchctl-completion fabric-completion stormssh-completion \
-             yarn-completion docker-completion
+             launchctl-completion fabric-completion yarn-completion docker-completion
 
 # git
 brew install git git-flow-avh diff-so-fancy git-sizer onefetch
@@ -57,7 +56,7 @@ brew tap "rhysd/git-brws" "https://github.com/rhysd/git-brws"
 brew install git-brws # Cool browsing command for git
 
 # Command line tools
-brew install wget coreutils rename tree cheat stormssh dos2unix prettyping pstree lsusb \
+brew install wget coreutils rename tree cheat dos2unix prettyping pstree lsusb \
              gawk telnet findutils grep gnu-sed gnu-tar htop tcping lunchy-go ipinfo-cli
 brew install fd # better find
 brew install bat # better cat
@@ -81,7 +80,7 @@ $(brew info fzf | grep /install)
 #brew install kubectl helm helmfile
 #brew install terraform_landscape terraform-docs terraformer terraforming
 #brew install docker-clean
-brew install lazygit lazydocker skanehira/docui/docui gitui
+brew install lazygit lazydocker gitui
 #brew install liamg/tfsec/tfsec
 brew install tflint
 brew install pre-commit

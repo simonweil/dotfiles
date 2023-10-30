@@ -1,17 +1,17 @@
-export PATH="/usr/local/opt/python/libexec/bin/python:$PATH"
-#export PATH="/opt/homebrew/opt/python@3.9/libexec/bin:$PATH"
 # development
-pip install virtualenv
-pip install virtualenvwrapper
-export WORKON_HOME=~/work/virtualenvs
-source /opt/homebrew//bin/virtualenvwrapper.sh
+python3 -m pip install --upgrade pip
+export VENV_HOME=~/.venvs
 
 # Neovim
-[ -d $WORKON_HOME/neovim3 ] && rm -rf $WORKON_HOME/neovim3
-mkvirtualenv neovim3 || true
+[ -d $VENV_HOME/neovim ] && rm -rf $VENV_HOME/neovim
+python3 -m venv $VENV_HOME/neovim
+source $VENV_HOME/neovim/bin/activate
+python -m pip install --upgrade pip
+pip install virtualenv
 pip install pynvim
 pip install pylama_pylint
 pip install -U jedi-language-server
+pip install urllib3
 deactivate
 
 # super charged AWS cli (https://github.com/donnemartin/saws)
@@ -19,7 +19,8 @@ deactivate
 #pip install aws-shell --upgrade --ignore-installed six
 
 # git enhancements
-pip3 install git-sweep # remove mereged branches
+#pip3 install git-sweep # remove mereged branches
 
 # Really cool REPL
 pip3 install ptpython
+pip3 install boto3

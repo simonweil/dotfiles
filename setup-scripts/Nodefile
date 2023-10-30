@@ -2,7 +2,7 @@
 #npm install -g ember-cli
 
 # builders and task runners
-npm install -g gulp
+#npm install -g gulp
 npm install -g yarn
 
 # dev tools

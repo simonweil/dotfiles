@@ -1,12 +1,11 @@
 brew tap homebrew/cask-versions
-brew tap homebrew/cask-drivers
 
 # General purpose
-brew install --cask xquartz
+#brew install --cask xquartz
 #brew install --cask adoptopenjdk - deprecated - maybe use temurin
 brew install --cask karabiner-elements
 brew install --cask menumeters
-brew install --cask recordit
+#brew install --cask recordit
 brew install --cask keepingyouawake
 brew install --cask flux
 brew install --cask whatsapp
@@ -15,7 +14,6 @@ brew install --cask whatsapp
 # Productivity
 brew install --cask cheatsheet
 brew install --cask sizeup
-#brew install --cask alfred
 brew install --cask time-out
 brew install --cask maccy # Clipboard manager
 
@@ -44,18 +42,18 @@ brew install --cask firefox
 # Editors
 brew install --cask sublime-text
 brew install --cask pycharm
-#brew install --cask visual-studio-code
+brew install --cask visual-studio-code
 
 # VPN
 #brew install --cask FortiClient
 
 # Password manager
-brew install --cask KeePassXC
 brew install --cask 1password
+#brew install --cask KeePassXC
 
 # Other
 #brew install --cask teamviewer
-brew install --cask tunnelblick
+#brew install --cask tunnelblick
 brew install --cask coconutbattery
 #brew install --cask picasa
 #brew install --cask utorrent
@@ -81,5 +79,5 @@ brew install --cask font-droid-sans-mono-nerd-font font-fira-code
 brew install --cask aerial
 
 # quick look plugins
-brew install --cask qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv qlimagesize \
-                  webpquicklook suspicious-package
+#brew install --cask qlcolorcode qlstephen qlmarkdown quicklook-json qlprettypatch quicklook-csv qlimagesize \
+#                  webpquicklook suspicious-package
