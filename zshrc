@@ -116,7 +116,14 @@ zinit wait lucid for \
 #
 # python
 #
-export PATH="$HOMEBREW_APP_PREFIX/python/libexec/bin:$HOME/Library/Python/3.9/bin:$PATH"
+
+# Setup brewed python
+export PATH="$HOMEBREW_APP_PREFIX/python/libexec/bin:$PATH"
+
+# Setup pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - zsh)"
 
 alias upgrade_pip3="   pip3 install --upgrade setuptools wheel \
                     && pip3 install --upgrade pip        \
@@ -124,7 +131,7 @@ alias upgrade_pip3="   pip3 install --upgrade setuptools wheel \
 alias update_pip3="pip3 list --outdated"
 
 # Setup virtual env
-export VENV_HOME="~/.venvs/"
+export VENV_HOME="$HOME/.venvs/"
 
 # For installing dependencies
 export LDFLAGS="$LDFLAGS -L$HOMEBREW_APP_PREFIX/libgeoip/lib/ -L$HOMEBREW_APP_PREFIX/openssl@1.1/lib -L$HOMEBREW_APP_PREFIX/libxml2/lib"
@@ -169,6 +176,7 @@ alias gcs='git checkout staging'
 alias gcm='git checkout master'
 alias gcp='git cherry-pick --signoff -x'
 alias git_commit_files="git diff-tree --no-commit-id --name-status -r"
+alias t='git commit -m "tmp [no ci]"'
 
 # gl - git commit browser (enter for show, ctrl-d for diff, ` toggles sort)
 # TODO: Add options to seatch all branchs
@@ -265,7 +273,7 @@ alias wine-toad="WINEPREFIX='$HOME/.wine32' WINEARCH='win32' wine 'C:\\Program F
 alias wine-npp="wine 'C:\Program Files\Notepad++\notepad++.exe' &"
 
 ####################
-# Compketion setup #
+# Completion setup #
 ####################
 
 # Needed, not sure why...
@@ -369,6 +377,8 @@ tfp() {
   terraform plan -parallelism=20 -out plan.out $* && terraform show plan.out | less -R
 }
 alias tfsummarize="terraform show -json plan.out | tf-summarize -tree"
+alias tfsummarize="tf-summarize -tree plan.out | less -R"
+alias tfsummarize-json="tf-summarize -json plan.out | fx"
 alias tfshow="terraform show plan.out | less -R"
 alias tfshow-copy="terraform show -no-color plan.out | pbcopy"
 alias tfv="terraform validate"
@@ -472,16 +482,107 @@ alias tmux_attach="tmux -CC attach"
 # PGP - allow it to work...
 export GPG_TTY=$(tty)
 
+
+####################
+# Github shortcuts #
+####################
+alias gh-open="gh pr view --web"
+alias gh-create="gh pr create"
+
+#################
+# AWS shortcuts #
+#################
 alias aws-whoami='aws sts get-caller-identity'
 
+prompt_confirm() {
+  local default_choice=${2}
+  local prompt_options="y/n"
+
+  if [[ "$default_choice" == "y" ]]; then
+    prompt_options="Y/n"
+  elif [[ "$default_choice" == "n" ]]; then
+    prompt_options="y/N"
+  fi
+
+  local prompt_message="${1:-Continue?} [$prompt_options]: "
+
+  while true; do
+    echo -n "$prompt_message"
+    read -r REPLY
+    echo
+
+    REPLY=${REPLY:-$default_choice}
+
+    case $REPLY in
+      [yY]) return 0 ;;
+      [nN]) return 1 ;;
+      *) printf " \033[31m %s \n\033[0m" "invalid input";;
+    esac
+  done
+}
+
+alias ati="aws-ec2-terminate-instances"
+
+aws-ec2-terminate-instances() {
+  selected_instances=()
+  while true; do
+    selected_instance=$(aws-ec2-select-instance true)
+    if [[ -z "$selected_instance" ]]; then
+      if [ ${#selected_instances[@]} -eq 0 ]; then
+        echo "No instances selected for termination."
+        return 1
+      fi
+      break # Exit loop if no selection is made and proceed to confirmation
+    fi
+    selected_instances+=("$selected_instance")
+    echo "Selected instances: ${selected_instances[*]}"
+
+    if ! prompt_confirm "Do you want to select more instances?" "n"; then
+        break
+    fi
+  done
+
+  echo "You have selected the following instance(s) for termination:"
+  for instance in "${selected_instances[@]}"; do
+    echo " - $instance"
+  done
+
+  if prompt_confirm "Are you sure you want to terminate the selected instance(s)?" "n"; then
+    echo "Terminating instances..."
+    aws ec2 terminate-instances --instance-ids "${selected_instances[@]}"
+    echo "Instances terminated."
+  else
+    echo "Operation aborted."
+  fi
+}
+
+aws-ec2-select-instance() {
+  skip_prompt="$1"
+  selected_instance=$(aws ec2 describe-instances --query "Reservations[].Instances[].[InstanceId,InstanceType,Tags[?Key==\`Name\`]|[0].Value,State.Name]" --output json | jq -r ".[]|@tsv" | grep --color=none 'running$' | fzf)
+
+  instance_id=$(echo "$selected_instance"  | cut -f1)
+  instance_name=$(echo "$selected_instance"  | cut -f3)
+
+  yellow="\033[33m"
+  cyan="\033[36m"
+  green="\033[32m"
+  reset="\033[0m"
+
+  if [[ -z $skip_prompt ]]; then
+    echo "${yellow}Connected to:${reset} ${instance_id} (${cyan}${instance_name}${reset})" >&2
+  fi
+  echo "$instance_id"
+}
+
 aws-ssh() {
-  unset AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN AWS_ACCESS_KEY_ID
   local save_profile="$AWS_PROFILE"
   if [[ "$1" != "" ]]; then
     export AWS_PROFILE="$1"
   fi
 
-  aws ssm start-session --target "$(aws ec2 describe-instances --query "Reservations[].Instances[].[InstanceId,InstanceType,Tags[?Key==\`Name\`]|[0].Value,State.Name]" --output json | jq -r ".[]|@tsv" | grep --color=none 'running$' | fzf  | cut -f1)"
+  instance_id=$(aws-ec2-select-instance)
+
+  aws ssm start-session --target "$instance_id"
 
   if [[ $save_profile != "" ]]; then
     export AWS_PROFILE="$save_profile"
@@ -494,13 +595,31 @@ aws-login() {
   unset AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN AWS_ACCESS_KEY_ID
   unset AWS_PROFILE
   local file_name="/tmp/$$"
-  workon aws-cli
-  $HOME/work/aws-cli/bin/aws configure sso 2>&1 | tee "$file_name"
-  deactivate
-  export AWS_PROFILE="$(grep "ls \-\-profile" "$file_name" | cut -d" " -f5)"
+  pyenv shell 3.9
+  $HOME/external_repos/aws-cli/bin/aws configure sso 2>&1 | tee "$file_name"
+  pyenv shell system
+  export AWS_PROFILE="$(grep "ls --profile" "$file_name" | cut -d" " -f5)"
   \rm "$file_name"
   chpwd
   aws-whoami
+}
+
+aws-select-eb-env() {
+  # Ensure AWS CLI and fzf are installed
+  command -v aws >/dev/null 2>&1 || { echo >&2 "AWS CLI is required but not installed.  Aborting."; return 1; }
+  command -v fzf >/dev/null 2>&1 || { echo >&2 "fzf is required but not installed.  Aborting."; return 1; }
+
+  environments=$(aws elasticbeanstalk describe-environments --no-include-deleted --query "Environments[*].[EnvironmentName]" --output text)
+
+  # Select environment with fzf
+  selected_env=$(echo "$environments" | fzf --prompt="Select Environment: ")
+
+  # Exit if no environment is selected
+  [ -z "$selected_env" ] && return
+  yellow="\033[33m"
+  reset="\033[0m"
+  echo "${yellow}Selected Environment:${reset} $selected_env" >&2
+  echo "$selected_env"
 }
 
 aws-change-account() {
@@ -525,9 +644,128 @@ aws-exit-account() {
   chpwd
 }
 
+aws-elastic-beanstalk-health() {
+  selected_env=$(aws-select-eb-env)
+  # Fetch Enhanced Health information for instances
+  health_info=$(aws elasticbeanstalk describe-instances-health --environment-name "$selected_env" --attribute-names All --output json)
+
+  # Print table header
+  printf "\033[1m%-20s %-10s %-30s\033[0m\n" "Instance ID" "Status" "Uptime"
+
+  echo "$health_info" \
+    | jq -r '.InstanceHealthList[] | [.InstanceId, .HealthStatus, .LaunchedAt] | @tsv' \
+    | while IFS=$'\t' read -r instance_id health_status launched_at; do
+        # Calculate time elapsed since launch in a human-readable format
+        now=$(date +%s)
+        launched_at_sec=$(date -d "$launched_at" +%s)
+        elapsed=$((now - launched_at_sec))
+        uptime=$(printf '%dd %dh %dm %ds' $((elapsed/86400)) $((elapsed%86400/3600)) $((elapsed%3600/60)) $((elapsed%60)))
+
+        # Assign color based on health status
+        case $health_status in
+          "Ok") color="\033[32m" ;; # Green
+          "Warning") color="\033[33m" ;; # Yellow
+          "Info") color="\033[36m" ;; # Cyan
+          "Degraded"|"Severe") color="\033[31m" ;; # Red
+          *) color="\033[0m" ;; # Default/no color
+        esac
+
+        # Display the table row with instance ID, colored health status, and uptime
+        printf "%-20s %b%-10s\033[0m %-30s\n" "$instance_id" "$color" "$health_status" "$uptime"
+      done
+}
+
+aws-elastic-beanstalk-platform() {
+  selected_env=$(aws-select-eb-env)
+  aws elasticbeanstalk describe-environments --environment-names "$selected_env" \
+    --query 'Environments[*].{PlatformArn:PlatformArn, VersionLabel:VersionLabel}' --output text | \
+    awk -F'\t' '{
+      # Define ANSI color codes
+      green="\033[32m";
+      cyan="\033[36m";
+      reset="\033[0m";
+
+      # Platform
+      printf green "Platform: " reset;
+      split($1, platform, "/");
+      for(i=2; i<=length(platform); i++) printf "%s%s", platform[i], (i==length(platform) ? "\n" : "/");
+
+      # Running Version
+      printf cyan "Running Version: " reset "%s\n", $2;
+    }'
+}
+
+aws-elastic-beanstalk-events() {
+  # Ensure AWS CLI and fzf are installed
+  command -v aws >/dev/null 2>&1 || { echo >&2 "AWS CLI is required but not installed.  Aborting."; return 1; }
+  command -v fzf >/dev/null 2>&1 || { echo >&2 "fzf is required but not installed.  Aborting."; return 1; }
+  command -v gawk >/dev/null 2>&1 || { echo >&2 "gawk is required but not installed.  Aborting."; return 1; }
+
+  max_items=${1:-100} # Use the first argument or a default value
+
+  # Fetch Elastic Beanstalk environments
+  environments=$(aws elasticbeanstalk describe-environments --no-include-deleted --query "Environments[*].[EnvironmentName]" --output text)
+
+  # Select environment with fzf
+  selected_env=$(echo "$environments" | fzf --prompt="Select Environment: ")
+
+  # Exit if no environment is selected
+  [ -z "$selected_env" ] && return
+
+  echo "Selected environment: $selected_env"
+
+  PS3="Choose an option (numeric): "
+  select opt in "Events" "Health"; do
+    if [[ $opt == "Events" ]]; then
+      # Fetch events with severity and format into a table with headers and borders
+      events=$(aws elasticbeanstalk describe-events --environment-name "$selected_env" --max-items=$max_items --query "Events[*].[EventDate,Severity,Message]" --output text)
+      {
+        echo "$events"
+      } | gawk -v RED="\033[0;31m" -v YELLOW="\033[0;33m" -v CYAN="\033[0;36m" -v NOCOLOR="\033[0m" '
+      BEGIN {
+        printf "%-35s %-11s %-s\n", "Date", "Severity", "Message";
+        printf "%-35s %-11s %-s\n", "----", "--------", "-------";
+      }
+      {
+        if (NR > 2) {
+          # Split date and time, then handle timezone
+          split($1, a, "T");
+          split(a[2], b, "[+-]", seps);
+          time_part = substr(b[1], 1, 8);
+
+          # Append the timezone sign and the offset
+          timezone = seps[1] b[2];
+          date = a[1] " " time_part " " timezone;
+
+          severity = $2;
+          color = "";
+          if (severity ~ /ERROR/) color = RED;
+          else if (severity ~ /WARN/) color = YELLOW;
+          else if (severity ~ /INFO/) color = CYAN;
+
+          $2 = color severity NOCOLOR;
+          message = "";
+          for(i = 3; i <= NF; i++) {
+              message = message $i " ";
+          }
+          printf "%-35s %-22s %-s\n", date, $2, message;
+        }
+      }' | less -R -S
+      break
+    elif [[ $opt == "Health" ]]; then
+      # Fetch health and format into a table with headers and borders
+      aws elasticbeanstalk describe-environment-health --environment-name "$selected_env" --attribute-names All --output table
+      break
+    else
+      echo "Invalid option. Please try again."
+    fi
+  done
+}
+
 alias aa="aws-change-account"
 alias ac="aws-console"
 alias as="aws-ssh"
+alias eb_events="aws-elastic-beanstalk-events"
 
 # Set the iTerm2 title
 function title {

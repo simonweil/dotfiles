@@ -10,7 +10,7 @@ brew tap homebrew/services
 # Development
 brew install python
 brew install nvm node
-brew install rbenv
+brew install rbenv pyenv
 #brew install pgcli
 brew install jd # json diff tool - test it
 brew install awscli okta-aws-cli
@@ -19,6 +19,7 @@ brew install howdoi
 brew install gpg # GnuPGP
 brew install http-prompt
 brew install openssl@1.1 # needed as dependency for many things
+brew install 1password-cli
 
 # Vim
 brew install luarocks cmake # neovim build dependencies

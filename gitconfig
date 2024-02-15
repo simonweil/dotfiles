@@ -7,7 +7,7 @@
   helper = osxkeychain
 
 [core]
-  editor = /usr/local/bin/nvim
+  editor = /opt/homebrew/bin/nvim
 	excludesfile = ~/.dotfiles/gitignore_global
   autocrlf = input
 	fsmonitor = true

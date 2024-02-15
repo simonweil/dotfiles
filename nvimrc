@@ -724,7 +724,7 @@ lua << EOF
     }
   end
 EOF
-autocmd BufWritePre *.tf lua vim.lsp.buf.formatting_sync()
+autocmd BufWritePre *.tf lua vim.lsp.buf.format({ async = false })
 
 " Indent Settings
 let g:indent_blankline_filetype_exclude = ['help', 'nerdtree', 'git', 'vim-plug', 'man', 'lspinfo', 'packer', 'checkhealth', 'NvimTree']
