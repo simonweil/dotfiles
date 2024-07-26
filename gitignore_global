@@ -3,3 +3,4 @@
 tags
 *.swp
 .fab_tasks~
+snyk-ls-vim.log

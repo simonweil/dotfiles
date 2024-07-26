@@ -14,6 +14,10 @@ pip install -U jedi-language-server
 pip install urllib3
 deactivate
 
+# General python stuff
+[ -d $VENV_HOME/local ] && rm -rf $VENV_HOME/local
+python3 -m venv $VENV_HOME/local
+source $VENV_HOME/loacl/bin/activate
 # super charged AWS cli (https://github.com/donnemartin/saws)
 #pip3 install saws - commented out until it supports up to date python
 #pip install aws-shell --upgrade --ignore-installed six

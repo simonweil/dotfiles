@@ -13,7 +13,7 @@ brew install --cask whatsapp
 
 # Productivity
 brew install --cask cheatsheet
-brew install --cask sizeup
+brew install --cask rectangle
 brew install --cask time-out
 brew install --cask maccy # Clipboard manager
 
