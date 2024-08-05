@@ -152,7 +152,7 @@ alias git_log_all="git_log --branches --remotes --tags --decorate"
 alias git_lastest_branches="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) - %(authorname) (%(color:green)%(committerdate:relative)%(color:reset))'"
 alias gp="git pull --rebase=merges"
 alias gpush="git push --set-upstream origin HEAD" # Push current branch to origin with same branch name and set as tracking branch
-alias gf="git fetch --all && git fetch --tags --force && git fetch --tags --prune-tags"
+alias gf="git fetch --all --prune && git fetch --tags --force && git fetch --tags --prune-tags"
 alias gs="git status"
 alias gde="git diff --ignore-space-at-eol -b -w --ignore-blank-lines"
 alias gd="gde --no-ext-diff"
@@ -635,17 +635,18 @@ aws-ssh() {
   fi
 }
 
-aws-login() {
-  unset AWS_SECRET_ACCESS_KEY AWS_SESSION_TOKEN AWS_ACCESS_KEY_ID
-  unset AWS_PROFILE
-  local file_name="/tmp/$$"
-  pyenv shell 3.9
-  $HOME/external_repos/aws-cli/bin/aws configure sso 2>&1 | tee "$file_name"
-  pyenv shell system
-  export AWS_PROFILE="$(grep "ls --profile" "$file_name" | cut -d" " -f5)"
-  \rm "$file_name"
-  chpwd
-  aws-whoami
+aws-update-account-in-config() {
+  cat <<-"EOD"
+This function is used to add an entry to ~/.aws/config so you can later use 'aa' or 'aws-change-account'
+Set the region for the account, note it is not the sso region, that should not be changed.
+
+EOD
+
+  aws configure sso
+
+  echo
+  echo "Now run 'aa' to change the profile to the account you need"
+  echo
 }
 
 aws-select-eb-env() {
