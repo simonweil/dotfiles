@@ -23,7 +23,6 @@ source ./setup-scripts/Brewfile
 source ./setup-scripts/Brew-Gemfile
 source ./setup-scripts/Nodefile
 source ./setup-scripts/Pipfile
-source ./setup-scripts/Nativefierfile
 #source ./setup-scripts/MacOSfile - doesn't work anymore :/
 
 # Setup bash from brew
